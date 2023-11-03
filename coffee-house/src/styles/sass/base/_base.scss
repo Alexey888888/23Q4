@@ -1,0 +1,11 @@
+body {
+  @extend %font-primary;
+  @include font();
+}
+
+h1,
+h2,
+h3,
+h4 {
+  @include font($size: 60px, $weight: 600, $height: 75px);
+}

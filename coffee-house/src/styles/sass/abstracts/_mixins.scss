@@ -1,0 +1,13 @@
+@mixin font(
+  $size: 16px,
+  $style: normal,
+  $weight: 400,
+  $height: 24px,
+  $color: $color-text-dark
+) {
+  font-size: $size;
+  font-style: $style;
+  font-weight: $weight;
+  line-height: $height;
+  color: $color;
+}
