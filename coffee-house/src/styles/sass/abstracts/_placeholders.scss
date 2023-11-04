@@ -1,10 +1,44 @@
 %font-primary {
-  font-family: 'Inter', Verdana, sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
-%text-accent {
+%heading-accent {
   font-style: italic;
   color: $color-text-accent;
+}
+
+%font-caption {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+}
+
+%font-link-button {
+  font-weight: 600;
+}
+
+%font-burger-link {
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 40px;
+}
+
+%underline {
+  position: relative;
+  &::after {
+    position: absolute;
+    content: '';
+    background: $color-text-dark;
+    height: 2px;
+    width: 0;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    @extend %transition;
+  }
+  &:hover::after {
+    width: 100%;
+  }
 }
 
 %transition {

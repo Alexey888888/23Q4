@@ -3,9 +3,59 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./src/styles/css/main.css" />
     <link rel="icon" href="./src/img/icons/favicon.ico" />
     <title>COFFEE-HOUSE</title>
   </head>
-  <body></body>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="container">
+          <div class="header__wrapper">
+            <a class="logo" href="#">
+              <object
+                class="logo-object"
+                data="./src/img/svg/logo.svg"
+                type="image/svg+xml"
+              ></object>
+            </a>
+            <nav class="nav">
+              <ul class="nav__list">
+                <li class="nav__item">
+                  <a class="nav__link" href="#favorite">Favorite coffee</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#about">About</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="#mobile-app">Mobile app</a>
+                </li>
+                <li class="nav__item">
+                  <a class="nav__link" href="contacts">Contacts</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="header__menu-link">
+              <a class="menu-link" href="#">
+                <span class="menu__title">Menu</span>
+                <object
+                  class="cup-svg"
+                  data="./src/img/svg/coffee-cup.svg"
+                  type="image/svg+xml"
+                ></object>
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="main"></main>
+      <footer class="footer"></footer>
+    </div>
+  </body>
 </html>

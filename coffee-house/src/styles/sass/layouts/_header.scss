@@ -1,0 +1,25 @@
+.header__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.nav__list {
+  display: flex;
+  column-gap: 40px;
+}
+
+.nav__link {
+  @extend %underline;
+}
+
+.menu-link {
+  display: flex;
+  align-items: flex-start;
+  @extend %underline;
+}
+
+.menu__title {
+  margin-right: 8px;
+}
