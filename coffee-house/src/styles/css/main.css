@@ -16,15 +16,20 @@ button {
   background: #403f3d;
   height: 2px;
   width: 0;
-  top: 110%;
+  top: calc(100% + 4px);
   left: 50%;
   transform: translateX(-50%);
 }
 .menu-link:hover::after, .nav__link:hover::after {
   width: 100%;
+  background: #b0907a;
 }
 
-.menu-link::after, .nav__link::after {
+.menu-link:hover, .nav__link:hover {
+  color: #b0907a;
+}
+
+.cup-svg, .menu-link, .nav__link, .menu-link::after, .nav__link::after {
   transition: all 0.3s;
 }
 
@@ -42,8 +47,6 @@ button {
 
 html,
 body {
-  height: 100%;
-  width: 100%;
   scroll-behavior: smooth;
 }
 
@@ -109,8 +112,7 @@ footer {
   color: #e1d4c9;
 }
 
-.logo,
-.cup-svg {
+.logo-svg {
   cursor: pointer;
 }
 
@@ -122,8 +124,11 @@ footer {
 .header__wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-top: 20px;
+}
+
+.header__nav {
+  margin-top: 16px;
 }
 
 .nav__list {
@@ -132,9 +137,16 @@ footer {
        column-gap: 40px;
 }
 
+.header__menu-link {
+  margin-top: 16px;
+}
+
 .menu-link {
   display: flex;
   align-items: flex-start;
+}
+.menu-link:hover .cup-svg {
+  stroke: #b0907a;
 }
 
 .menu__title {

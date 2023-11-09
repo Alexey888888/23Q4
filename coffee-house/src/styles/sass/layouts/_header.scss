@@ -1,8 +1,11 @@
 .header__wrapper {
   display: flex;
   justify-content: space-between;
-  align-items: center;
   margin-top: 20px;
+}
+
+.header__nav {
+  margin-top: 16px;
 }
 
 .nav__list {
@@ -12,12 +15,27 @@
 
 .nav__link {
   @extend %underline;
+  @extend %link-hover;
+  @extend %transition;
+}
+
+.header__menu-link {
+  margin-top: 16px;
 }
 
 .menu-link {
   display: flex;
   align-items: flex-start;
   @extend %underline;
+  @extend %link-hover;
+  @extend %transition;
+  &:hover .cup-svg {
+    stroke: $color-text-accent;
+  }
+}
+
+.cup-svg {
+  @extend %transition;
 }
 
 .menu__title {
