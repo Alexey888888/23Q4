@@ -29,8 +29,14 @@ button {
   color: #b0907a;
 }
 
-.cup-svg, .menu-link, .nav__link, .menu-link::after, .nav__link::after {
+.cup-svg, .menu-link, .nav__link, .btn, .menu-link::after, .nav__link::after {
   transition: all 0.3s;
+}
+
+.btn_icon-burger, .btn_icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 * {
@@ -110,6 +116,63 @@ h3 {
 }
 footer {
   color: #e1d4c9;
+}
+
+.btn {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+  color: #403f3d;
+  border-radius: 100px;
+  border: 1px solid #665f55;
+}
+.btn:hover {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: #e1d4c9;
+  background: #665f55;
+}
+.btn_primary {
+  background: #e1d4c9;
+  padding: 20px 78px;
+  border: none;
+}
+.btn_primary:hover {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  color: #403f3d;
+  background: #e1d4c9;
+}
+.btn_secondary {
+  padding: 10px 78px;
+}
+.btn_secondary:active {
+  background: #665f55;
+}
+.btn .btn-tab-item {
+  padding: 8px 16px 8px 8px;
+}
+.btn_mobile-app {
+  padding: 12px 20px;
+}
+.btn_icon {
+  width: 60px;
+  height: 60px;
+}
+.btn_icon-light {
+  border-color: #c1b6ad;
+}
+.btn_icon-light:hover {
+  background: #c1b6ad;
+}
+.btn_icon-burger {
+  width: 44px;
+  height: 44px;
 }
 
 .logo-svg {

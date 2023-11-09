@@ -1,0 +1,58 @@
+.btn {
+  @extend %transition;
+  @include font($weight: 600);
+  border-radius: 100px;
+  border: 1px solid $color-bg-container;
+
+  &:hover {
+    @include font($color: $color-text-light);
+    background: $color-bg-container;
+  }
+
+  &_primary {
+    background: $color-text-light;
+    padding: 20px 78px;
+    border: none;
+
+    &:hover {
+      @include font($color: $color-text-dark);
+      background: $color-text-light;
+    }
+  }
+
+  &_secondary {
+    padding: 10px 78px;
+
+    &:active {
+      background: $color-bg-container;
+    }
+  }
+
+  .btn-tab-item {
+    padding: 8px 16px 8px 8px;
+  }
+
+  &_mobile-app {
+    padding: 12px 20px;
+  }
+
+  &_icon {
+    width: 60px;
+    height: 60px;
+    @extend %flex-center;
+
+    &-light {
+      border-color: $color-border-light;
+
+      &:hover {
+        background: $color-border-light;
+      }
+    }
+  }
+
+  &_icon-burger {
+    width: 44px;
+    height: 44px;
+    @extend %flex-center;
+  }
+}

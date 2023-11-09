@@ -51,3 +51,9 @@
 %transition {
   transition: all 0.3s;
 }
+
+%flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
