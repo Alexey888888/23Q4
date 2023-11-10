@@ -5,7 +5,12 @@ body {
 }
 
 h1 {
-  @include font($size: 72px, $weight: 600, $height: 75.6px);
+  @include font(
+    $size: 72px,
+    $weight: 600,
+    $height: 75.6px,
+    $color: $color-border-light
+  );
 }
 
 h2 {

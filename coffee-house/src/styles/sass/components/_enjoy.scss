@@ -1,0 +1,30 @@
+.enjoy {
+  padding-top: 15px;
+  color: $color-text-light;
+  &__wrapper {
+    border-radius: 40px;
+    background: url(../../img/jpg/img-hero.jpg);
+    background-position: center;
+    background-size: cover;
+  }
+}
+
+.enjoy__title_text-accent {
+  @extend %heading-accent;
+}
+
+.enjoy__content {
+  padding: 100px;
+}
+
+.enjoy-title__container {
+  width: 530px;
+}
+
+.enjoy__text {
+  margin-top: 40px;
+}
+
+.enjoy__btn {
+  margin-top: 40px;
+}

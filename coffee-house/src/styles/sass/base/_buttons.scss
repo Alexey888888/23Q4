@@ -1,4 +1,5 @@
 .btn {
+  cursor: pointer;
   @extend %transition;
   @include font($weight: 600);
   border-radius: 100px;
@@ -14,9 +15,33 @@
     padding: 20px 78px;
     border: none;
 
+    .btn_primary__wrapper {
+      display: flex;
+      align-items: flex-start;
+      position: relative;
+    }
+
+    span {
+      @extend %transition;
+    }
+
+    object {
+      position: absolute;
+      left: calc(100% - 4px);
+      opacity: 0;
+    }
+
     &:hover {
-      @include font($color: $color-text-dark);
+      @include font($color: $color-text-dark, $weight: 600);
       background: $color-text-light;
+
+      object {
+        opacity: 1;
+      }
+
+      span span {
+        transform: translateX(-11px);
+      }
     }
   }
 

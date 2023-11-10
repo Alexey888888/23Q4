@@ -3,12 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
       rel="stylesheet"
-    />
+    /> -->
+    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" />
+
     <link rel="stylesheet" href="./src/styles/css/main.css" />
     <link rel="icon" href="./src/img/icons/favicon.ico" />
     <title>COFFEE-HOUSE</title>
@@ -64,14 +66,14 @@
                       stroke-linejoin="round"
                     />
                     <path
-                      id="Vector 13"
+                      id="Vector_13"
                       d="M10.0003 7.50008C10.0003 6.66675 10.5956 5.83341 11.786 5.83341V5.83341C13.101 5.83341 14.167 4.76743 14.167 3.45246V2.91675"
                       stroke-width="1.5"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     />
                     <path
-                      id="Vector 14"
+                      id="Vector_14"
                       d="M6.66634 7.5V7.08333C6.66634 5.70262 7.78563 4.58333 9.16634 4.58333V4.58333C10.0868 4.58333 10.833 3.83714 10.833 2.91667V2.5"
                       stroke-width="1.5"
                       stroke-linecap="round"
@@ -96,16 +98,30 @@
           <div class="container">
             <div class="enjoy__wrapper">
               <div class="enjoy__content">
-                <h1 class="enjoy__title">
-                  <span class="enjoy__title_text-accent">Enjoy</span> premium
-                  coffee at our charming cafe
-                </h1>
-                <p class="enjoy__text">
-                  With its inviting atmosphere and delicious coffee options, the
-                  Coffee House Resource is a popular destination for coffee
-                  lovers and those seeking a warm and inviting space to enjoy
-                  their favorite beverage.
-                </p>
+                <div class="enjoy-title__container">
+                  <h1 class="enjoy__title">
+                    <span class="enjoy__title_text-accent">Enjoy</span> premium
+                    coffee at our charming cafe
+                  </h1>
+                  <p class="enjoy__text">
+                    With its inviting atmosphere and delicious coffee options,
+                    the Coffee House Resource is a popular destination for
+                    coffee lovers and those seeking a warm and inviting space to
+                    enjoy their favorite beverage.
+                  </p>
+                  <div class="enjoy__btn">
+                    <button class="btn btn_primary">
+                      <span class="btn_primary__wrapper">
+                        <span>Menu</span>
+                        <object
+                          class="cup-svg"
+                          data="./src/img/svg/coffee-cup.svg"
+                          type="image/svg+xml"
+                        ></object>
+                      </span>
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
