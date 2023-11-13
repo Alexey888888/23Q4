@@ -17,7 +17,8 @@ h2 {
   @include font($size: 60px, $weight: 600, $height: 75px);
 }
 
-h3 {
+h3,
+.price {
   @include font($size: 24px, $weight: 600, $height: 30px);
 }
 
@@ -34,6 +35,10 @@ h3 {
 a,
 button {
   @extend %font-link-button;
+}
+
+.text-accent {
+  @extend %heading-accent;
 }
 
 footer {

@@ -11,6 +11,7 @@
   }
 
   &_primary {
+    display: inline-block;
     background: $color-text-light;
     padding: 20px 78px;
     border: none;
@@ -64,7 +65,12 @@
   &_icon {
     width: 60px;
     height: 60px;
+    background: $color-bg-body;
     @extend %flex-center;
+
+    &:hover path {
+      stroke: $color-text-light;
+    }
 
     &-light {
       border-color: $color-border-light;
