@@ -35,10 +35,12 @@
     left: 50%;
     transform: translateX(-50%);
     @extend %transition;
+    opacity: 0;
   }
   &:hover::after {
     width: 100%;
     background: $color-text-accent;
+    opacity: 1;
   }
 }
 
@@ -49,7 +51,7 @@
 }
 
 %transition {
-  transition: all 0.3s;
+  transition: all 0.6s;
 }
 
 %flex-center {
