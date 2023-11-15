@@ -6,7 +6,7 @@
   border: 1px solid $color-bg-container;
 
   &:hover {
-    @include font($color: $color-text-light);
+    @include font($color: $color-text-light, $weight: 600);
     background: $color-bg-container;
   }
 
@@ -60,6 +60,24 @@
 
   &_mobile-app {
     padding: 12px 20px;
+    display: flex;
+    column-gap: 8px;
+    background: $color-text-light;
+
+    & span {
+      width: 115px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    & svg path {
+      @extend %transition;
+    }
+
+    &:hover svg path {
+      fill: $color-border-light;
+    }
   }
 
   &_icon {
@@ -67,6 +85,10 @@
     height: 60px;
     background: $color-bg-body;
     @extend %flex-center;
+
+    & svg path {
+      @extend %transition;
+    }
 
     &:hover path {
       stroke: $color-text-light;

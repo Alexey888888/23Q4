@@ -1,0 +1,26 @@
+.mobile-app {
+  margin-top: 140px;
+}
+
+.mobile-app__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mobile-app_download-app {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.download-app__wrapper {
+  max-width: 630px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.download-app__buttons {
+  display: flex;
+  column-gap: 20px;
+}

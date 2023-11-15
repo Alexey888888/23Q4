@@ -7,6 +7,12 @@ body {
   color: #b0907a;
 }
 
+.text-caption {
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+}
+
 a,
 button {
   font-weight: 600;
@@ -36,8 +42,8 @@ button {
   color: #b0907a;
 }
 
-.images-box__img, .cup-svg, .menu-link, .nav__link, .btn_primary span, .btn, .menu-link::after, .nav__link::after {
-  transition: all 0.6s;
+.images-box__img, .cup-svg, .menu-link, .nav__link, .btn_icon svg path, .btn_mobile-app svg path, .btn_primary span, .btn, .menu-link::after, .nav__link::after {
+  transition: all 0.3s ease-in;
 }
 
 .btn_icon-burger, .btn_icon {
@@ -145,7 +151,7 @@ footer {
 .btn:hover {
   font-size: 16px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 600;
   line-height: 24px;
   color: #e1d4c9;
   background: #665f55;
@@ -191,6 +197,19 @@ footer {
 }
 .btn_mobile-app {
   padding: 12px 20px;
+  display: flex;
+  -moz-column-gap: 8px;
+       column-gap: 8px;
+  background: #e1d4c9;
+}
+.btn_mobile-app span {
+  width: 115px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.btn_mobile-app:hover svg path {
+  fill: #c1b6ad;
 }
 .btn_icon {
   width: 60px;
@@ -402,4 +421,32 @@ footer {
 
 .images-box__img:hover {
   transform: scale(0.91);
+}
+
+.mobile-app {
+  margin-top: 140px;
+}
+
+.mobile-app__wrapper {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mobile-app_download-app {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.download-app__wrapper {
+  max-width: 630px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.download-app__buttons {
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
 }/*# sourceMappingURL=main.css.map */

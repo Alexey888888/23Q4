@@ -41,6 +41,10 @@ button {
   @extend %heading-accent;
 }
 
+.text-caption {
+  @extend %font-caption;
+}
+
 footer {
   color: $color-text-light;
 }
