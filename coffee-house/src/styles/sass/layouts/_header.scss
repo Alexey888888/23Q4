@@ -15,7 +15,7 @@
 
 .nav__link {
   @extend %underline;
-  @extend %link-hover;
+  //@extend %link-hover;
   @extend %transition;
 }
 
@@ -27,11 +27,11 @@
   display: flex;
   align-items: flex-start;
   @extend %underline;
-  @extend %link-hover;
+  //@extend %link-hover;
   @extend %transition;
-  &:hover .cup-svg {
-    stroke: $color-text-accent;
-  }
+  // &:hover .cup-svg {
+  //   stroke: $color-text-accent;
+  // }
 }
 
 .cup-svg {

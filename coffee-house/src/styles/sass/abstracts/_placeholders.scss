@@ -29,6 +29,7 @@
     position: absolute;
     content: '';
     background: $color-text-dark;
+
     height: 2px;
     width: 0;
     top: calc(100% + 4px);
@@ -36,19 +37,20 @@
     transform: translateX(-50%);
     @extend %transition;
     opacity: 0;
+    //cursor: default;
   }
   &:hover::after {
     width: 100%;
-    background: $color-text-accent;
+    //background: $color-text-accent;
     opacity: 1;
   }
 }
 
-%link-hover {
-  &:hover {
-    color: $color-text-accent;
-  }
-}
+// %link-hover {
+//   &:hover {
+//     color: $color-text-accent;
+//   }
+// }
 
 %transition {
   transition: all 0.3s ease-in;

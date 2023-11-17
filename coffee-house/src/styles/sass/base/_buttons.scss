@@ -48,6 +48,7 @@
 
   &_secondary {
     padding: 10px 78px;
+    background: none;
 
     &:active {
       background: $color-bg-container;
@@ -83,7 +84,7 @@
   &_icon {
     width: 60px;
     height: 60px;
-    background: $color-bg-body;
+    background: none;
     @extend %flex-center;
 
     & svg path {
@@ -98,7 +99,11 @@
       border-color: $color-border-light;
 
       &:hover {
-        background: $color-border-light;
+        background: $color-bg-body;
+      }
+
+      &:hover path {
+        stroke: $color-text-dark;
       }
     }
   }
