@@ -260,10 +260,6 @@ footer {
   cursor: pointer;
 }
 
-.cup-svg {
-  cursor: pointer;
-}
-
 .slider-arrow-svg_right {
   transform: rotate(180deg);
 }
@@ -543,7 +539,12 @@ footer {
   align-items: center;
   row-gap: 39.5px;
 }
-.menu__wrapper h2 {
+.menu__wrapper h1 {
+  font-size: 60px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 75px;
+  color: #403f3d;
   width: 800px;
   text-align: center;
 }
