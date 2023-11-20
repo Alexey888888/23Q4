@@ -55,8 +55,40 @@
     }
   }
 
-  .btn-tab-item {
+  &-tab-item {
     padding: 8px 16px 8px 8px;
+    //padding: 7px 17.5px 9.5px 7px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    column-gap: 8px;
+    border-color: $color-border-light;
+
+    span {
+      @extend %flex-center;
+      @extend %transition;
+      width: 30px;
+      height: 30px;
+      border-radius: 100px;
+      background: $color-border-light;
+    }
+
+    &:hover {
+      border-color: $color-bg-container;
+      span {
+        background: $color-bg-body;
+      }
+    }
+
+    &:disabled {
+      cursor: default;
+      border-color: $color-bg-container;
+      background: $color-bg-container;
+      color: $color-text-light;
+      span {
+        background: $color-bg-body;
+      }
+    }
   }
 
   &_mobile-app {
