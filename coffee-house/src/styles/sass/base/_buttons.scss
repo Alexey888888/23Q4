@@ -26,7 +26,8 @@
       @extend %transition;
     }
 
-    object {
+    img {
+      @extend %transition;
       position: absolute;
       left: calc(100% - 4px);
       opacity: 0;
@@ -36,7 +37,7 @@
       @include font($color: $color-text-dark, $weight: 600);
       background: $color-text-light;
 
-      object {
+      img {
         opacity: 1;
       }
 

@@ -37,7 +37,7 @@ button {
   opacity: 1;
 }
 
-.menu-offer__img, .images-box__img, .footer__contacts-list li a, .cup-svg, .menu-link, .nav__link, .btn_icon svg path, .btn_mobile-app svg path, .btn-tab-item span, .btn_primary span, .btn, .footer__contacts-list li a::after, .menu-link::after, .nav__link::after {
+.menu-offer__img, .images-box__img, .footer__contacts-list li a, .cup-svg, .menu-link, .nav__link, .btn_icon svg path, .btn_mobile-app svg path, .btn-tab-item span, .btn_primary img, .btn_primary span, .btn, .footer__contacts-list li a::after, .menu-link::after, .nav__link::after {
   transition: all 0.3s ease-in;
 }
 
@@ -162,7 +162,7 @@ footer {
   align-items: flex-start;
   position: relative;
 }
-.btn_primary object {
+.btn_primary img {
   position: absolute;
   left: calc(100% - 4px);
   opacity: 0;
@@ -175,7 +175,7 @@ footer {
   color: #403f3d;
   background: #e1d4c9;
 }
-.btn_primary:hover object {
+.btn_primary:hover img {
   opacity: 1;
 }
 .btn_primary:hover span span {
