@@ -27,7 +27,7 @@ button {
   background: #403f3d;
   height: 2px;
   width: 0;
-  top: calc(100% + 4px);
+  top: calc(100% + 2px);
   left: 50%;
   transform: translateX(-50%);
   opacity: 0;
@@ -292,6 +292,22 @@ footer {
 .menu-link {
   display: flex;
   align-items: flex-start;
+}
+.menu-link_active {
+  position: relative;
+  cursor: default;
+  display: flex;
+  align-items: flex-start;
+}
+.menu-link_active::after {
+  position: absolute;
+  content: "";
+  background: #403f3d;
+  height: 2px;
+  width: 100%;
+  top: calc(100% + 2px);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 .menu__title {

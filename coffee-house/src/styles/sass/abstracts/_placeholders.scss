@@ -29,16 +29,15 @@
     position: absolute;
     content: '';
     background: $color-text-dark;
-
     height: 2px;
     width: 0;
-    top: calc(100% + 4px);
+    top: calc(100% + 2px);
     left: 50%;
     transform: translateX(-50%);
     @extend %transition;
     opacity: 0;
-    //cursor: default;
   }
+
   &:hover::after {
     width: 100%;
     //background: $color-text-accent;

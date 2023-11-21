@@ -32,6 +32,23 @@
   // &:hover .cup-svg {
   //   stroke: $color-text-accent;
   // }
+
+  &_active {
+    position: relative;
+    cursor: default;
+    display: flex;
+    align-items: flex-start;
+    &::after {
+      position: absolute;
+      content: '';
+      background: $color-text-dark;
+      height: 2px;
+      width: 100%;
+      top: calc(100% + 2px);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 }
 
 .cup-svg {
