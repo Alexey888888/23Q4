@@ -40,16 +40,9 @@
 
   &:hover::after {
     width: 100%;
-    //background: $color-text-accent;
     opacity: 1;
   }
 }
-
-// %link-hover {
-//   &:hover {
-//     color: $color-text-accent;
-//   }
-// }
 
 %transition {
   transition: all 0.3s ease-in;
