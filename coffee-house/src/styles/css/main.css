@@ -247,6 +247,7 @@ footer {
 }
 .btn_icon-light:hover {
   background: #e1d4c9;
+  border-color: #e1d4c9;
 }
 .btn_icon-light:hover path {
   stroke: #403f3d;
