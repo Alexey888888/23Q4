@@ -266,8 +266,9 @@ footer {
 }
 
 .container {
-  width: 1360px;
+  width: 1440px;
   margin: 0 auto;
+  padding: 0 40px;
 }
 
 .header__wrapper {
