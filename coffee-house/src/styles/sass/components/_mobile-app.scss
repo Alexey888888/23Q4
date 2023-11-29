@@ -24,3 +24,9 @@
   display: flex;
   column-gap: 20px;
 }
+
+.mobile-app__image {
+  img {
+    max-width: 100%;
+  }
+}
