@@ -2,32 +2,45 @@
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
-
-  background: #4dc30e;
 }
 
 .header__nav {
-  //width: 894px;
   margin-top: 16px;
   display: flex;
   flex-grow: 1;
 
   @media (max-width: 768px) {
+    display: none;
+    //
     position: fixed;
-    margin-top: 0;
-    left: 0;
+    margin-top: 20px;
+    padding: 60px;
+    //left: 0;
+    left: 768px;
     top: 80px;
-    background: #a52626;
+    width: 100vw;
+    height: 100vh;
+    background: $color-bg-body;
     flex-direction: column;
+    align-items: center;
+    gap: 100px;
+    z-index: 10;
+    @include font($size: 32px, $height: 40px);
   }
 }
 
 .nav {
   margin-left: auto;
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 }
 
 .menu-link-line {
   margin-left: auto;
+  @media (max-width: 768px) {
+    margin-left: 0;
+  }
 }
 
 .nav__list {
@@ -36,6 +49,8 @@
 
   @media (max-width: 768px) {
     flex-direction: column;
+    row-gap: 60px;
+    align-items: center;
   }
 }
 
@@ -70,8 +85,47 @@
 
 .cup-svg {
   @extend %transition;
+
+  @media (max-width: 768px) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .menu__title {
   margin-right: 8px;
+  @media (max-width: 768px) {
+    margin-right: 16px;
+  }
+}
+
+.button-icon-burger {
+  position: relative;
+  display: none;
+  width: 44px;
+  height: 44px;
+  border: 1px solid $color-border-dark;
+  border-radius: 100px;
+  margin-top: 8px;
+  cursor: pointer;
+
+  &__line-top,
+  &__line-bottom {
+    position: absolute;
+    display: block;
+    top: calc(50% - 4px);
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 16px;
+    height: 1.5px;
+    background: $color-text-dark;
+  }
+
+  &__line-bottom {
+    top: calc(50% + 4px);
+  }
+
+  @media (max-width: 768px) {
+    display: block;
+  }
 }
