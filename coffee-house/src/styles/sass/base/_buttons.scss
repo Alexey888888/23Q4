@@ -18,7 +18,7 @@
 
     .btn_primary__wrapper {
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       position: relative;
     }
 
@@ -29,7 +29,7 @@
     img {
       @extend %transition;
       position: absolute;
-      left: calc(100% - 4px);
+      left: calc(100% - 6px);
       opacity: 0;
     }
 
@@ -42,7 +42,17 @@
       }
 
       span span {
-        transform: translateX(-11px);
+        transform: translateX(-14px);
+      }
+    }
+
+    @media (max-width: 768px) {
+      img {
+        opacity: 1;
+      }
+
+      span span {
+        transform: translateX(-14px);
       }
     }
   }
