@@ -77,6 +77,10 @@
     transform: scale(0.913);
 
     @media (max-width: 1080px) {
+      transform: scale(0.95);
+    }
+
+    @media (max-width: 768px) {
       transform: scale(0.925);
     }
   }
