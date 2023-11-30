@@ -4,6 +4,10 @@
 
 .favorite__wrapper {
   margin: 0 4px;
+
+  @media (max-width: 768px) {
+    margin: 0;
+  }
 }
 
 .favorite__title {

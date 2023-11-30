@@ -509,6 +509,11 @@ footer {
 .favorite__wrapper {
   margin: 0 4px;
 }
+@media (max-width: 768px) {
+  .favorite__wrapper {
+    margin: 0;
+  }
+}
 
 .favorite__title {
   text-align: center;
