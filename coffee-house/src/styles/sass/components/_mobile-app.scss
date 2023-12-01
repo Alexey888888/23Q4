@@ -10,9 +10,18 @@
     flex-direction: column;
     align-items: center;
     row-gap: 100px;
+
+    @media (max-width: 710px) {
+      row-gap: 40px;
+    }
+
     h2,
     p {
       width: 670px;
+
+      @media (max-width: 730px) {
+        width: auto;
+      }
     }
   }
 
@@ -36,6 +45,12 @@
 .download-app__buttons {
   display: flex;
   column-gap: 20px;
+
+  @media (max-width: 530px) {
+    width: 200px;
+    flex-direction: column;
+    row-gap: 20px;
+  }
 }
 
 .mobile-app__image {

@@ -19,10 +19,18 @@
   @media (max-width: 768px) {
     padding: 100px 60px;
   }
+
+  @media (max-width: 580px) {
+    padding: 60px 16px;
+  }
 }
 
 .enjoy-title__container {
   width: 530px;
+
+  @media (max-width: 760px) {
+    width: auto;
+  }
 }
 
 .enjoy__text {

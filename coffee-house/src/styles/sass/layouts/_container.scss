@@ -3,4 +3,8 @@
   //width: $width-desktop;
   margin: 0 auto;
   padding: 0 40px;
+
+  @media (max-width: 530px) {
+    padding: 0 16px;
+  }
 }

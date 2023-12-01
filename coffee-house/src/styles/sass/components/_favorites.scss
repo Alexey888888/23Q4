@@ -22,10 +22,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 730px) {
+    justify-content: center;
+  }
 }
 
 .slider-favorite-item__container {
   width: 480px;
+
+  @media (max-width: 550px) {
+    width: auto;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 
 .slider-favorite-item__description {

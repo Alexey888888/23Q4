@@ -26,7 +26,7 @@
   aspect-ratio: 660 / 590;
   overflow: hidden;
   border-radius: 20px;
-  background: black;
+  background: $color-bg-body;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -34,6 +34,10 @@
   @media (max-width: 1080px) {
     max-width: 688px;
     aspect-ratio: 688 / 590;
+  }
+
+  @media (max-width: 390px) {
+    aspect-ratio: 348 / 590;
   }
 
   &:nth-child(2),
@@ -73,6 +77,10 @@
   @extend %transition;
   max-width: 110%;
 
+  @media (max-width: 390px) {
+    max-width: 220%;
+  }
+
   &:hover {
     transform: scale(0.913);
 
@@ -81,7 +89,11 @@
     }
 
     @media (max-width: 768px) {
-      transform: scale(0.925);
+      transform: scale(0.95);
+    }
+
+    @media (max-width: 390px) {
+      transform: scale(0.9);
     }
   }
 }
