@@ -12,6 +12,10 @@
     @include font($size: 60px, $weight: 600, $height: 75px);
     width: 800px;
     text-align: center;
+
+    @media (max-width: 1439.9px) {
+      width: auto;
+    }
   }
 }
 
@@ -24,6 +28,12 @@
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
+
+  @media (max-width: 1439.9px) {
+    width: 658px;
+    column-gap: unset;
+    justify-content: space-between;
+  }
 }
 
 .menu-offer {
@@ -59,5 +69,14 @@
 
   &:hover .menu-offer__img-wrapper .menu-offer__img {
     scale: 0.91;
+  }
+
+  @media (max-width: 1439.9px) {
+    &:nth-child(5),
+    &:nth-child(6),
+    &:nth-child(7),
+    &:nth-child(8) {
+      display: none;
+    }
   }
 }
