@@ -9,7 +9,7 @@ h1 {
     $size: 72px,
     $weight: 600,
     $height: 75.6px,
-    $color: $color-border-light
+    $color: $color-text-light
   );
 }
 
@@ -24,7 +24,12 @@ h3,
 
 @media (max-width: 730px) {
   h1 {
-    @include font($size: 42px, $weight: 600, $height: 48.3px);
+    @include font(
+      $size: 42px,
+      $weight: 600,
+      $height: 48.3px,
+      $color: $color-text-light
+    );
   }
 
   h2 {

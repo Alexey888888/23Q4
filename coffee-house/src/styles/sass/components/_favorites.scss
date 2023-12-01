@@ -26,6 +26,12 @@
   @media (max-width: 730px) {
     justify-content: center;
   }
+
+  button {
+    @media (max-width: 730px) {
+      display: none;
+    }
+  }
 }
 
 .slider-favorite-item__container {

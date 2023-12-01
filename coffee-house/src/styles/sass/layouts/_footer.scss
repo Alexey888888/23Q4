@@ -21,6 +21,7 @@
 
   @media (max-width: 730px) {
     padding: 60px 16px;
+    row-gap: 40px;
   }
 
   > * {
@@ -62,12 +63,6 @@
 
   @media (max-width: 1128px) {
     align-items: flex-start;
-  }
-}
-
-.footer-contacts__wrapper {
-  @media (max-width: 730px) {
-    margin-top: -6px;
   }
 }
 

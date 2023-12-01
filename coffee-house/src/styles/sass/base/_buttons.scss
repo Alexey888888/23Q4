@@ -130,10 +130,6 @@
     background: none;
     @extend %flex-center;
 
-    @media (max-width: 730px) {
-      display: none;
-    }
-
     & svg path {
       @extend %transition;
     }

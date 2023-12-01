@@ -92,3 +92,11 @@
     }
   }
 }
+
+.btn-refresh {
+  display: none;
+
+  @media (max-width: 1439.9px) {
+    display: flex;
+  }
+}
