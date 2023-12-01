@@ -850,11 +850,26 @@ footer {
     width: auto;
   }
 }
+@media (max-width: 596px) {
+  .menu__wrapper h1 {
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 40px;
+    color: #403f3d;
+  }
+}
 
 .menu__tabs {
   display: flex;
   -moz-column-gap: 16px;
        column-gap: 16px;
+}
+@media (max-width: 596px) {
+  .menu__tabs {
+    -moz-column-gap: 8px;
+         column-gap: 8px;
+  }
 }
 
 .menu__offer-list {
@@ -868,6 +883,11 @@ footer {
     -moz-column-gap: unset;
          column-gap: unset;
     justify-content: space-between;
+  }
+}
+@media (max-width: 730px) {
+  .menu__offer-list {
+    width: 310px;
   }
 }
 

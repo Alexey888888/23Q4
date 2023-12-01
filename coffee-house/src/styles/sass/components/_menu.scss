@@ -16,12 +16,20 @@
     @media (max-width: 1439.9px) {
       width: auto;
     }
+
+    @media (max-width: 596px) {
+      @include font($size: 32px, $weight: 600, $height: 40px);
+    }
   }
 }
 
 .menu__tabs {
   display: flex;
   column-gap: 16px;
+
+  @media (max-width: 596px) {
+    column-gap: 8px;
+  }
 }
 
 .menu__offer-list {
@@ -33,6 +41,10 @@
     width: 658px;
     column-gap: unset;
     justify-content: space-between;
+  }
+
+  @media (max-width: 730px) {
+    width: 310px;
   }
 }
 
