@@ -5,9 +5,11 @@
   border-radius: 100px;
   border: 1px solid $color-bg-container;
 
-  &:hover {
-    @include font($color: $color-text-light, $weight: 600);
-    background: $color-bg-container;
+  @media (hover: hover) {
+    &:hover {
+      @include font($color: $color-text-light, $weight: 600);
+      background: $color-bg-container;
+    }
   }
 
   &_primary {
@@ -33,16 +35,18 @@
       opacity: 0;
     }
 
-    &:hover {
-      @include font($color: $color-text-dark, $weight: 600);
-      background: $color-text-light;
+    @media (hover: hover) {
+      &:hover {
+        @include font($color: $color-text-dark, $weight: 600);
+        background: $color-text-light;
 
-      img {
-        opacity: 1;
-      }
+        img {
+          opacity: 1;
+        }
 
-      span span {
-        transform: translateX(-14px);
+        span span {
+          transform: translateX(-14px);
+        }
       }
     }
 
@@ -84,10 +88,12 @@
       background: $color-border-light;
     }
 
-    &:hover {
-      border-color: $color-bg-container;
-      span {
-        background: $color-bg-body;
+    @media (hover: hover) {
+      &:hover {
+        border-color: $color-bg-container;
+        span {
+          background: $color-bg-body;
+        }
       }
     }
 
@@ -119,8 +125,10 @@
       @extend %transition;
     }
 
-    &:hover svg path {
-      fill: $color-text-light;
+    @media (hover: hover) {
+      &:hover svg path {
+        fill: $color-text-light;
+      }
     }
   }
 
@@ -134,20 +142,26 @@
       @extend %transition;
     }
 
-    &:hover path {
-      stroke: $color-text-light;
+    @media (hover: hover) {
+      &:hover path {
+        stroke: $color-text-light;
+      }
     }
 
     &-light {
       border-color: $color-border-light;
 
-      &:hover {
-        background: $color-bg-body;
-        border-color: $color-bg-body;
+      @media (hover: hover) {
+        &:hover {
+          background: $color-bg-body;
+          border-color: $color-bg-body;
+        }
       }
 
-      &:hover path {
-        stroke: $color-text-dark;
+      @media (hover: hover) {
+        &:hover path {
+          stroke: $color-text-dark;
+        }
       }
     }
   }
@@ -168,8 +182,10 @@
       @extend %transition;
     }
 
-    &:hover path {
-      stroke: $color-bg-body;
+    @media (hover: hover) {
+      &:hover path {
+        stroke: $color-bg-body;
+      }
     }
   }
 }

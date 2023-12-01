@@ -81,19 +81,21 @@
     max-width: 220%;
   }
 
-  &:hover {
-    transform: scale(0.913);
+  @media (hover: hover) {
+    &:hover {
+      transform: scale(0.913);
 
-    @media (max-width: 1080px) {
-      transform: scale(0.95);
-    }
+      @media (max-width: 1080px) {
+        transform: scale(0.95);
+      }
 
-    @media (max-width: 768px) {
-      transform: scale(0.95);
-    }
+      @media (max-width: 768px) {
+        transform: scale(0.95);
+      }
 
-    @media (max-width: 390px) {
-      transform: scale(0.9);
+      @media (max-width: 390px) {
+        transform: scale(0.9);
+      }
     }
   }
 }
