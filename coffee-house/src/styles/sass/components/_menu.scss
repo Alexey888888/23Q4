@@ -37,6 +37,8 @@
   flex-wrap: wrap;
   gap: 40px;
 
+  width: 1360px;
+
   @media (max-width: 1439.9px) {
     width: 658px;
     column-gap: unset;
