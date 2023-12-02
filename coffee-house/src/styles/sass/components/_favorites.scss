@@ -4,6 +4,10 @@
 
 .favorite__wrapper {
   margin: 0 4px;
+
+  @media (max-width: 768px) {
+    margin: 0;
+  }
 }
 
 .favorite__title {
@@ -18,14 +22,32 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: 730px) {
+    justify-content: center;
+  }
+
+  button {
+    @media (max-width: 730px) {
+      display: none;
+    }
+  }
 }
 
 .slider-favorite-item__container {
   width: 480px;
+
+  @media (max-width: 550px) {
+    width: auto;
+
+    img {
+      width: 100%;
+    }
+  }
 }
 
 .slider-favorite-item__description {
-  margin-top: 15px;
+  margin-top: 21px;
   text-align: center;
 }
 
@@ -38,7 +60,7 @@
 .slider__bottom {
   display: flex;
   justify-content: center;
-  margin-top: 39px;
+  margin-top: 40px;
 }
 
 .slider-bottom__wrapper {

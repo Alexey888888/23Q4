@@ -1,5 +1,5 @@
 .menu {
-  margin: 13px 0 101px;
+  margin: 20px 0 100px;
 }
 
 .menu__wrapper {
@@ -12,18 +12,42 @@
     @include font($size: 60px, $weight: 600, $height: 75px);
     width: 800px;
     text-align: center;
+
+    @media (max-width: 1439.9px) {
+      width: auto;
+    }
+
+    @media (max-width: 596px) {
+      @include font($size: 32px, $weight: 600, $height: 40px);
+    }
   }
 }
 
 .menu__tabs {
   display: flex;
   column-gap: 16px;
+
+  @media (max-width: 596px) {
+    column-gap: 8px;
+  }
 }
 
 .menu__offer-list {
   display: flex;
   flex-wrap: wrap;
   gap: 40px;
+
+  width: 1360px;
+
+  @media (max-width: 1439.9px) {
+    width: 658px;
+    column-gap: unset;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 730px) {
+    width: 310px;
+  }
 }
 
 .menu-offer {
@@ -57,7 +81,26 @@
     }
   }
 
-  &:hover .menu-offer__img-wrapper .menu-offer__img {
-    scale: 0.91;
+  @media (hover: hover) {
+    &:hover .menu-offer__img-wrapper .menu-offer__img {
+      scale: 0.91;
+    }
+  }
+
+  @media (max-width: 1439.9px) {
+    &:nth-child(5),
+    &:nth-child(6),
+    &:nth-child(7),
+    &:nth-child(8) {
+      display: none;
+    }
+  }
+}
+
+.menu__btn-refresh {
+  display: none;
+
+  @media (max-width: 1439.9px) {
+    display: flex;
   }
 }

@@ -1,5 +1,5 @@
 .footer {
-  margin: 94px 0 40px;
+  margin: 100px 0 40px;
 }
 
 .footer__text {
@@ -13,8 +13,36 @@
   display: flex;
   column-gap: 100px;
 
+  @media (max-width: 1128px) {
+    padding: 100px 60px;
+    flex-direction: column;
+    row-gap: 100px;
+  }
+
+  @media (max-width: 730px) {
+    padding: 60px 16px;
+    row-gap: 40px;
+  }
+
   > * {
     flex-basis: 50%;
+
+    @media (max-width: 1390px) {
+      flex-basis: unset;
+
+      .footer__title {
+        width: 568px;
+
+        @media (max-width: 730px) {
+          width: auto;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1390px) {
+    column-gap: unset;
+    justify-content: space-between;
   }
 }
 
@@ -28,6 +56,14 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  @media (max-width: 1390px) {
+    align-items: flex-end;
+  }
+
+  @media (max-width: 1128px) {
+    align-items: flex-start;
+  }
 }
 
 .footer__contacts-list {
