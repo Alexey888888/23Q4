@@ -2,7 +2,7 @@ const burger = document.querySelector('.button-icon-burger');
 const menu = document.querySelector('.header__nav');
 const body = document.querySelector('body');
 const burgerLinks = document.querySelectorAll('.nav__link');
-const menuLink = document.querySelector('.menu-link_active');
+const menuLink = document.querySelector('.menu-link-line');
 const lineTop = document.querySelector('.button-icon-burger__line-top');
 const lineBottom = document.querySelector('.button-icon-burger__line-bottom');
 
