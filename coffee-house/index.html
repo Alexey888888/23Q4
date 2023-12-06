@@ -1,18 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
       rel="stylesheet"
     /> -->
-    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet">
+    <link href="https://fonts.cdnfonts.com/css/inter" rel="stylesheet" />
 
-    <link rel="stylesheet" href="./src/styles/css/main.css">
-    <link rel="icon" href="./src/img/icons/favicon.ico">
+    <link rel="stylesheet" href="./src/styles/css/main.css" />
+    <link rel="icon" href="./src/img/icons/favicon.ico" />
     <title>COFFEE-HOUSE</title>
   </head>
   <body>
@@ -21,7 +21,7 @@
         <div class="container">
           <div class="header__wrapper">
             <a class="logo" href="#">
-              <img src="./src/img/svg/logo.svg" alt="logo">
+              <img src="./src/img/svg/logo.svg" alt="logo" />
             </a>
             <div class="header__nav">
               <nav class="nav">
@@ -116,7 +116,7 @@
                         <img
                           src="./src/img/svg/coffee-cup.svg"
                           alt="coffee-cup"
-                        >
+                        />
                       </span>
                     </a>
                   </div>
@@ -133,7 +133,7 @@
               </h2>
               <div class="slider-favorite">
                 <div class="slider__top">
-                  <button class="btn btn_icon">
+                  <button class="btn btn_icon" id="slider-favorite__btn_left">
                     <svg
                       class="slider-arrow-svg_left"
                       width="24"
@@ -153,26 +153,26 @@
                   <div class="slider-favorite__wrapper">
                     <div class="slider-favorite__list">
                       <div class="slider-favorite__item">
-                        <div class="slider-favorite-item__container">
-                          <img
-                            class="slider-favorite-item__img"
-                            src="./src/img/png/coffee-slider-1.png"
-                            alt="S&rsquo;mores-Frappuccino"
-                          >
-                          <div class="slider-favorite-item__description">
-                            <h3>S&rsquo;mores Frappuccino</h3>
-                            <p>
-                              This new drink takes an espresso and mixes it with
-                              brown sugar and cinnamon before being topped with
-                              oat milk.
-                            </p>
-                            <p class="price">$5.50</p>
-                          </div>
+                        <!-- <div class="slider-favorite-item__container"> -->
+                        <img
+                          class="slider-favorite-item__img"
+                          src="./src/img/png/coffee-slider-1.png"
+                          alt="S&rsquo;mores-Frappuccino"
+                        />
+                        <div class="slider-favorite-item__description">
+                          <h3>S&rsquo;mores Frappuccino</h3>
+                          <p>
+                            This new drink takes an espresso and mixes it with
+                            brown sugar and cinnamon before being topped with
+                            oat milk.
+                          </p>
+                          <p class="price">$5.50</p>
                         </div>
+                        <!-- </div> -->
                       </div>
                     </div>
                   </div>
-                  <button class="btn btn_icon">
+                  <button class="btn btn_icon" id="slider-favorite__btn_right">
                     <svg
                       class="slider-arrow-svg_right"
                       width="24"
@@ -192,9 +192,17 @@
                 </div>
                 <div class="slider__bottom">
                   <div class="slider-bottom__wrapper">
-                    <span class="slider-favorite__control"></span>
-                    <span class="slider-favorite__control"></span>
-                    <span class="slider-favorite__control"></span>
+                    <span class="slider-favorite__control"
+                      ><span
+                        class="slider__control slider__control_active"
+                      ></span
+                    ></span>
+                    <span class="slider-favorite__control"
+                      ><span class="slider__control"></span
+                    ></span>
+                    <span class="slider-favorite__control"
+                      ><span class="slider__control"></span
+                    ></span>
                   </div>
                 </div>
               </div>
@@ -220,28 +228,28 @@
                     class="images-box__img"
                     src="./src/img/jpg/about-1.jpg"
                     alt="coffee-1"
-                  >
+                  />
                 </div>
                 <div class="images-box__img-wrapper">
                   <img
                     class="images-box__img"
                     src="./src/img/jpg/about-2.jpg"
                     alt="coffee-2"
-                  >
+                  />
                 </div>
                 <div class="images-box__img-wrapper">
                   <img
                     class="images-box__img"
                     src="./src/img/jpg/about-3.jpg"
                     alt="coffee-3"
-                  >
+                  />
                 </div>
                 <div class="images-box__img-wrapper">
                   <img
                     class="images-box__img"
                     src="./src/img/jpg/about-4.jpg"
                     alt="coffee-4"
-                  >
+                  />
                 </div>
               </div>
             </div>
@@ -318,7 +326,7 @@
                 </div>
               </div>
               <div class="mobile-app__image">
-                <img src="./src/img/png/mobile-screens.png" alt="phones">
+                <img src="./src/img/png/mobile-screens.png" alt="phones" />
               </div>
             </div>
           </div>
@@ -463,5 +471,6 @@
         </div>
       </footer>
     </div>
+    <script src="./src/js/sliderFavorites.js" type="module"></script>
   </body>
 </html>
