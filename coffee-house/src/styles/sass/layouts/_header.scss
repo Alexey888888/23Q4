@@ -8,9 +8,10 @@
   margin-top: 16px;
   display: flex;
   flex-grow: 1;
+  @extend %transition;
 
   @media (max-width: 768px) {
-    display: none;
+    //display: none;
     //
     position: fixed;
     margin-top: 20px;
@@ -27,6 +28,10 @@
     z-index: 10;
     @include font($size: 32px, $height: 40px);
   }
+}
+
+.burger__nav_active {
+  left: 0;
 }
 
 .nav {
@@ -119,10 +124,23 @@
     width: 16px;
     height: 1.5px;
     background: $color-text-dark;
+    @extend %transition;
   }
 
   &__line-bottom {
     top: calc(50% + 4px);
+  }
+
+  .burger__cross-line-top {
+    transform: rotate(225deg);
+    top: 20.5px;
+    left: 13px;
+  }
+
+  .burger__cross-line-bottom {
+    transform: rotate(-225deg);
+    top: 20.5px;
+    left: 13px;
   }
 
   @media (max-width: 768px) {
