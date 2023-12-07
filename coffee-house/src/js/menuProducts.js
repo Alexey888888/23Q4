@@ -39,7 +39,7 @@ function renderingOfferList(category) {
       offerList.insertAdjacentHTML('beforeEnd', product.template);
     }
   });
-  if (window.screen.width < 768) {
+  if (window.screen.width <= 768) {
     for (let i = 4; i < document.querySelectorAll('.menu-offer').length; i++) {
       document
         .querySelectorAll('.menu-offer')
@@ -62,7 +62,25 @@ function addRefreshButton(category) {
 
 function resize() {
   window.addEventListener('resize', () => {
-    console.log(window.screen.width);
+    if (window.screen.width > 768) {
+      document.querySelectorAll('.menu-offer').forEach((offer) => {
+        offer.classList.remove('menu-offer_hidden');
+      });
+      refreshButton.classList.remove('menu__btn_visible');
+    } else {
+      for (
+        let i = 4;
+        i < document.querySelectorAll('.menu-offer').length;
+        i++
+      ) {
+        document
+          .querySelectorAll('.menu-offer')
+          [i].classList.add('menu-offer_hidden');
+      }
+      if (document.querySelectorAll('.menu-offer').length > 4) {
+        refreshButton.classList.add('menu__btn_visible');
+      }
+    }
   });
 }
 
