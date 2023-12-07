@@ -1023,4 +1023,12 @@ footer {
 
 .menu__btn-refresh {
   display: none;
+}
+
+.menu__btn_visible {
+  display: flex;
+}
+
+.menu-offer_hidden {
+  display: none;
 }/*# sourceMappingURL=main.css.map */
