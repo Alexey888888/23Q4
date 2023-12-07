@@ -1,4 +1,5 @@
-import { favoritesProductsArr, SliderItem } from './favoritesProductsArr.js';
+import favoriteProducts from './favoriteProducts.json' assert { type: 'json' };
+import { SliderItem } from './sliderItemClass.js';
 
 const productList = document.querySelector('.slider-favorite__list');
 const btnRight = document.getElementById('slider-favorite__btn_right');
@@ -27,12 +28,12 @@ function clearProductList() {
 }
 
 function createProductList() {
-  for (let i = 0; i < favoritesProductsArr.length; i++) {
+  for (let i = 0; i < favoriteProducts.length; i++) {
     const sliderItem = new SliderItem(
-      favoritesProductsArr[i].img,
-      favoritesProductsArr[i].title,
-      favoritesProductsArr[i].description,
-      favoritesProductsArr[i].price
+      favoriteProducts[i].img,
+      favoriteProducts[i].title,
+      favoriteProducts[i].description,
+      favoriteProducts[i].price
     );
     productList.insertAdjacentHTML('beforeend', sliderItem.template);
   }
@@ -50,7 +51,7 @@ function moveLeft() {
   changeControl();
   btnRight.removeEventListener('click', moveLeft);
   btnLeft.removeEventListener('click', moveRight);
-  if (endPoint === -((favoritesProductsArr.length - 1) * 100)) {
+  if (endPoint === -((favoriteProducts.length - 1) * 100)) {
     endPoint = 0;
   } else endPoint = endPoint - 100;
   root.style.setProperty('--slider_end-point', endPoint + '%');
@@ -62,7 +63,7 @@ function moveRight() {
   btnRight.removeEventListener('click', moveLeft);
   btnLeft.removeEventListener('click', moveRight);
   if (+endPoint === 0) {
-    endPoint = -((favoritesProductsArr.length - 1) * 100);
+    endPoint = -((favoriteProducts.length - 1) * 100);
   } else endPoint = endPoint + 100;
   root.style.setProperty('--slider_end-point', endPoint + '%');
   productList.classList.add('slider-move');
@@ -90,14 +91,14 @@ function controlAnimationEndHandler() {
 function changeControl() {
   controls[pos].classList.remove('slider__control_active');
   pos++;
-  if (pos > 2) pos = 0;
+  if (pos > favoriteProducts.length - 1) pos = 0;
   controls[pos].classList.add('slider__control_active');
 }
 
 function reverseChangeControl() {
   controls[pos].classList.remove('slider__control_active');
   pos--;
-  if (pos < 0) pos = 2;
+  if (pos < 0) pos = favoriteProducts.length - 1;
   controls[pos].classList.add('slider__control_active');
 }
 
@@ -110,12 +111,10 @@ function productCursorHandler() {
     item.addEventListener('mouseenter', () => {
       const activeControl = document.querySelector('.slider__control_active');
       activeControl.classList.add('pause');
-      //activeControl.classList.remove('continue');
     });
     item.addEventListener('mouseleave', () => {
       const activeControl = document.querySelector('.slider__control_active');
       activeControl.classList.remove('pause');
-      //activeControl.classList.add('continue');
     });
   });
 }
@@ -123,39 +122,26 @@ function productCursorHandler() {
 productCursorHandler();
 
 function productTouchHandler() {
-  productItems.forEach(
-    (item) => {
-      item.addEventListener(
-        'touchstart',
-        (event) => {
-          event.preventDefault();
-          const activeControl = document.querySelector(
-            '.slider__control_active'
-          );
-          activeControl.classList.add('pause');
-          //activeControl.classList.remove('continue');
-          startTouch = event.touches[0].clientX;
-        }
-        // ,
-        // { passive: true }
-      );
-      item.addEventListener('touchend', (event) => {
-        event.preventDefault();
-        const activeControl = document.querySelector('.slider__control_active');
-        activeControl.classList.remove('pause');
-        //activeControl.classList.add('continue');
-        endTouch = event.changedTouches[0].clientX;
-        if (startTouch - endTouch > 0) {
-          moveLeft();
-        }
-        if (startTouch - endTouch < 0) {
-          moveRight();
-        }
-      });
-    }
-    // ,
-    // { passive: true }
-  );
+  productItems.forEach((item) => {
+    item.addEventListener('touchstart', (event) => {
+      event.preventDefault();
+      const activeControl = document.querySelector('.slider__control_active');
+      activeControl.classList.add('pause');
+      startTouch = event.touches[0].clientX;
+    });
+    item.addEventListener('touchend', (event) => {
+      event.preventDefault();
+      const activeControl = document.querySelector('.slider__control_active');
+      activeControl.classList.remove('pause');
+      endTouch = event.changedTouches[0].clientX;
+      if (startTouch - endTouch > 0) {
+        moveLeft();
+      }
+      if (startTouch - endTouch < 0) {
+        moveRight();
+      }
+    });
+  });
 }
 
 productTouchHandler();
