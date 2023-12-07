@@ -85,3 +85,14 @@ function resize() {
 }
 
 resize();
+
+function refreshButtonHandler() {
+  refreshButton.addEventListener('click', () => {
+    document.querySelectorAll('.menu-offer').forEach((offer) => {
+      offer.classList.remove('menu-offer_hidden');
+    });
+    refreshButton.classList.remove('menu__btn_visible');
+  });
+}
+
+refreshButtonHandler();
