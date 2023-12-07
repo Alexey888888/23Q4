@@ -106,7 +106,7 @@
                 <span class="text-accent">amazing surprise</span>
               </h1>
               <div class="menu__tabs">
-                <button class="btn btn-tab-item" disabled>
+                <button class="btn btn-tab-item" disabled id="coffee">
                   <span>
                     <svg
                       width="17"
@@ -143,7 +143,7 @@
                   </span>
                   Coffee
                 </button>
-                <button class="btn btn-tab-item">
+                <button class="btn btn-tab-item" id="tea">
                   <span>
                     <svg
                       width="17"
@@ -180,7 +180,7 @@
                   </span>
                   Tea
                 </button>
-                <button class="btn btn-tab-item">
+                <button class="btn btn-tab-item" id="dessert">
                   <span>
                     <svg
                       width="17"
@@ -218,150 +218,7 @@
                   Dessert
                 </button>
               </div>
-              <ul class="menu__offer-list">
-                <li class="menu-offer">
-                  <div class="menu-offer__img-wrapper">
-                    <img
-                      class="menu-offer__img"
-                      src="../src/img/jpg/coffee-1.jpg"
-                      alt="coffee-1"
-                    />
-                  </div>
-                  <div class="menu-offer__description">
-                    <div>
-                      <h3>Irish coffee</h3>
-                      <p>
-                        Fragrant black coffee with Jameson Irish whiskey and
-                        whipped milk
-                      </p>
-                    </div>
-                    <h3>$7.00</h3>
-                  </div>
-                </li>
-                <li class="menu-offer">
-                  <div class="menu-offer__img-wrapper">
-                    <img
-                      class="menu-offer__img"
-                      src="../src/img/jpg/coffee-2.jpg"
-                      alt="coffee-2"
-                    />
-                  </div>
-                  <div class="menu-offer__description">
-                    <div>
-                      <h3>Kahlua coffee</h3>
-                      <p>
-                        Classic coffee with milk and Kahlua liqueur under a cap
-                        of frothed milk
-                      </p>
-                    </div>
-                    <h3>$7.00</h3>
-                  </div>
-                </li>
-                <li class="menu-offer">
-                  <div class="menu-offer__img-wrapper">
-                    <img
-                      class="menu-offer__img"
-                      src="../src/img/jpg/coffee-3.jpg"
-                      alt="coffee-3"
-                    />
-                  </div>
-                  <div class="menu-offer__description">
-                    <div>
-                      <h3>Honey raf</h3>
-                      <p>
-                        Espresso with frothed milk, cream and aromatic honey
-                      </p>
-                    </div>
-                    <h3>$5.50</h3>
-                  </div>
-                </li>
-                <li class="menu-offer">
-                  <div class="menu-offer__img-wrapper">
-                    <img
-                      class="menu-offer__img"
-                      src="../src/img/jpg/coffee-4.jpg"
-                      alt="coffee-4"
-                    />
-                  </div>
-                  <div class="menu-offer__description">
-                    <div>
-                      <h3>Ice cappuccino</h3>
-                      <p>
-                        Cappuccino with soft thick foam in summer version with
-                        ice
-                      </p>
-                    </div>
-                    <h3>$5.00</h3>
-                  </div>
-                </li>
-                <li class="menu-offer">
-                  <div class="menu-offer__img-wrapper">
-                    <img
-                      class="menu-offer__img"
-                      src="../src/img/jpg/coffee-5.jpg"
-                      alt="coffee-5"
-                    />
-                  </div>
-                  <div class="menu-offer__description">
-                    <div>
-                      <h3>Espresso</h3>
-                      <p>Classic black coffee</p>
-                    </div>
-                    <h3>$4.50</h3>
-                  </div>
-                </li>
-                <li class="menu-offer">
-                  <div class="menu-offer__img-wrapper">
-                    <img
-                      class="menu-offer__img"
-                      src="../src/img/jpg/coffee-6.jpg"
-                      alt="coffee-6"
-                    />
-                  </div>
-                  <div class="menu-offer__description">
-                    <div>
-                      <h3>Latte</h3>
-                      <p>
-                        Espresso coffee with the addition of steamed milk and
-                        dense milk foam
-                      </p>
-                    </div>
-                    <h3>$5.50</h3>
-                  </div>
-                </li>
-                <li class="menu-offer">
-                  <div class="menu-offer__img-wrapper">
-                    <img
-                      class="menu-offer__img"
-                      src="../src/img/jpg/coffee-7.jpg"
-                      alt="coffee-7"
-                    />
-                  </div>
-                  <div class="menu-offer__description">
-                    <div>
-                      <h3>Latte macchiato</h3>
-                      <p>Espresso with frothed milk and chocolate</p>
-                    </div>
-                    <h3>$5.50</h3>
-                  </div>
-                </li>
-                <li class="menu-offer">
-                  <div class="menu-offer__img-wrapper">
-                    <img
-                      class="menu-offer__img"
-                      src="../src/img/jpg/coffee-8.jpg"
-                      alt="coffee-8"
-                    />
-                  </div>
-                  <div class="menu-offer__description">
-                    <div>
-                      <h3>Coffee with cognac</h3>
-                      <p>Fragrant black coffee with cognac and whipped cream</p>
-                    </div>
-                    <h3>$6.50</h3>
-                  </div>
-                </li>
-              </ul>
+              <ul class="menu__offer-list"></ul>
               <div class="menu__btn-refresh">
                 <button class="btn btn-refresh">
                   <svg
@@ -530,6 +387,6 @@
       </footer>
     </div>
     <script src="../src/js/burger.js"></script>
-    <script src="../src/js/menuProducts.js"></script>
+    <script src="../src/js/menuProducts.js" type="module"></script>
   </body>
 </html>

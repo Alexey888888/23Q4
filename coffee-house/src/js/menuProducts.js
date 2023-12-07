@@ -1,18 +1,40 @@
-const tabItems = document.querySelectorAll('.btn-tab-item');
+import allProducts from './products.json' assert { type: 'json' };
+import { Product } from './menuProductClass.js';
 
-tabItemClickHandler();
+const buttons = document.querySelectorAll('.btn-tab-item');
+const offerList = document.querySelector('.menu__offer-list');
 
-function tabItemClickHandler() {
-  tabItems.forEach((item) => {
-    item.addEventListener('click', () => {
-      itemSwitcher(item);
+buttonClickHandler();
+renderingOfferList('coffee');
+
+function buttonClickHandler() {
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      buttonSwitcher(button);
+      const category = button.id;
+      renderingOfferList(category);
     });
   });
 }
 
-function itemSwitcher(item) {
-  tabItems.forEach((item) => {
+function buttonSwitcher(button) {
+  buttons.forEach((item) => {
     item.disabled = false;
   });
-  item.disabled = true;
+  button.disabled = true;
+}
+
+function renderingOfferList(category) {
+  offerList.innerHTML = '';
+  allProducts.forEach((item) => {
+    if (item.category === category) {
+      const product = new Product(
+        item.img,
+        item.name,
+        item.description,
+        item.price
+      );
+      offerList.insertAdjacentHTML('beforeEnd', product.template);
+    }
+  });
 }
