@@ -45,8 +45,8 @@ function renderingOfferList(category) {
         .querySelectorAll('.menu-offer')
         [i].classList.add('menu-offer_hidden');
     }
+    addRefreshButton(category);
   }
-  addRefreshButton(category);
 }
 
 function addRefreshButton(category) {
@@ -55,7 +55,7 @@ function addRefreshButton(category) {
     return sum;
   }, 0);
 
-  if (window.screen.width < 768 && count > 4) {
+  if (window.screen.width <= 768 && count > 4) {
     refreshButton.classList.add('menu__btn_visible');
   }
 }
