@@ -4,6 +4,10 @@ import { Product } from './menuProductClass.js';
 const buttons = document.querySelectorAll('.btn-tab-item');
 const offerList = document.querySelector('.menu__offer-list');
 const refreshButton = document.querySelector('.menu__btn-refresh');
+const body = document.querySelector('body');
+const backdrop = document.querySelector('.backdrop');
+
+//let offers = null;
 
 buttonClickHandler();
 renderingOfferList('coffee');
@@ -39,6 +43,8 @@ function renderingOfferList(category) {
       offerList.insertAdjacentHTML('beforeEnd', product.template);
     }
   });
+  // offers = document.querySelectorAll('.menu-offer');
+  // cardClickHandler();
   if (window.screen.width <= 768) {
     for (let i = 4; i < document.querySelectorAll('.menu-offer').length; i++) {
       document
@@ -96,3 +102,41 @@ function refreshButtonHandler() {
 }
 
 refreshButtonHandler();
+
+//---MODAL---
+
+cardClickHandler();
+
+function cardClickHandler() {
+  document.addEventListener('click', (event) => {
+    if (event.target.closest('.menu-offer')) {
+      const targetProduct =
+        event.target.closest('.menu-offer').children[1].children[0].children[0]
+          .innerHTML;
+      allProducts.forEach((product) => {
+        if (product.name === targetProduct) {
+          const modal = new Product(
+            product.img,
+            product.name,
+            product.description,
+            product.price
+          );
+          body.insertAdjacentHTML('afterbegin', modal.modalTemplate);
+          backdrop.classList.add('backdrop_active');
+          body.classList.add('scroll-lock');
+          const modalNode = document.querySelector('.modal');
+          backdrop.addEventListener('click', () => {
+            modalNode.remove();
+            body.classList.remove('scroll-lock');
+            backdrop.classList.remove('backdrop_active');
+          });
+          document.querySelector('.btn_close').addEventListener('click', () => {
+            modalNode.remove();
+            body.classList.remove('scroll-lock');
+            backdrop.classList.remove('backdrop_active');
+          });
+        }
+      });
+    }
+  });
+}
