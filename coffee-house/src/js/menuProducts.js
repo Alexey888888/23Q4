@@ -109,34 +109,37 @@ cardClickHandler();
 
 function cardClickHandler() {
   document.addEventListener('click', (event) => {
-    if (event.target.closest('.menu-offer')) {
-      const targetProduct =
-        event.target.closest('.menu-offer').children[1].children[0].children[0]
-          .innerHTML;
-      allProducts.forEach((product) => {
-        if (product.name === targetProduct) {
-          const modal = new Product(
-            product.img,
-            product.name,
-            product.description,
-            product.price
-          );
-          body.insertAdjacentHTML('afterbegin', modal.modalTemplate);
-          backdrop.classList.add('backdrop_active');
-          body.classList.add('scroll-lock');
-          const modalNode = document.querySelector('.modal');
-          backdrop.addEventListener('click', () => {
-            modalNode.remove();
-            body.classList.remove('scroll-lock');
-            backdrop.classList.remove('backdrop_active');
-          });
-          document.querySelector('.btn_close').addEventListener('click', () => {
-            modalNode.remove();
-            body.classList.remove('scroll-lock');
-            backdrop.classList.remove('backdrop_active');
-          });
-        }
-      });
+    if (event.target.closest('.menu-offer')) openModal(event);
+    closeClickModalHandler();
+  });
+}
+
+function openModal(event) {
+  const targetProduct =
+    event.target.closest('.menu-offer').children[1].children[0].children[0]
+      .innerHTML;
+  allProducts.forEach((product) => {
+    if (product.name === targetProduct) {
+      const modal = new Product(
+        product.img,
+        product.name,
+        product.description,
+        product.price
+      );
+      body.insertAdjacentHTML('afterbegin', modal.modalTemplate);
+      backdrop.classList.add('backdrop_active');
+      body.classList.add('scroll-lock');
     }
   });
+}
+
+function closeClickModalHandler() {
+  backdrop.addEventListener('click', closeModal);
+  document.querySelector('.btn_close').addEventListener('click', closeModal);
+}
+
+function closeModal() {
+  document.querySelector('.modal').remove();
+  body.classList.remove('scroll-lock');
+  backdrop.classList.remove('backdrop_active');
 }
