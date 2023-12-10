@@ -1,9 +1,26 @@
 export class Product {
-  constructor(img, name, description, price) {
+  constructor(
+    img,
+    name,
+    description,
+    price,
+    sizeS,
+    sizeM,
+    sizeL,
+    additives1,
+    additives2,
+    additives3
+  ) {
     this.img = img;
     this.name = name;
     this.description = description;
     this.price = price;
+    this.sizeS = sizeS;
+    this.sizeM = sizeM;
+    this.sizeL = sizeL;
+    this.additives1 = additives1;
+    this.additives2 = additives2;
+    this.additives3 = additives3;
     this.template = `<li class="menu-offer">
     <div class="menu-offer__img-wrapper">
       <img
@@ -38,15 +55,15 @@ export class Product {
         <div class="modal__size-buttons">
           <button class="btn btn-modal__size" disabled>
             <span>S</span>
-            200 ml
+            ${this.sizeS}
           </button>
           <button class="btn btn-modal__size">
             <span>M</span>
-            300 ml
+            ${this.sizeM}
           </button>
           <button class="btn btn-modal__size">
             <span>L</span>
-            400 ml
+            ${this.sizeL}
           </button>
         </div>
       </div>
@@ -55,15 +72,15 @@ export class Product {
         <div class="modal__additives-buttons">
           <button class="btn btn-modal__additives">
             <span>1</span>
-            Sugar
+            ${this.additives1}
           </button>
           <button class="btn btn-modal__additives">
             <span>2</span>
-            Cinnamon
+            ${this.additives2}
           </button>
           <button class="btn btn-modal__additives">
             <span>3</span>
-            Syrup
+            ${this.additives3}
           </button>
         </div>
       </div>

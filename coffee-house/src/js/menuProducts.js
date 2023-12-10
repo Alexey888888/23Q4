@@ -124,7 +124,13 @@ function openModal(event) {
         product.img,
         product.name,
         product.description,
-        product.price
+        product.price,
+        product.sizes.s.size,
+        product.sizes.m.size,
+        product.sizes.l.size,
+        product.additives[0].name,
+        product.additives[1].name,
+        product.additives[2].name
       );
       body.insertAdjacentHTML('afterbegin', modal.modalTemplate);
       backdrop.classList.add('backdrop_active');
