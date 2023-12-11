@@ -109,8 +109,10 @@ cardClickHandler();
 
 function cardClickHandler() {
   document.addEventListener('click', (event) => {
-    if (event.target.closest('.menu-offer')) openModal(event);
-    closeClickModalHandler();
+    if (event.target.closest('.menu-offer')) {
+      openModal(event);
+      closeClickModalHandler();
+    }
   });
 }
 
@@ -130,11 +132,18 @@ function openModal(event) {
         product.sizes.l.size,
         product.additives[0].name,
         product.additives[1].name,
-        product.additives[2].name
+        product.additives[2].name,
+        product.sizes.s['add-price'],
+        product.sizes.m['add-price'],
+        product.sizes.l['add-price'],
+        product.additives[0]['add-price'],
+        product.additives[1]['add-price'],
+        product.additives[2]['add-price']
       );
       body.insertAdjacentHTML('afterbegin', modal.modalTemplate);
       backdrop.classList.add('backdrop_active');
       body.classList.add('scroll-lock');
+      addPriceHandler(modal, targetProduct);
     }
   });
 }
@@ -148,4 +157,46 @@ function closeModal() {
   document.querySelector('.modal').remove();
   body.classList.remove('scroll-lock');
   backdrop.classList.remove('backdrop_active');
+}
+
+function addPriceHandler(modal, targetProduct) {
+  document.querySelectorAll('.btn-modal__size').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      sizeButtonSwitcher(btn);
+      addPrice(modal, targetProduct);
+    });
+  });
+  document.querySelectorAll('.btn-modal__additives').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      additivesButtonSwitcher(btn);
+      addPrice(modal);
+    });
+  });
+}
+
+function sizeButtonSwitcher(btn) {
+  document.querySelectorAll('.btn-modal__size').forEach((item) => {
+    item.disabled = false;
+  });
+  btn.disabled = true;
+}
+
+function additivesButtonSwitcher(btn) {
+  btn.classList.toggle('btn-modal__additives_active');
+}
+
+function addPrice(modal, targetProduct) {
+  allProducts.forEach((product) => {
+    if (product.name === targetProduct) {
+      modal.price = product.price;
+    }
+  });
+  document.querySelectorAll('.btn-modal__size').forEach((item) => {
+    if (item.disabled === true) {
+      modal.price = +modal.price + +modal[item.id];
+    }
+    document.querySelector(
+      '.modal__current-price'
+    ).textContent = `$${modal.price}`;
+  });
 }

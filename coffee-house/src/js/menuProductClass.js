@@ -9,7 +9,13 @@ export class Product {
     sizeL,
     additives1,
     additives2,
-    additives3
+    additives3,
+    addPriceSizeS,
+    addPriceSizeM,
+    addPriceSizeL,
+    addPriceAdditive1,
+    addPriceAdditive2,
+    addPriceAdditive3
   ) {
     this.img = img;
     this.name = name;
@@ -21,6 +27,12 @@ export class Product {
     this.additives1 = additives1;
     this.additives2 = additives2;
     this.additives3 = additives3;
+    this.addPriceSizeS = addPriceSizeS;
+    this.addPriceSizeM = addPriceSizeM;
+    this.addPriceSizeL = addPriceSizeL;
+    this.addPriceAdditive1 = addPriceAdditive1;
+    this.addPriceAdditive2 = addPriceAdditive2;
+    this.addPriceAdditive3 = addPriceAdditive3;
     this.template = `<li class="menu-offer">
     <div class="menu-offer__img-wrapper">
       <img
@@ -53,15 +65,15 @@ export class Product {
       <div>
         <p>Size</p>
         <div class="modal__size-buttons">
-          <button class="btn btn-modal__size" disabled>
+          <button class="btn btn-modal__size" disabled id="addPriceSizeS">
             <span>S</span>
             ${this.sizeS}
           </button>
-          <button class="btn btn-modal__size">
+          <button class="btn btn-modal__size" id="addPriceSizeM">
             <span>M</span>
             ${this.sizeM}
           </button>
-          <button class="btn btn-modal__size">
+          <button class="btn btn-modal__size" id="addPriceSizeL">
             <span>L</span>
             ${this.sizeL}
           </button>
@@ -86,7 +98,7 @@ export class Product {
       </div>
       <div class="modal__total-price">
         <h3>Total:</h3>
-        <h3>$${this.price}</h3>
+        <h3 class="modal__current-price">$${this.price}</h3>
       </div>
       <div class="modal__alert">
         <div class="alert__info-icon">

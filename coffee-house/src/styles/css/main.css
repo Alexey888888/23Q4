@@ -321,6 +321,15 @@ footer {
   letter-spacing: 0.55px;
 }
 
+.btn-modal__additives_active {
+  border-color: #665f55;
+  background: #665f55;
+  color: #e1d4c9;
+}
+.btn-modal__additives_active span {
+  background: #e1d4c9;
+}
+
 .logo-svg {
   cursor: pointer;
 }
