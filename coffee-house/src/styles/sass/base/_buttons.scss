@@ -70,9 +70,10 @@
     }
   }
 
-  &-tab-item {
+  &-tab-item,
+  &-modal__size,
+  &-modal__additives {
     padding: 8px 16px 8px 8px;
-    //padding: 7px 17.5px 9.5px 7px;
     background: transparent;
     display: flex;
     align-items: center;
@@ -86,6 +87,7 @@
       height: 30px;
       border-radius: 100px;
       background: $color-border-light;
+      color: $color-text-dark;
     }
 
     @media (hover: hover) {
@@ -99,6 +101,15 @@
 
     &:disabled {
       cursor: default;
+      border-color: $color-bg-container;
+      background: $color-bg-container;
+      color: $color-text-light;
+      span {
+        background: $color-bg-body;
+      }
+    }
+
+    &_active {
       border-color: $color-bg-container;
       background: $color-bg-container;
       color: $color-text-light;
@@ -123,12 +134,6 @@
 
     & svg path {
       @extend %transition;
-    }
-
-    @media (hover: hover) {
-      &:hover svg path {
-        fill: $color-text-light;
-      }
     }
   }
 
@@ -186,6 +191,26 @@
       &:hover path {
         stroke: $color-bg-body;
       }
+    }
+  }
+
+  &_close {
+    padding: 10px 78px;
+    background: $color-bg-body;
+  }
+}
+
+.btn-modal__size {
+  letter-spacing: 0.55px;
+}
+
+.btn-modal__additives {
+  &_active {
+    border-color: $color-bg-container;
+    background: $color-bg-container;
+    color: $color-text-light;
+    span {
+      background: $color-bg-body;
     }
   }
 }
