@@ -322,12 +322,28 @@ footer {
   letter-spacing: 0.55px;
 }
 
+@media (hover: hover) {
+  .btn-modal__additives:hover {
+    border-color: transparent;
+    background: rgba(102, 95, 85, 0.7490196078);
+  }
+  .btn-modal__additives:hover span {
+    background: #e1d4c9;
+  }
+}
 .btn-modal__additives_active {
   border-color: #665f55;
   background: #665f55;
   color: #e1d4c9;
 }
 .btn-modal__additives_active span {
+  background: #e1d4c9;
+}
+.btn-modal__additives_active:hover {
+  border-color: transparent;
+  background: rgba(102, 95, 85, 0.8784313725);
+}
+.btn-modal__additives_active:hover span {
   background: #e1d4c9;
 }
 

@@ -205,12 +205,30 @@
 }
 
 .btn-modal__additives {
+  @media (hover: hover) {
+    &:hover {
+      border-color: transparent;
+      background: #665f55bf;
+      span {
+        background: $color-bg-body;
+      }
+    }
+  }
+
   &_active {
     border-color: $color-bg-container;
     background: $color-bg-container;
     color: $color-text-light;
     span {
       background: $color-bg-body;
+    }
+
+    &:hover {
+      border-color: transparent;
+      background: #665f55e0;
+      span {
+        background: $color-bg-body;
+      }
     }
   }
 }
