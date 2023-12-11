@@ -82,15 +82,15 @@ export class Product {
       <div>
         <p>Additives</p>
         <div class="modal__additives-buttons">
-          <button class="btn btn-modal__additives">
+          <button class="btn btn-modal__additives" id="addPriceAdditive1">
             <span>1</span>
             ${this.additives1}
           </button>
-          <button class="btn btn-modal__additives">
+          <button class="btn btn-modal__additives" id="addPriceAdditive2">
             <span>2</span>
             ${this.additives2}
           </button>
-          <button class="btn btn-modal__additives">
+          <button class="btn btn-modal__additives" id="addPriceAdditive3">
             <span>3</span>
             ${this.additives3}
           </button>

@@ -169,7 +169,7 @@ function addPriceHandler(modal, targetProduct) {
   document.querySelectorAll('.btn-modal__additives').forEach((btn) => {
     btn.addEventListener('click', () => {
       additivesButtonSwitcher(btn);
-      addPrice(modal);
+      addPrice(modal, targetProduct);
     });
   });
 }
@@ -194,6 +194,21 @@ function addPrice(modal, targetProduct) {
   document.querySelectorAll('.btn-modal__size').forEach((item) => {
     if (item.disabled === true) {
       modal.price = +modal.price + +modal[item.id];
+      if (modal.price.toString().length === 1)
+        modal.price = modal.price + '.00';
+      if (modal.price.toString().length === 3) modal.price = modal.price + '0';
+    }
+    document.querySelector(
+      '.modal__current-price'
+    ).textContent = `$${modal.price}`;
+  });
+
+  document.querySelectorAll('.btn-modal__additives').forEach((item) => {
+    if (item.classList.contains('btn-modal__additives_active')) {
+      modal.price = +modal.price + +modal[item.id];
+      if (modal.price.toString().length === 1)
+        modal.price = modal.price + '.00';
+      if (modal.price.toString().length === 3) modal.price = modal.price + '0';
     }
     document.querySelector(
       '.modal__current-price'
