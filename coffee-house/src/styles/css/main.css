@@ -146,6 +146,7 @@ footer {
   left: 0;
   background: #403f3d;
   opacity: 0;
+  z-index: 90;
 }
 .backdrop_active {
   width: 100%;
@@ -467,11 +468,24 @@ footer {
     font-weight: 400;
     line-height: 40px;
     color: #403f3d;
+    padding-bottom: 110px;
   }
 }
 
 .burger__nav_active {
   left: 0;
+  overflow-y: auto;
+}
+.burger__nav_active::-webkit-scrollbar {
+  width: 5px;
+}
+.burger__nav_active::-webkit-scrollbar-track {
+  background-color: #c1b6ad;
+  border-radius: 10px;
+}
+.burger__nav_active::-webkit-scrollbar-thumb {
+  background-color: #665f55;
+  border-radius: 10px;
 }
 
 .nav {
