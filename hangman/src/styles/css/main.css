@@ -53,40 +53,72 @@ img {
   position: relative;
 }
 
+.gallows-image__hangman {
+  background: #d9cb0a;
+}
+
+img {
+  width: 100%;
+}
+
 .hangman__head {
+  background: red;
+  width: 25%;
+  height: 15%;
+  border-radius: 100px;
+  border: 3px solid black;
   position: absolute;
-  top: 149px;
-  left: 253px;
+  top: 25%;
+  left: 73.5%;
 }
 
 .hangman__body {
+  background: red;
+  width: 2%;
+  height: 20%;
   position: absolute;
-  top: 250px;
-  left: 301px;
+  top: 40%;
+  left: 85%;
 }
 
 .hangman__hand-one {
+  background: red;
+  width: 2%;
+  height: 15%;
+  transform: rotate(45deg);
   position: absolute;
-  top: 260px;
-  left: 238px;
+  top: 41%;
+  left: 76%;
 }
 
 .hangman__hand-two {
+  background: red;
+  width: 2%;
+  height: 15%;
+  transform: rotate(-45deg);
   position: absolute;
-  top: 260px;
-  left: 302px;
+  top: 41%;
+  left: 94%;
 }
 
 .hangman__leg-one {
+  background: red;
+  width: 2%;
+  height: 15%;
+  transform: rotate(45deg);
   position: absolute;
-  top: 380px;
-  left: 239px;
+  top: 57.3%;
+  left: 76.6%;
 }
 
 .hangman__leg-two {
+  background: red;
+  width: 2%;
+  height: 15%;
+  transform: rotate(-45deg);
   position: absolute;
-  top: 380px;
-  left: 300px;
+  top: 57.3%;
+  left: 93%;
 }
 
 .quiz {
