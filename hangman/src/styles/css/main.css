@@ -29,4 +29,66 @@ img {
      -moz-user-select: none;
           user-select: none;
   vertical-align: top;
+}
+
+.wrapper {
+  background: #119652;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.gallows__wrapper {
+  background: #11d8c7;
+}
+
+.gallows__gallows-image {
+  position: relative;
+}
+
+.hangman__head {
+  position: absolute;
+  top: 149px;
+  left: 253px;
+}
+
+.hangman__body {
+  position: absolute;
+  top: 250px;
+  left: 301px;
+}
+
+.hangman__hand-one {
+  position: absolute;
+  top: 260px;
+  left: 238px;
+}
+
+.hangman__hand-two {
+  position: absolute;
+  top: 260px;
+  left: 302px;
+}
+
+.hangman__leg-one {
+  position: absolute;
+  top: 380px;
+  left: 239px;
+}
+
+.hangman__leg-two {
+  position: absolute;
+  top: 380px;
+  left: 300px;
+}
+
+.quiz {
+  background: #07c1c8;
 }/*# sourceMappingURL=main.css.map */

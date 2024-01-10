@@ -4,9 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/styles/css/main.css" />
-    <title>Hangman</title>
+    <link rel="icon" href="./src/img/png/hangman.png" />
+    <title>Hangman game</title>
   </head>
   <body>
+    <div class="wrapper">
+      <div class="container">
+        <section class="gallows">
+          <div class="gallows__wrapper">
+            <div class="gallows__gallows-image">
+              <img src="./src/img/png/gallows.png" alt="gallows" />
+              <div class="gallows-image__hangman">
+                <img class="hangman__head" src="./src/img/png/head.png" alt="head" />
+                <img class="hangman__body" src="./src/img/png/body.png" alt="body" />
+                <img class="hangman__hand-one" src="./src/img/png/hand-one.png" alt="hand-one" />
+                <img class="hangman__hand-two" src="./src/img/png/hand-two.png" alt="hand-two" />
+                <img class="hangman__leg-one" src="./src/img/png/leg-one.png" alt="leg-one" />
+                <img class="hangman__leg-two" src="./src/img/png/leg-two.png" alt="leg-two" />
+              </div>
+            </div>
+            <h1>HANGMAN GAME</h1>
+          </div>
+        </section>
+        <section class="quiz">
+          <div class="quiz__wrapper">
+            <div class="secret-word">_ _ _ _ _ _ _ _</div>
+            <div class="question">What is the capital of Great Britain?</div>
+            <div class="incorrect-guesses-counter">Incorrect guesses: 0/6</div>
+            <div class="virtual-keyboard"></div>
+          </div>
+        </section>
+      </div>
+    </div>
     <script src="./src/js/main.js"></script>
   </body>
 </html>
