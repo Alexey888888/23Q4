@@ -4,6 +4,7 @@ import { questions } from './questionsArr.js';
 const { body } = document;
 let questionNum = null;
 let secret = null;
+const letterArr = [];
 
 body.innerHTML = '';
 
@@ -49,7 +50,7 @@ abc.forEach((item) => {
 
 function keyClickHandler() {
   abc.forEach((item) => {
-    if (item.code === this.dataset.id) console.log(item.value);
+    if (item.code === this.dataset.id) checkLetter(item.value);
   });
 }
 
@@ -68,7 +69,7 @@ function setLocalStorage() {
 
 function displayHint() {
   setLocalStorage();
-  hint.textContent = `Hint ${questions[questionNum].hint}`;
+  hint.textContent = `Hint: ${questions[questionNum].hint}`;
 }
 
 displayHint();
@@ -77,6 +78,13 @@ fillSecretWord();
 function fillSecretWord() {
   secret = questions[questionNum].answer;
   for (let i = 0; i < secret.length; i++) {
-    secretWord.textContent += '_ ';
+    letterArr.push(createNode('div', ['letter'], '_', secretWord));
+  }
+}
+
+function checkLetter(letter) {
+  console.log(letterArr);
+  for (let i = 0; i < secret.length; i++) {
+    if (secret.toLowerCase()[i] === letter.toLowerCase()) letterArr[i].textContent = letter;
   }
 }

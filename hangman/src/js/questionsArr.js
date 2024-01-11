@@ -1,5 +1,5 @@
 export const questions = [
-  { hint: "Еhe longest river in the world", answer: "Amazon" },
+  { hint: "The longest river in the world", answer: "Amazon" },
   { hint: "The capital of Belarus", answer: "Minsk" },
   { hint: "A device used for eating", answer: "spoon" },
   { hint: "Means of connection", answer: "phone" },

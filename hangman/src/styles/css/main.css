@@ -125,6 +125,17 @@ img {
   background: #07c1c8;
 }
 
+.secret-word {
+  font-size: 36px;
+  display: flex;
+}
+
+.letter {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+}
+
 .keyboard__wrapper {
   display: flex;
   flex-wrap: wrap;
