@@ -2,6 +2,7 @@ import { abc } from './abcArr.js';
 import { questions } from './questionsArr.js';
 
 const { body } = document;
+let questionNum = null;
 
 body.innerHTML = '';
 
@@ -56,8 +57,17 @@ function getRandomNum() {
   return randomNum;
 }
 
+function setLocalStorage() {
+  questionNum = getRandomNum();
+  if (localStorage.getItem('questionNum')) {
+    if (+localStorage.getItem('questionNum') === questionNum) setLocalStorage();
+  }
+  localStorage.setItem('questionNum', questionNum);
+}
+
 function displayHint() {
-  hint.textContent += questions[getRandomNum()].hint;
+  setLocalStorage();
+  hint.textContent += questions[questionNum].hint;
 }
 
 displayHint();
