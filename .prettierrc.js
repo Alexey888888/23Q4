@@ -4,7 +4,7 @@ const config = {
   singleQuote: false,
   overrides: [
     {
-      files: ["main.js", "abc.js", ".eslintrc.js"],
+      files: ["main.js", "abc.js", ".eslintrc.js", "abcArr.js", "questionsArr.js"],
       options: {
         singleQuote: true,
       },

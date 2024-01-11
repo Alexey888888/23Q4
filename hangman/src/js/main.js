@@ -42,15 +42,23 @@ const incorrectGuessesCounter = createNode('div', ['incorrect-guesses-counter'],
 const keyboard = createNode('div', ['keyboard'], null, quizWrapper);
 const keyboardWrapper = createNode('div', ['keyboard__wrapper'], null, keyboard);
 
-abc.forEach((item) => {
-  const key = createNode('span', ['keyboard__key'], item.value, keyboardWrapper);
-  key.dataset.id = item.code;
-  key.addEventListener('click', keyClickHandler);
-});
+function checkLetter(letter) {
+  for (let i = 0; i < secret.length; i += 1) {
+    if (secret.toLowerCase()[i] === letter.toLowerCase()) letterArr[i].textContent = letter;
+  }
+}
 
 function keyClickHandler() {
   abc.forEach((item) => {
     if (item.code === this.dataset.id) checkLetter(item.value);
+  });
+}
+
+function createKeyboard() {
+  abc.forEach((item) => {
+    const key = createNode('span', ['keyboard__key'], item.value, keyboardWrapper);
+    key.dataset.id = item.code;
+    key.addEventListener('click', keyClickHandler);
   });
 }
 
@@ -72,19 +80,13 @@ function displayHint() {
   hint.textContent = `Hint: ${questions[questionNum].hint}`;
 }
 
-displayHint();
-fillSecretWord();
-
 function fillSecretWord() {
   secret = questions[questionNum].answer;
-  for (let i = 0; i < secret.length; i++) {
+  for (let i = 0; i < secret.length; i += 1) {
     letterArr.push(createNode('div', ['letter'], '_', secretWord));
   }
 }
 
-function checkLetter(letter) {
-  console.log(letterArr);
-  for (let i = 0; i < secret.length; i++) {
-    if (secret.toLowerCase()[i] === letter.toLowerCase()) letterArr[i].textContent = letter;
-  }
-}
+createKeyboard();
+displayHint();
+fillSecretWord();
