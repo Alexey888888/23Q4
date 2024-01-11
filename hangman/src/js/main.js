@@ -87,6 +87,19 @@ function fillSecretWord() {
   }
 }
 
+function keydownHandler(event) {
+  abc.forEach((item) => {
+    if (event.code === item.code) checkLetter(item.value);
+  });
+}
+
+function addKeydownListener() {
+  document.addEventListener('keydown', (event) => {
+    keydownHandler(event);
+  });
+}
+
 createKeyboard();
 displayHint();
 fillSecretWord();
+addKeydownListener();
