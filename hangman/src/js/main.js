@@ -41,4 +41,13 @@ const keyboardWrapper = createNode('div', ['keyboard__wrapper'], null, keyboard)
 abc.forEach((item) => {
   const key = createNode('span', ['keyboard__key'], item.value, keyboardWrapper);
   key.dataset.id = item.code;
+  key.addEventListener('click', keyClickHandler);
 });
+
+function keyClickHandler() {
+  abc.forEach((item) => {
+    if (item.code === this.dataset.id) console.log(item.value);
+  });
+}
+
+//this.dataset.id
