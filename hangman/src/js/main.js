@@ -1,4 +1,5 @@
-import { abc } from './abc.js';
+import { abc } from './abcArr.js';
+import { questions } from './questionsArr.js';
 
 const { body } = document;
 
@@ -33,7 +34,7 @@ const title = createNode('h1', null, 'HANGMAN GAME', gallowsWrapper);
 const quiz = createNode('section', ['quiz'], null, container);
 const quizWrapper = createNode('div', ['quiz__wrapper'], null, quiz);
 const secretWord = createNode('div', ['secret-word'], '_ _ _ _ _ _ _ _', quizWrapper);
-const question = createNode('div', ['question'], 'What is the capital of Great Britain?', quizWrapper);
+const hint = createNode('div', ['hint'], 'Hint: ', quizWrapper);
 const incorrectGuessesCounter = createNode('div', ['incorrect-guesses-counter'], 'Incorrect guesses: 0/6', quizWrapper);
 const keyboard = createNode('div', ['keyboard'], null, quizWrapper);
 const keyboardWrapper = createNode('div', ['keyboard__wrapper'], null, keyboard);
@@ -50,4 +51,13 @@ function keyClickHandler() {
   });
 }
 
-//this.dataset.id
+function getRandomNum() {
+  const randomNum = Math.floor(Math.random() * questions.length);
+  return randomNum;
+}
+
+function displayHint() {
+  hint.textContent += questions[getRandomNum()].hint;
+}
+
+displayHint();
