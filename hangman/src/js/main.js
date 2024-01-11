@@ -1,3 +1,5 @@
+import { abc } from './abc.js';
+
 const { body } = document;
 
 body.innerHTML = '';
@@ -33,4 +35,10 @@ const quizWrapper = createNode('div', ['quiz__wrapper'], null, quiz);
 const secretWord = createNode('div', ['secret-word'], '_ _ _ _ _ _ _ _', quizWrapper);
 const question = createNode('div', ['question'], 'What is the capital of Great Britain?', quizWrapper);
 const incorrectGuessesCounter = createNode('div', ['incorrect-guesses-counter'], 'Incorrect guesses: 0/6', quizWrapper);
-const keywordWrapper = createNode('div', ['keywordWrapper'], null, quizWrapper);
+const keyboard = createNode('div', ['keyboard'], null, quizWrapper);
+const keyboardWrapper = createNode('div', ['keyboard__wrapper'], null, keyboard);
+
+abc.forEach((item) => {
+  const key = createNode('span', ['keyboard__key'], item.value, keyboardWrapper);
+  key.dataset.id = item.code;
+});

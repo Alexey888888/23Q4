@@ -4,12 +4,12 @@ const config = {
   singleQuote: false,
   overrides: [
     {
-      files: "main.js",
+      files: ["main.js", "abc.js", ".eslintrc.js"],
       options: {
         singleQuote: true,
       },
     },
   ],
-}
+};
 
-module.exports = config
+module.exports = config;

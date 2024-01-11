@@ -123,4 +123,21 @@ img {
 
 .quiz {
   background: #07c1c8;
+}
+
+.keyboard__wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.keyboard__key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: #a06a6a;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 10px;
 }/*# sourceMappingURL=main.css.map */
