@@ -3,6 +3,7 @@ import { questions } from './questionsArr.js';
 
 const { body } = document;
 let questionNum = null;
+let secret = null;
 
 body.innerHTML = '';
 
@@ -34,8 +35,8 @@ const title = createNode('h1', null, 'HANGMAN GAME', gallowsWrapper);
 
 const quiz = createNode('section', ['quiz'], null, container);
 const quizWrapper = createNode('div', ['quiz__wrapper'], null, quiz);
-const secretWord = createNode('div', ['secret-word'], '_ _ _ _ _ _ _ _', quizWrapper);
-const hint = createNode('div', ['hint'], 'Hint: ', quizWrapper);
+const secretWord = createNode('div', ['secret-word'], null, quizWrapper);
+const hint = createNode('div', ['hint'], null, quizWrapper);
 const incorrectGuessesCounter = createNode('div', ['incorrect-guesses-counter'], 'Incorrect guesses: 0/6', quizWrapper);
 const keyboard = createNode('div', ['keyboard'], null, quizWrapper);
 const keyboardWrapper = createNode('div', ['keyboard__wrapper'], null, keyboard);
@@ -67,7 +68,15 @@ function setLocalStorage() {
 
 function displayHint() {
   setLocalStorage();
-  hint.textContent += questions[questionNum].hint;
+  hint.textContent = `Hint ${questions[questionNum].hint}`;
 }
 
 displayHint();
+fillSecretWord();
+
+function fillSecretWord() {
+  secret = questions[questionNum].answer;
+  for (let i = 0; i < secret.length; i++) {
+    secretWord.textContent += '_ ';
+  }
+}
