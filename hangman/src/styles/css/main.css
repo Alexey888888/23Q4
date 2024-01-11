@@ -121,6 +121,10 @@ img {
   left: 93%;
 }
 
+.hangman_hidden {
+  display: none;
+}
+
 .quiz {
   background: #07c1c8;
 }
