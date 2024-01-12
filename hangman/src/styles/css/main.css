@@ -81,6 +81,10 @@ img {
   width: 100px;
   height: 40px;
   border-radius: 10px;
+  cursor: pointer;
+}
+.modal__btn:hover {
+  scale: 1.1;
 }
 
 .gallows__wrapper {

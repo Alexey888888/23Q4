@@ -6,7 +6,6 @@ let questionNum = null;
 let secret = null;
 const letterArr = [];
 const hangmanArr = [];
-const keysArr = [];
 let countBodyHangman = 0;
 
 function createNode(tagName, classNames, textContent, parentNode) {
@@ -68,9 +67,6 @@ function displayModal() {
 
 function endingGame() {
   displayModal();
-  keysArr.forEach((key) => {
-    key.removeEventListener('click', keyClickHandler);
-  });
 }
 
 function displayHangman() {
@@ -105,7 +101,6 @@ function createKeyboard() {
     const key = createNode('span', ['keyboard__key'], item.value, keyboardWrapper);
     key.dataset.id = item.code;
     key.addEventListener('click', keyClickHandler);
-    keysArr.push(key);
   });
 }
 
@@ -135,6 +130,7 @@ function fillSecretWord() {
 }
 
 function keydownHandler(event) {
+  console.log('keydown');
   abc.forEach((item) => {
     if (event.code === item.code) checkLetter(item.value);
   });
@@ -150,8 +146,24 @@ function hideHangman() {
   hangmanArr.forEach((item) => item.classList.add('hidden'));
 }
 
+function playAgain() {
+  countBodyHangman = 0;
+  letterArr.length = 0;
+  blackout.classList.add('hidden');
+  modalWindow.classList.add('hidden');
+  hideHangman();
+  displayHint();
+  secretWord.textContent = '';
+  fillSecretWord();
+}
+
+function addEventListenerBtn() {
+  modalBtn.addEventListener('click', playAgain);
+}
+
 hideHangman();
 createKeyboard();
 displayHint();
 fillSecretWord();
 addKeydownListener();
+addEventListenerBtn();
