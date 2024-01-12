@@ -38,7 +38,12 @@ const quiz = createNode('section', ['quiz'], null, container);
 const quizWrapper = createNode('div', ['quiz__wrapper'], null, quiz);
 const secretWord = createNode('div', ['secret-word'], null, quizWrapper);
 const hint = createNode('div', ['hint'], null, quizWrapper);
-const incorrectGuessesCounter = createNode('div', ['incorrect-guesses-counter'], 'Incorrect guesses: 0/6', quizWrapper);
+const incorrectGuessesCounter = createNode(
+  'div',
+  ['incorrect-guesses-counter'],
+  `Incorrect guesses: ${countBodyHangman}/6`,
+  quizWrapper
+);
 const keyboard = createNode('div', ['keyboard'], null, quizWrapper);
 const keyboardWrapper = createNode('div', ['keyboard__wrapper'], null, keyboard);
 
@@ -47,12 +52,19 @@ function displayHangman() {
   countBodyHangman += 1;
 }
 
+function changeCountValue() {
+  incorrectGuessesCounter.textContent = `Incorrect guesses: ${countBodyHangman}/6`;
+}
+
 function checkLetter(letter) {
   if (secret.toLowerCase().includes(letter.toLowerCase())) {
     for (let i = 0; i < secret.length; i += 1) {
       if (secret.toLowerCase()[i] === letter.toLowerCase()) letterArr[i].textContent = letter;
     }
-  } else displayHangman();
+  } else {
+    displayHangman();
+    changeCountValue();
+  }
 }
 
 function keyClickHandler() {
