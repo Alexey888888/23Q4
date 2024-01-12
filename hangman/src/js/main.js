@@ -16,8 +16,15 @@ function createNode(tagName, classNames, textContent, parentNode) {
   return node;
 }
 
+const modalWindow = createNode('div', ['modal', 'hidden'], null, body);
+const modalWrapper = createNode('div', ['modal__wrapper'], null, modalWindow);
+const modalMessage = createNode('p', ['modal__message'], null, modalWrapper);
+const modalSecret = createNode('p', ['modal__secret-word'], null, modalWrapper);
+const modalBtn = createNode('button', ['modal__btn'], 'Play again', modalWrapper);
+
 const wrapper = createNode('div', ['wrapper'], null, body);
 const container = createNode('div', ['container'], null, wrapper);
+const blackout = createNode('div', ['blackout', 'hidden'], null, body);
 
 const gallows = createNode('section', ['gallows'], null, container);
 const gallowsWrapper = createNode('div', ['gallows__wrapper'], null, gallows);
@@ -47,9 +54,21 @@ const incorrectGuessesCounter = createNode(
 const keyboard = createNode('div', ['keyboard'], null, quizWrapper);
 const keyboardWrapper = createNode('div', ['keyboard__wrapper'], null, keyboard);
 
+function displayModal() {
+  modalWindow.classList.remove('hidden');
+  blackout.classList.remove('hidden');
+  if (countBodyHangman === 6) {
+    modalMessage.textContent = 'You lose!';
+  } else {
+    modalMessage.textContent = 'Congratulations! You win!!';
+  }
+  modalSecret.textContent = `Secret word: ${secret.toUpperCase()}`;
+}
+
 function displayHangman() {
-  hangmanArr[countBodyHangman].classList.remove('hangman_hidden');
+  hangmanArr[countBodyHangman].classList.remove('hidden');
   countBodyHangman += 1;
+  if (countBodyHangman === 6) displayModal();
 }
 
 function changeCountValue() {
@@ -119,7 +138,7 @@ function addKeydownListener() {
 }
 
 function hideHangman() {
-  hangmanArr.forEach((item) => item.classList.add('hangman_hidden'));
+  hangmanArr.forEach((item) => item.classList.add('hidden'));
 }
 
 hideHangman();
