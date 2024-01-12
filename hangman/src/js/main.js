@@ -8,8 +8,6 @@ const letterArr = [];
 const hangmanArr = [];
 let countBodyHangman = 0;
 
-body.innerHTML = '';
-
 function createNode(tagName, classNames, textContent, parentNode) {
   const node = document.createElement(tagName);
   if (classNames) node.classList.add(...classNames);
