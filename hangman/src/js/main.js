@@ -7,6 +7,7 @@ let secret = null;
 const letterArr = [];
 const hangmanArr = [];
 let countBodyHangman = 0;
+let countSecretWord = 0;
 
 function createNode(tagName, classNames, textContent, parentNode) {
   const node = document.createElement(tagName);
@@ -72,7 +73,10 @@ function endingGame() {
 function displayHangman() {
   if (countBodyHangman < 6) hangmanArr[countBodyHangman].classList.remove('hidden');
   countBodyHangman += 1;
-  if (countBodyHangman === 6) endingGame();
+  if (countBodyHangman === 6) {
+    document.removeEventListener('keydown', keydownHandler);
+    endingGame();
+  }
 }
 
 function changeCountValue() {
@@ -82,7 +86,14 @@ function changeCountValue() {
 function checkLetter(letter) {
   if (secret.toLowerCase().includes(letter.toLowerCase())) {
     for (let i = 0; i < secret.length; i += 1) {
-      if (secret.toLowerCase()[i] === letter.toLowerCase()) letterArr[i].textContent = letter;
+      if (secret.toLowerCase()[i] === letter.toLowerCase()) {
+        letterArr[i].textContent = letter;
+        countSecretWord += 1;
+        if (countSecretWord === secret.length) {
+          document.removeEventListener('keydown', keydownHandler);
+          setTimeout(() => endingGame(), 500);
+        }
+      }
     }
   } else {
     displayHangman();
@@ -137,9 +148,7 @@ function keydownHandler(event) {
 }
 
 function addKeydownListener() {
-  document.addEventListener('keydown', (event) => {
-    keydownHandler(event);
-  });
+  document.addEventListener('keydown', keydownHandler);
 }
 
 function hideHangman() {
@@ -149,12 +158,14 @@ function hideHangman() {
 function playAgain() {
   countBodyHangman = 0;
   letterArr.length = 0;
+  countSecretWord = 0;
   blackout.classList.add('hidden');
   modalWindow.classList.add('hidden');
   hideHangman();
   displayHint();
   secretWord.textContent = '';
   fillSecretWord();
+  addKeydownListener();
 }
 
 function addEventListenerBtn() {
