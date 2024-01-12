@@ -6,6 +6,7 @@ let questionNum = null;
 let secret = null;
 const letterArr = [];
 const hangmanArr = [];
+const keysArr = [];
 let countBodyHangman = 0;
 
 function createNode(tagName, classNames, textContent, parentNode) {
@@ -65,10 +66,17 @@ function displayModal() {
   modalSecret.textContent = `Secret word: ${secret.toUpperCase()}`;
 }
 
+function endingGame() {
+  displayModal();
+  keysArr.forEach((key) => {
+    key.removeEventListener('click', keyClickHandler);
+  });
+}
+
 function displayHangman() {
-  hangmanArr[countBodyHangman].classList.remove('hidden');
+  if (countBodyHangman < 6) hangmanArr[countBodyHangman].classList.remove('hidden');
   countBodyHangman += 1;
-  if (countBodyHangman === 6) displayModal();
+  if (countBodyHangman === 6) endingGame();
 }
 
 function changeCountValue() {
@@ -97,6 +105,7 @@ function createKeyboard() {
     const key = createNode('span', ['keyboard__key'], item.value, keyboardWrapper);
     key.dataset.id = item.code;
     key.addEventListener('click', keyClickHandler);
+    keysArr.push(key);
   });
 }
 
