@@ -3,6 +3,9 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  @media (max-width: 765px) {
+    margin-top: 5%;
+  }
 }
 
 .keyboard__key {
@@ -15,6 +18,19 @@
   margin: 5px;
   cursor: pointer;
   border-radius: 10px;
+
+  @media (max-width: 905px) {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    line-height: 26px;
+  }
+
+  @media (max-width: 525px) {
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+  }
 }
 
 .key_disable {

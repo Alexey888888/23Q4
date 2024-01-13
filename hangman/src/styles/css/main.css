@@ -31,15 +31,24 @@ img {
   vertical-align: top;
 }
 
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
+}
+@media (max-width: 765px) {
+  body {
+    font-size: 20px;
+    line-height: 22px;
+  }
+}
+
 .wrapper {
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 24px;
-  font-weight: 400;
-  line-height: 30px;
 }
 
 .container {
@@ -48,6 +57,16 @@ img {
   max-width: 1440px;
   padding: 20px 50px;
   background: #e1dfdf;
+}
+@media (max-width: 765px) {
+  .container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 525px) {
+  .container {
+    padding: 20px 10px;
+  }
 }
 
 .hidden {
@@ -72,6 +91,7 @@ img {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 20;
+  opacity: 0.97;
 }
 
 .modal__wrapper {
@@ -95,24 +115,53 @@ img {
 .gallows__wrapper {
   background: #e1dfdf;
 }
+@media (max-width: 765px) {
+  .gallows__wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
 
 .gallows__gallows-image {
   position: relative;
 }
+@media (max-width: 765px) {
+  .gallows__gallows-image {
+    display: flex;
+    justify-content: center;
+  }
+}
 
 img {
-  width: 100%;
+  max-width: 80%;
+}
+@media (max-width: 765px) {
+  img {
+    max-width: 20%;
+  }
 }
 
 .hangman__head {
   background: #e1dfdf;
-  width: 25%;
+  width: 20%;
   height: 15%;
   border-radius: 100px;
   border: 6px solid #808080;
   position: absolute;
   top: 25%;
-  left: 73.5%;
+  left: 58.5%;
+}
+@media (max-width: 765px) {
+  .hangman__head {
+    width: 6%;
+    height: 18%;
+    left: 54.09%;
+  }
+}
+@media (max-width: 520px) {
+  .hangman__head {
+    border-width: 4px;
+  }
 }
 
 .hangman__body {
@@ -120,8 +169,17 @@ img {
   width: 2%;
   height: 20%;
   position: absolute;
-  top: 40%;
-  left: 85%;
+  top: 39.5%;
+  left: 67.5%;
+  border-radius: 10px;
+}
+@media (max-width: 765px) {
+  .hangman__body {
+    width: 1%;
+    height: 25%;
+    top: 42.2%;
+    left: 56.6%;
+  }
 }
 
 .hangman__hand-one {
@@ -131,7 +189,16 @@ img {
   transform: rotate(45deg);
   position: absolute;
   top: 41%;
-  left: 76%;
+  left: 61%;
+  border-radius: 10px;
+}
+@media (max-width: 765px) {
+  .hangman__hand-one {
+    width: 1%;
+    height: 18%;
+    top: 42.5%;
+    left: 54.6%;
+  }
 }
 
 .hangman__hand-two {
@@ -141,7 +208,16 @@ img {
   transform: rotate(-45deg);
   position: absolute;
   top: 41%;
-  left: 94%;
+  left: 74%;
+  border-radius: 10px;
+}
+@media (max-width: 765px) {
+  .hangman__hand-two {
+    width: 1%;
+    height: 18%;
+    top: 42.5%;
+    left: 58.6%;
+  }
 }
 
 .hangman__leg-one {
@@ -150,8 +226,17 @@ img {
   height: 15%;
   transform: rotate(45deg);
   position: absolute;
-  top: 57.3%;
-  left: 76.6%;
+  top: 56.2%;
+  left: 61%;
+  border-radius: 10px;
+}
+@media (max-width: 765px) {
+  .hangman__leg-one {
+    width: 1%;
+    height: 18%;
+    top: 63.4%;
+    left: 54.8%;
+  }
 }
 
 .hangman__leg-two {
@@ -160,13 +245,29 @@ img {
   height: 15%;
   transform: rotate(-45deg);
   position: absolute;
-  top: 57.3%;
-  left: 93%;
+  top: 56.2%;
+  left: 74%;
+  border-radius: 10px;
+}
+@media (max-width: 765px) {
+  .hangman__leg-two {
+    width: 1%;
+    height: 18%;
+    top: 64%;
+    left: 58.5%;
+  }
 }
 
 .title {
   margin-top: 20px;
   text-align: center;
+}
+@media (max-width: 765px) {
+  .title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
 }
 
 .quiz {
@@ -181,17 +282,44 @@ img {
   align-items: center;
   justify-content: space-between;
 }
+@media (max-width: 905px) {
+  .quiz__wrapper {
+    margin: 0 20px;
+  }
+}
 
 .secret-word {
   font-size: 46px;
   display: flex;
   margin-top: 10%;
 }
+@media (max-width: 905px) {
+  .secret-word {
+    font-size: 42px;
+    margin-top: 5%;
+  }
+}
+@media (max-width: 765px) {
+  .secret-word {
+    font-size: 30px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+}
 
 .letter {
   width: 40px;
   display: flex;
   justify-content: center;
+}
+@media (max-width: 765px) {
+  .letter {
+    width: 25px;
+  }
+}
+
+.hint {
+  text-align: center;
 }
 
 .hint__inner {
@@ -209,6 +337,11 @@ img {
   flex-wrap: wrap;
   justify-content: center;
 }
+@media (max-width: 765px) {
+  .keyboard__wrapper {
+    margin-top: 5%;
+  }
+}
 
 .keyboard__key {
   display: flex;
@@ -220,6 +353,21 @@ img {
   margin: 5px;
   cursor: pointer;
   border-radius: 10px;
+}
+@media (max-width: 905px) {
+  .keyboard__key {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+@media (max-width: 525px) {
+  .keyboard__key {
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+  }
 }
 
 .key_disable {

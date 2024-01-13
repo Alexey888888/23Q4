@@ -1,25 +1,47 @@
 .gallows__wrapper {
   background: #e1dfdf;
+  @media (max-width: 765px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
 
 .gallows__gallows-image {
   position: relative;
   //width: 100%;
+  @media (max-width: 765px) {
+    display: flex;
+    justify-content: center;
+  }
 }
 
 img {
-  width: 100%;
+  max-width: 80%;
+
+  @media (max-width: 765px) {
+    max-width: 20%;
+  }
 }
 
 .hangman__head {
   background: #e1dfdf;
-  width: 25%;
+  width: 20%;
   height: 15%;
   border-radius: 100px;
   border: 6px solid #808080;
   position: absolute;
   top: 25%;
-  left: 73.5%;
+  left: 58.5%;
+
+  @media (max-width: 765px) {
+    width: 6%;
+    height: 18%;
+    left: 54.09%;
+  }
+
+  @media (max-width: 520px) {
+    border-width: 4px;
+  }
 }
 
 .hangman__body {
@@ -27,8 +49,16 @@ img {
   width: 2%;
   height: 20%;
   position: absolute;
-  top: 40%;
-  left: 85%;
+  top: 39.5%;
+  left: 67.5%;
+  border-radius: 10px;
+
+  @media (max-width: 765px) {
+    width: 1%;
+    height: 25%;
+    top: 42.2%;
+    left: 56.6%;
+  }
 }
 
 .hangman__hand-one {
@@ -38,7 +68,15 @@ img {
   transform: rotate(45deg);
   position: absolute;
   top: 41%;
-  left: 76%;
+  left: 61%;
+  border-radius: 10px;
+
+  @media (max-width: 765px) {
+    width: 1%;
+    height: 18%;
+    top: 42.5%;
+    left: 54.6%;
+  }
 }
 
 .hangman__hand-two {
@@ -48,7 +86,15 @@ img {
   transform: rotate(-45deg);
   position: absolute;
   top: 41%;
-  left: 94%;
+  left: 74%;
+  border-radius: 10px;
+
+  @media (max-width: 765px) {
+    width: 1%;
+    height: 18%;
+    top: 42.5%;
+    left: 58.6%;
+  }
 }
 
 .hangman__leg-one {
@@ -57,8 +103,16 @@ img {
   height: 15%;
   transform: rotate(45deg);
   position: absolute;
-  top: 57.3%;
-  left: 76.6%;
+  top: 56.2%;
+  left: 61%;
+  border-radius: 10px;
+
+  @media (max-width: 765px) {
+    width: 1%;
+    height: 18%;
+    top: 63.4%;
+    left: 54.8%;
+  }
 }
 
 .hangman__leg-two {
@@ -67,11 +121,25 @@ img {
   height: 15%;
   transform: rotate(-45deg);
   position: absolute;
-  top: 57.3%;
-  left: 93%;
+  top: 56.2%;
+  left: 74%;
+  border-radius: 10px;
+
+  @media (max-width: 765px) {
+    width: 1%;
+    height: 18%;
+    top: 64%;
+    left: 58.5%;
+  }
 }
 
 .title {
   margin-top: 20px;
   text-align: center;
+
+  @media (max-width: 765px) {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
 }
