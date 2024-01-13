@@ -1,5 +1,5 @@
 .gallows__wrapper {
-  background: #11d8c7;
+  background: #e1dfdf;
 }
 
 .gallows__gallows-image {
@@ -7,27 +7,23 @@
   //width: 100%;
 }
 
-.gallows-image__hangman {
-  background: #d9cb0a;
-}
-
 img {
   width: 100%;
 }
 
 .hangman__head {
-  background: red;
+  background: #e1dfdf;
   width: 25%;
   height: 15%;
   border-radius: 100px;
-  border: 3px solid black;
+  border: 6px solid #808080;
   position: absolute;
   top: 25%;
   left: 73.5%;
 }
 
 .hangman__body {
-  background: red;
+  background: #808080;
   width: 2%;
   height: 20%;
   position: absolute;
@@ -36,7 +32,7 @@ img {
 }
 
 .hangman__hand-one {
-  background: red;
+  background: #808080;
   width: 2%;
   height: 15%;
   transform: rotate(45deg);
@@ -46,7 +42,7 @@ img {
 }
 
 .hangman__hand-two {
-  background: red;
+  background: #808080;
   width: 2%;
   height: 15%;
   transform: rotate(-45deg);
@@ -56,7 +52,7 @@ img {
 }
 
 .hangman__leg-one {
-  background: red;
+  background: #808080;
   width: 2%;
   height: 15%;
   transform: rotate(45deg);
@@ -66,11 +62,16 @@ img {
 }
 
 .hangman__leg-two {
-  background: red;
+  background: #808080;
   width: 2%;
   height: 15%;
   transform: rotate(-45deg);
   position: absolute;
   top: 57.3%;
   left: 93%;
+}
+
+.title {
+  margin-top: 20px;
+  text-align: center;
 }

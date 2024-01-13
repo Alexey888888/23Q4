@@ -1,14 +1,33 @@
 .quiz {
-  background: #07c1c8;
+  background: #e1dfdf;
+}
+
+.quiz__wrapper {
+  margin: 0 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .secret-word {
-  font-size: 36px;
+  font-size: 46px;
   display: flex;
+  margin-top: 10%;
 }
 
 .letter {
   width: 40px;
   display: flex;
   justify-content: center;
+}
+
+.hint__inner {
+  font-weight: 900;
+}
+
+.incorrect-guesses-counter__inner {
+  color: #c11c1c;
+  font-weight: 900;
 }

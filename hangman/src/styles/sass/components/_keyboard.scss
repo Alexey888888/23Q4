@@ -1,14 +1,16 @@
 .keyboard__wrapper {
+  max-width: 600px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .keyboard__key {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   background: #a06a6a;
   margin: 5px;
   cursor: pointer;
@@ -17,5 +19,5 @@
 
 .key_disable {
   cursor: default;
-  background: red;
+  background: #c11c1c;
 }

@@ -41,17 +41,19 @@ hangmanArr.push(createNode('div', ['hangman__hand-one'], null, hangman));
 hangmanArr.push(createNode('div', ['hangman__hand-two'], null, hangman));
 hangmanArr.push(createNode('div', ['hangman__leg-one'], null, hangman));
 hangmanArr.push(createNode('div', ['hangman__leg-two'], null, hangman));
-createNode('h1', null, 'HANGMAN GAME', gallowsWrapper);
+createNode('h1', ['title'], 'HANGMAN GAME', gallowsWrapper);
 
 const quiz = createNode('section', ['quiz'], null, container);
 const quizWrapper = createNode('div', ['quiz__wrapper'], null, quiz);
 const secretWord = createNode('div', ['secret-word'], null, quizWrapper);
-const hint = createNode('div', ['hint'], null, quizWrapper);
-const incorrectGuessesCounter = createNode(
-  'div',
-  ['incorrect-guesses-counter'],
-  `Incorrect guesses: ${countBodyHangman}/6`,
-  quizWrapper,
+const hint = createNode('div', ['hint'], 'Hint: ', quizWrapper);
+const hintInner = createNode('span', ['hint__inner'], null, hint);
+const incorrectGuessesCounter = createNode('div', ['incorrect-guesses-counter'], 'Incorrect guesses: ', quizWrapper);
+const incorrectGuessesCounterInner = createNode(
+  'span',
+  ['incorrect-guesses-counter__inner'],
+  `${countBodyHangman}/6`,
+  incorrectGuessesCounter,
 );
 const keyboard = createNode('div', ['keyboard'], null, quizWrapper);
 const keyboardWrapper = createNode('div', ['keyboard__wrapper'], null, keyboard);
@@ -87,7 +89,7 @@ function displayHangman() {
 }
 
 function changeCountValue() {
-  incorrectGuessesCounter.textContent = `Incorrect guesses: ${countBodyHangman}/6`;
+  incorrectGuessesCounterInner.textContent = `${countBodyHangman}/6`;
 }
 
 function checkLetter(letter) {
@@ -150,7 +152,7 @@ function setLocalStorage() {
 
 function displayHint() {
   setLocalStorage();
-  hint.textContent = `Hint: ${questions[questionNum].hint}`;
+  hintInner.textContent = questions[questionNum].hint;
 }
 
 function fillSecretWord() {
@@ -177,7 +179,7 @@ function clearKeyDisable() {
 function playAgain() {
   clearKeyDisable();
   countBodyHangman = 0;
-  incorrectGuessesCounter.textContent = `Incorrect guesses: ${countBodyHangman}/6`;
+  incorrectGuessesCounterInner.textContent = `${countBodyHangman}/6`;
   letterArr.length = 0;
   countSecretWord = 0;
   blackout.classList.add('hidden');

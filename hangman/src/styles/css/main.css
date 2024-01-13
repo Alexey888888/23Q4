@@ -32,17 +32,22 @@ img {
 }
 
 .wrapper {
-  background: #119652;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
 }
 
 .container {
   display: flex;
-  justify-content: center;
   margin: 0 auto;
+  max-width: 1440px;
+  padding: 20px 50px;
+  background: #e1dfdf;
 }
 
 .hidden {
@@ -88,15 +93,11 @@ img {
 }
 
 .gallows__wrapper {
-  background: #11d8c7;
+  background: #e1dfdf;
 }
 
 .gallows__gallows-image {
   position: relative;
-}
-
-.gallows-image__hangman {
-  background: #d9cb0a;
 }
 
 img {
@@ -104,18 +105,18 @@ img {
 }
 
 .hangman__head {
-  background: red;
+  background: #e1dfdf;
   width: 25%;
   height: 15%;
   border-radius: 100px;
-  border: 3px solid black;
+  border: 6px solid #808080;
   position: absolute;
   top: 25%;
   left: 73.5%;
 }
 
 .hangman__body {
-  background: red;
+  background: #808080;
   width: 2%;
   height: 20%;
   position: absolute;
@@ -124,7 +125,7 @@ img {
 }
 
 .hangman__hand-one {
-  background: red;
+  background: #808080;
   width: 2%;
   height: 15%;
   transform: rotate(45deg);
@@ -134,7 +135,7 @@ img {
 }
 
 .hangman__hand-two {
-  background: red;
+  background: #808080;
   width: 2%;
   height: 15%;
   transform: rotate(-45deg);
@@ -144,7 +145,7 @@ img {
 }
 
 .hangman__leg-one {
-  background: red;
+  background: #808080;
   width: 2%;
   height: 15%;
   transform: rotate(45deg);
@@ -154,7 +155,7 @@ img {
 }
 
 .hangman__leg-two {
-  background: red;
+  background: #808080;
   width: 2%;
   height: 15%;
   transform: rotate(-45deg);
@@ -163,13 +164,28 @@ img {
   left: 93%;
 }
 
+.title {
+  margin-top: 20px;
+  text-align: center;
+}
+
 .quiz {
-  background: #07c1c8;
+  background: #e1dfdf;
+}
+
+.quiz__wrapper {
+  margin: 0 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .secret-word {
-  font-size: 36px;
+  font-size: 46px;
   display: flex;
+  margin-top: 10%;
 }
 
 .letter {
@@ -178,17 +194,28 @@ img {
   justify-content: center;
 }
 
+.hint__inner {
+  font-weight: 900;
+}
+
+.incorrect-guesses-counter__inner {
+  color: #c11c1c;
+  font-weight: 900;
+}
+
 .keyboard__wrapper {
+  max-width: 600px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .keyboard__key {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   background: #a06a6a;
   margin: 5px;
   cursor: pointer;
@@ -197,5 +224,5 @@ img {
 
 .key_disable {
   cursor: default;
-  background: red;
+  background: #c11c1c;
 }/*# sourceMappingURL=main.css.map */

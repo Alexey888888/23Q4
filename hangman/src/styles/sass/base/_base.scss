@@ -1,15 +1,23 @@
 .wrapper {
-  background: #119652;
+  //background: #9c9c9c;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
 }
 
 .container {
   display: flex;
-  justify-content: center;
+  //justify-content: center;
   margin: 0 auto;
+  max-width: 1440px;
+  //max-height: 500px;
+  padding: 20px 50px;
+  background: #e1dfdf;
 }
 
 .hidden {
