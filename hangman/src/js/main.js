@@ -6,6 +6,7 @@ let questionNum = null;
 let secret = null;
 const letterArr = [];
 const hangmanArr = [];
+const keysArr = [];
 let countBodyHangman = 0;
 let countSecretWord = 0;
 
@@ -55,6 +56,12 @@ const incorrectGuessesCounter = createNode(
 const keyboard = createNode('div', ['keyboard'], null, quizWrapper);
 const keyboardWrapper = createNode('div', ['keyboard__wrapper'], null, keyboard);
 
+function disableKey(letter) {
+  keysArr.forEach((key) => {
+    if (key.dataset.id === `Key${letter}`) key.classList.add('key_disable');
+  });
+}
+
 function displayModal() {
   modalWindow.classList.remove('hidden');
   blackout.classList.remove('hidden');
@@ -67,14 +74,14 @@ function displayModal() {
 }
 
 function endingGame() {
-  displayModal();
+  document.removeEventListener('keydown', keydownHandler);
+  setTimeout(() => displayModal(), 500);
 }
 
 function displayHangman() {
   if (countBodyHangman < 6) hangmanArr[countBodyHangman].classList.remove('hidden');
   countBodyHangman += 1;
   if (countBodyHangman === 6) {
-    document.removeEventListener('keydown', keydownHandler);
     endingGame();
   }
 }
@@ -84,20 +91,27 @@ function changeCountValue() {
 }
 
 function checkLetter(letter) {
-  if (secret.toLowerCase().includes(letter.toLowerCase())) {
-    for (let i = 0; i < secret.length; i += 1) {
-      if (secret.toLowerCase()[i] === letter.toLowerCase()) {
-        letterArr[i].textContent = letter;
-        countSecretWord += 1;
-        if (countSecretWord === secret.length) {
-          document.removeEventListener('keydown', keydownHandler);
-          setTimeout(() => endingGame(), 500);
+  let isAlreadyWas = false;
+  keysArr.forEach((key) => {
+    if (key.dataset.id === `Key${letter}` && key.classList.contains('key_disable')) isAlreadyWas = true;
+  });
+  console.log(isAlreadyWas);
+  if (!isAlreadyWas) {
+    disableKey(letter);
+    if (secret.toLowerCase().includes(letter.toLowerCase())) {
+      for (let i = 0; i < secret.length; i += 1) {
+        if (secret.toLowerCase()[i] === letter.toLowerCase()) {
+          letterArr[i].textContent = letter;
+          countSecretWord += 1;
+          if (countSecretWord === secret.length) {
+            endingGame();
+          }
         }
       }
+    } else {
+      displayHangman();
+      changeCountValue();
     }
-  } else {
-    displayHangman();
-    changeCountValue();
   }
 }
 
@@ -112,6 +126,7 @@ function createKeyboard() {
     const key = createNode('span', ['keyboard__key'], item.value, keyboardWrapper);
     key.dataset.id = item.code;
     key.addEventListener('click', keyClickHandler);
+    keysArr.push(key);
   });
 }
 
@@ -141,7 +156,6 @@ function fillSecretWord() {
 }
 
 function keydownHandler(event) {
-  console.log('keydown');
   abc.forEach((item) => {
     if (event.code === item.code) checkLetter(item.value);
   });
@@ -155,7 +169,16 @@ function hideHangman() {
   hangmanArr.forEach((item) => item.classList.add('hidden'));
 }
 
+function clearKeyDisable() {
+  keysArr.forEach((key) => {
+    key.classList.remove('key_disable');
+  });
+}
+
+//пофиксить счетчик incorrect
+
 function playAgain() {
+  clearKeyDisable();
   countBodyHangman = 0;
   letterArr.length = 0;
   countSecretWord = 0;

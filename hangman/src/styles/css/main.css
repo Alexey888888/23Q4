@@ -193,4 +193,9 @@ img {
   margin: 5px;
   cursor: pointer;
   border-radius: 10px;
+}
+
+.key_disable {
+  cursor: default;
+  background: red;
 }/*# sourceMappingURL=main.css.map */
