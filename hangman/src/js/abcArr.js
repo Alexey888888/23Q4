@@ -1,4 +1,4 @@
-export const abc = [
+const abc = [
   { code: 'KeyA', value: 'A' },
   { code: 'KeyB', value: 'B' },
   { code: 'KeyC', value: 'C' },
@@ -26,3 +26,5 @@ export const abc = [
   { code: 'KeyY', value: 'Y' },
   { code: 'KeyZ', value: 'Z' },
 ];
+
+export default abc;

@@ -1,4 +1,4 @@
-export const questions = [
+const questions = [
   { hint: 'The longest river in the world', answer: 'Amazon' },
   { hint: 'The capital of Belarus', answer: 'Minsk' },
   { hint: 'A device used for eating', answer: 'spoon' },
@@ -10,3 +10,5 @@ export const questions = [
   { hint: 'The most popular sport in the world', answer: 'football' },
   { hint: 'Predator swimming in the river', answer: 'crocodile' },
 ];
+
+export default questions;

@@ -1,5 +1,5 @@
-import { abc } from './abcArr.js';
-import { questions } from './questionsArr.js';
+import abc from './abcArr.js';
+import questions from './questionsArr.js';
 
 const { body } = document;
 let questionNum = null;
@@ -41,7 +41,7 @@ hangmanArr.push(createNode('div', ['hangman__hand-one'], null, hangman));
 hangmanArr.push(createNode('div', ['hangman__hand-two'], null, hangman));
 hangmanArr.push(createNode('div', ['hangman__leg-one'], null, hangman));
 hangmanArr.push(createNode('div', ['hangman__leg-two'], null, hangman));
-const title = createNode('h1', null, 'HANGMAN GAME', gallowsWrapper);
+createNode('h1', null, 'HANGMAN GAME', gallowsWrapper);
 
 const quiz = createNode('section', ['quiz'], null, container);
 const quizWrapper = createNode('div', ['quiz__wrapper'], null, quiz);
@@ -51,16 +51,10 @@ const incorrectGuessesCounter = createNode(
   'div',
   ['incorrect-guesses-counter'],
   `Incorrect guesses: ${countBodyHangman}/6`,
-  quizWrapper
+  quizWrapper,
 );
 const keyboard = createNode('div', ['keyboard'], null, quizWrapper);
 const keyboardWrapper = createNode('div', ['keyboard__wrapper'], null, keyboard);
-
-function disableKey(letter) {
-  keysArr.forEach((key) => {
-    if (key.dataset.id === `Key${letter}`) key.classList.add('key_disable');
-  });
-}
 
 function displayModal() {
   modalWindow.classList.remove('hidden');
@@ -71,6 +65,12 @@ function displayModal() {
     modalMessage.textContent = 'Congratulations! You win!!';
   }
   modalSecret.textContent = `Secret word: ${secret.toUpperCase()}`;
+}
+
+function disableKey(letter) {
+  keysArr.forEach((key) => {
+    if (key.dataset.id === `Key${letter}`) key.classList.add('key_disable');
+  });
 }
 
 function endingGame() {
@@ -95,7 +95,6 @@ function checkLetter(letter) {
   keysArr.forEach((key) => {
     if (key.dataset.id === `Key${letter}` && key.classList.contains('key_disable')) isAlreadyWas = true;
   });
-  console.log(isAlreadyWas);
   if (!isAlreadyWas) {
     disableKey(letter);
     if (secret.toLowerCase().includes(letter.toLowerCase())) {
@@ -113,6 +112,12 @@ function checkLetter(letter) {
       changeCountValue();
     }
   }
+}
+
+function keydownHandler(event) {
+  abc.forEach((item) => {
+    if (event.code === item.code) checkLetter(item.value);
+  });
 }
 
 function keyClickHandler() {
@@ -155,12 +160,6 @@ function fillSecretWord() {
   }
 }
 
-function keydownHandler(event) {
-  abc.forEach((item) => {
-    if (event.code === item.code) checkLetter(item.value);
-  });
-}
-
 function addKeydownListener() {
   document.addEventListener('keydown', keydownHandler);
 }
@@ -174,8 +173,6 @@ function clearKeyDisable() {
     key.classList.remove('key_disable');
   });
 }
-
-//пофиксить счетчик incorrect
 
 function playAgain() {
   clearKeyDisable();
