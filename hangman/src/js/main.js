@@ -180,6 +180,7 @@ function clearKeyDisable() {
 function playAgain() {
   clearKeyDisable();
   countBodyHangman = 0;
+  incorrectGuessesCounter.textContent = `Incorrect guesses: ${countBodyHangman}/6`;
   letterArr.length = 0;
   countSecretWord = 0;
   blackout.classList.add('hidden');
