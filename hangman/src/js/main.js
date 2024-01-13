@@ -160,6 +160,7 @@ function fillSecretWord() {
   for (let i = 0; i < secret.length; i += 1) {
     letterArr.push(createNode('div', ['letter'], '_', secretWord));
   }
+  console.log(secret);
 }
 
 function addKeydownListener() {
