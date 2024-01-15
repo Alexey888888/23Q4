@@ -56,7 +56,7 @@ body {
   display: flex;
   margin: 0 10px;
   max-width: 1440px;
-  padding: 20px 50px;
+  padding: 20px 120px;
   background: #e1dfdf;
   -moz-column-gap: 270px;
        column-gap: 270px;
@@ -64,6 +64,7 @@ body {
 }
 @media (max-width: 1260px) {
   .container {
+    padding: 20px 50px;
     -moz-column-gap: 200px;
          column-gap: 200px;
   }
