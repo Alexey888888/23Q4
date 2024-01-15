@@ -60,6 +60,7 @@ body {
   background: #e1dfdf;
   -moz-column-gap: 270px;
        column-gap: 270px;
+  box-sizing: content-box;
 }
 @media (max-width: 1260px) {
   .container {
