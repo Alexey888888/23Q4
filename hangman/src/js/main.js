@@ -1,6 +1,10 @@
 import abc from './abcArr.js';
 import questions from './questionsArr.js';
 
+console.log(
+  '⚠️В игре используются буквы английского алфавита вне зависимости от раскладки клавиатуры. Такая реализация допускается автором таска. ',
+);
+
 const { body } = document;
 let questionNum = null;
 let secret = null;
@@ -160,7 +164,7 @@ function fillSecretWord() {
   for (let i = 0; i < secret.length; i += 1) {
     letterArr.push(createNode('div', ['letter'], '_', secretWord));
   }
-  console.log(secret);
+  console.log(`Secret word: ${secret}`);
 }
 
 function addKeydownListener() {
