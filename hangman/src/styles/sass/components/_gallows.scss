@@ -1,6 +1,6 @@
 .gallows__wrapper {
   background: #e1dfdf;
-  @media (max-width: 765px) {
+  @media (max-width: 780px) {
     display: flex;
     flex-direction: column-reverse;
   }
@@ -9,7 +9,7 @@
 .gallows__gallows-image {
   position: relative;
   //width: 100%;
-  @media (max-width: 765px) {
+  @media (max-width: 780px) {
     display: flex;
     justify-content: center;
   }
@@ -18,7 +18,7 @@
 img {
   max-width: 80%;
 
-  @media (max-width: 765px) {
+  @media (max-width: 780px) {
     max-width: 20%;
   }
 }
@@ -33,7 +33,7 @@ img {
   top: 25%;
   left: 58.5%;
 
-  @media (max-width: 765px) {
+  @media (max-width: 780px) {
     width: 6%;
     height: 18%;
     left: 54.09%;
@@ -53,7 +53,7 @@ img {
   left: 67.5%;
   border-radius: 10px;
 
-  @media (max-width: 765px) {
+  @media (max-width: 780px) {
     width: 1%;
     height: 25%;
     top: 42.2%;
@@ -71,7 +71,7 @@ img {
   left: 61%;
   border-radius: 10px;
 
-  @media (max-width: 765px) {
+  @media (max-width: 780px) {
     width: 1%;
     height: 18%;
     top: 42.5%;
@@ -89,7 +89,7 @@ img {
   left: 74%;
   border-radius: 10px;
 
-  @media (max-width: 765px) {
+  @media (max-width: 780px) {
     width: 1%;
     height: 18%;
     top: 42.5%;
@@ -107,7 +107,7 @@ img {
   left: 61%;
   border-radius: 10px;
 
-  @media (max-width: 765px) {
+  @media (max-width: 780px) {
     width: 1%;
     height: 18%;
     top: 63.4%;
@@ -125,7 +125,7 @@ img {
   left: 74%;
   border-radius: 10px;
 
-  @media (max-width: 765px) {
+  @media (max-width: 780px) {
     width: 1%;
     height: 18%;
     top: 64%;
@@ -137,7 +137,7 @@ img {
   margin-top: 20px;
   text-align: center;
 
-  @media (max-width: 765px) {
+  @media (max-width: 780px) {
     margin-top: 0;
     margin-bottom: 15px;
     font-size: 24px;

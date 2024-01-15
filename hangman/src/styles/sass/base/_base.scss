@@ -4,7 +4,7 @@ body {
   font-weight: 400;
   line-height: 30px;
 
-  @media (max-width: 765px) {
+  @media (max-width: 780px) {
     font-size: 20px;
     line-height: 22px;
   }
@@ -15,6 +15,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .container {
@@ -24,7 +25,7 @@ body {
   padding: 20px 50px;
   background: #e1dfdf;
 
-  @media (max-width: 765px) {
+  @media (max-width: 780px) {
     flex-direction: column;
   }
 
