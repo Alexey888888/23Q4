@@ -24,6 +24,19 @@ body {
   max-width: 1440px;
   padding: 20px 50px;
   background: #e1dfdf;
+  column-gap: 270px;
+
+  @media (max-width: 1260px) {
+    column-gap: 200px;
+  }
+
+  @media (max-width: 1190px) {
+    column-gap: 150px;
+  }
+
+  @media (max-width: 1170px) {
+    column-gap: unset;
+  }
 
   @media (max-width: 780px) {
     flex-direction: column;

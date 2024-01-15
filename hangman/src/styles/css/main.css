@@ -58,6 +58,26 @@ body {
   max-width: 1440px;
   padding: 20px 50px;
   background: #e1dfdf;
+  -moz-column-gap: 270px;
+       column-gap: 270px;
+}
+@media (max-width: 1260px) {
+  .container {
+    -moz-column-gap: 200px;
+         column-gap: 200px;
+  }
+}
+@media (max-width: 1190px) {
+  .container {
+    -moz-column-gap: 150px;
+         column-gap: 150px;
+  }
+}
+@media (max-width: 1170px) {
+  .container {
+    -moz-column-gap: unset;
+         column-gap: unset;
+  }
 }
 @media (max-width: 780px) {
   .container {
@@ -293,6 +313,7 @@ img {
   font-size: 46px;
   display: flex;
   margin-top: 10%;
+  margin-bottom: 5%;
 }
 @media (max-width: 905px) {
   .secret-word {
