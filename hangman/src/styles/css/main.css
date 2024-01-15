@@ -369,8 +369,18 @@ img {
     margin: 3px;
   }
 }
+@media (hover: hover) {
+  .keyboard__key:hover {
+    background: #e26565;
+  }
+}
 
 .key_disable {
   cursor: default;
   background: #c11c1c;
+}
+@media (hover: hover) {
+  .key_disable:hover {
+    background: #c11c1c;
+  }
 }/*# sourceMappingURL=main.css.map */
