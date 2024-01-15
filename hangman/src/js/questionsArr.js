@@ -1,6 +1,6 @@
 const questions = [
   { hint: 'The highest mountain in the world', answer: 'Everest' },
-  { hint: 'The capital of Belarus', answer: 'Minsk' },
+  { hint: 'The capital of Great Britain', answer: 'London' },
   { hint: 'A device used for eating', answer: 'spoon' },
   { hint: 'Means of connection', answer: 'phone' },
   { hint: 'Shines at night', answer: 'moon' },
