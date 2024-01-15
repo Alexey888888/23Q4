@@ -144,10 +144,10 @@ function getRandomNum() {
 
 function setLocalStorage() {
   questionNum = getRandomNum();
-  if (localStorage.getItem('questionNum')) {
-    if (+localStorage.getItem('questionNum') === questionNum) setLocalStorage();
+  if (localStorage.getItem('questionNum888888')) {
+    if (+localStorage.getItem('questionNum888888') === questionNum) setLocalStorage();
   }
-  localStorage.setItem('questionNum', questionNum);
+  localStorage.setItem('questionNum888888', questionNum);
 }
 
 function displayHint() {
