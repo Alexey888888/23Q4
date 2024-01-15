@@ -64,7 +64,6 @@ const keyboardWrapper = createNode('div', ['keyboard__wrapper'], null, keyboard)
 
 function displayModal() {
   modalWindow.classList.remove('hidden');
-  blackout.classList.remove('hidden');
   if (countBodyHangman === 6) {
     modalMessage.textContent = 'You lose!';
   } else {
@@ -80,6 +79,7 @@ function disableKey(letter) {
 }
 
 function endingGame() {
+  blackout.classList.remove('hidden');
   document.removeEventListener('keydown', keydownHandler);
   setTimeout(() => displayModal(), 500);
 }
