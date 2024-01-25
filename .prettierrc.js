@@ -1,16 +1,9 @@
 const config = {
   tabWidth: 2,
   printWidth: 80,
-  singleQuote: false,
-  trailingComma: "all",
-  overrides: [
-    {
-      files: [],
-      options: {
-        singleQuote: true,
-      },
-    },
-  ],
+  trailingComma: 'all',
+  singleQuote: true,
+  semi: true,
 };
 
 module.exports = config;

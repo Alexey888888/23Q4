@@ -1,8 +1,8 @@
-export class Node {
+class Node {
   constructor({
-    tagName = "div",
+    tagName = 'div',
     classNames = [],
-    texContent = "",
+    texContent = '',
     parentNode,
   }) {
     this.node = document.createElement(tagName);
@@ -11,3 +11,5 @@ export class Node {
     if (parentNode) parentNode.append(this.node);
   }
 }
+
+export default Node;
