@@ -51,16 +51,130 @@ const toolsDownWrapper = new Node({
   parentNode: toolsDown.node,
 });
 
-function fillField(templateArr) {
-  templateArr.forEach((templateRow) => {
-    const row = new Node({ classNames: ['field__row'] });
-    field.addNode(row);
-    templateRow.forEach((templateCell) => {
-      const cell = new Node({ classNames: ['field__cell'] });
-      row.addNode(cell);
-      if (templateCell) cell.addClass('black');
-    });
+// ----------------------------------------------------------
+let originalFullTemplateArr = null;
+let currentFullTemplateArr = null;
+let templateArr = null;
+
+templateArr = imageTemplates[0].imageArr;
+originalFullTemplateArr = copyArr(templateArr);
+
+const hintsUpArr = Array.from({ length: templateArr[0].length }, () => []);
+const hintsLeftArr = Array.from({ length: templateArr.length }, () => []);
+
+function copyArr(arr) {
+  return JSON.parse(JSON.stringify(arr));
+}
+
+function getHintsUpArr(arr) {
+  for (let j = 0; j < arr[0].length; j++) {
+    let count = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i][j]) {
+        count++;
+      } else {
+        hintsUpArr[j].push(count);
+        count = 0;
+      }
+    }
+    hintsUpArr[j].push(count);
+  }
+  let resHintsUpArr = hintsUpArr.map((column) =>
+    column.filter((number) => number),
+  );
+  return resHintsUpArr;
+}
+
+function addHintsUp(arr, hintsArr) {
+  arr.unshift([]);
+  hintsArr.forEach((column) => {
+    arr[0].push(column);
   });
 }
 
-fillField(imageTemplates[1].imageArr);
+function getHintsLeftArr(arr) {
+  for (let i = 0; i < arr.length; i++) {
+    let count = 0;
+    for (let j = 0; j < arr[0].length; j++) {
+      if (arr[i][j]) {
+        count++;
+      } else {
+        hintsLeftArr[i].push(count);
+        count = 0;
+      }
+    }
+    hintsLeftArr[i].push(count);
+  }
+  let resHintsLeftArr = hintsLeftArr.map((row) =>
+    row.filter((number) => number),
+  );
+  console.log(resHintsLeftArr);
+  return resHintsLeftArr;
+}
+
+function addHintsLeft(arr, hintsArr) {
+  arr[0].unshift(null);
+  for (let i = 1; i < arr.length; i++) {
+    arr[i].unshift([]);
+  }
+  for (let i = 0; i < hintsArr.length; i++) {
+    arr[i + 1][0].push(...hintsArr[i]);
+  }
+}
+
+addHintsUp(originalFullTemplateArr, getHintsUpArr(templateArr));
+addHintsLeft(originalFullTemplateArr, getHintsLeftArr(templateArr));
+
+// /console.log(templateArr);
+console.table(originalFullTemplateArr);
+
+// ----------------------------------------------------------
+
+// function fillField(templateArr) {
+//   templateArr.forEach((templateRow) => {
+//     const row = new Node({ classNames: ['field__row'] });
+//     field.addNode(row);
+//     templateRow.forEach((templateCell) => {
+//       const cell = new Node({ classNames: ['field__cell'] });
+//       row.addNode(cell);
+//       if (templateCell) cell.addClass('black');
+//     });
+//   });
+// }
+
+// fillField(imageTemplates[0].imageArr);
+
+// console.table(imageTemplates[0].imageArr);
+
+// const hintsUpArr = Array.from({ length: 5 }, () => []);
+
+// function getUpHintsArr(templateArr) {
+//   for (let j = 0; j < templateArr[0].length; j++) {
+//     let count = 0;
+//     for (let i = 0; i < templateArr.length; i++) {
+//       if (templateArr[i][j]) {
+//         count++;
+//       } else {
+//         hintsUpArr[j].push(count);
+//         count = 0;
+//       }
+//     }
+//     hintsUpArr[j].push(count);
+//   }
+//   let resHintsUpArr = hintsUpArr.map((column) =>
+//     column.filter((number) => number),
+//   );
+//   return resHintsUpArr;
+// }
+
+// function addUpHints(imgArr, hintsArr) {
+//   imgArr.unshift([]);
+//   hintsArr.forEach((column) => {
+//     imgArr[0].push(column);
+//   });
+// }
+
+// addUpHints(
+//   imageTemplates[0].imageArr,
+//   getUpHintsArr(imageTemplates[0].imageArr),
+// );
