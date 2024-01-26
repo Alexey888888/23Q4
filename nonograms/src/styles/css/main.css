@@ -85,10 +85,18 @@ body {
 
 .field__row {
   display: flex;
+  justify-content: end;
 }
 
 .black {
   background: #575252;
+}
+
+.column-hint {
+  border-bottom: solid 2px black;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
 }
 
 .tools-down {

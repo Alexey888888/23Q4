@@ -131,14 +131,36 @@ addHints();
 
 function fillField(fullTemplateArr) {
   fullTemplateArr.forEach((templateRow) => {
+    const row = new Node({ classNames: ['field__row'] });
+    field.addNode(row);
     if (templateRow[0] !== null) {
-      const row = new Node({ classNames: ['field__row'] });
-      field.addNode(row);
       templateRow.forEach((templateCell) => {
         if (typeof templateCell === 'number') {
           const cell = new Node({ classNames: ['field__cell'] });
           row.addNode(cell);
           if (templateCell) cell.addClass('black');
+        } else {
+          templateRow.forEach((item) => {
+            if (Array.isArray(item)) {
+              item.forEach((hint) => {
+                const cell = new Node({ classNames: ['field__cell'] });
+                row.addNode(cell);
+                cell.node.textContent = hint;
+              });
+            }
+          });
+        }
+      });
+    } else {
+      templateRow.forEach((item) => {
+        if (Array.isArray(item)) {
+          const columnHint = new Node({ classNames: ['column-hint'] });
+          item.forEach((hint) => {
+            const cell = new Node({ classNames: ['field__cell'] });
+            columnHint.addNode(cell);
+            row.addNode(columnHint);
+            cell.node.textContent = hint;
+          });
         }
       });
     }

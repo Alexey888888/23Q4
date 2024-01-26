@@ -18,8 +18,16 @@
 
 .field__row {
   display: flex;
+  justify-content: end; // temp
 }
 
 .black {
   background: #575252;
+}
+
+.column-hint {
+  border-bottom: solid 2px black; // temp
+  display: flex; // temp
+  flex-direction: column; // temp
+  justify-content: end; // temp
 }
