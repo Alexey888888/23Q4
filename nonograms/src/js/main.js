@@ -66,66 +66,87 @@ function copyArr(arr) {
   return JSON.parse(JSON.stringify(arr));
 }
 
-function getHintsUpArr(arr) {
-  for (let j = 0; j < arr[0].length; j++) {
-    let count = 0;
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i][j]) {
-        count++;
-      } else {
-        hintsUpArr[j].push(count);
-        count = 0;
+function addHints() {
+  function getHintsUpArr(arr) {
+    for (let j = 0; j < arr[0].length; j++) {
+      let count = 0;
+      for (let i = 0; i < arr.length; i++) {
+        if (arr[i][j]) {
+          count++;
+        } else {
+          hintsUpArr[j].push(count);
+          count = 0;
+        }
       }
+      hintsUpArr[j].push(count);
     }
-    hintsUpArr[j].push(count);
+    let resHintsUpArr = hintsUpArr.map((column) =>
+      column.filter((number) => number),
+    );
+    return resHintsUpArr;
   }
-  let resHintsUpArr = hintsUpArr.map((column) =>
-    column.filter((number) => number),
-  );
-  return resHintsUpArr;
+
+  function addHintsUp(arr, hintsArr) {
+    arr.unshift([]);
+    hintsArr.forEach((column) => {
+      arr[0].push(column);
+    });
+  }
+
+  function getHintsLeftArr(arr) {
+    for (let i = 0; i < arr.length; i++) {
+      let count = 0;
+      for (let j = 0; j < arr[0].length; j++) {
+        if (arr[i][j]) {
+          count++;
+        } else {
+          hintsLeftArr[i].push(count);
+          count = 0;
+        }
+      }
+      hintsLeftArr[i].push(count);
+    }
+    let resHintsLeftArr = hintsLeftArr.map((row) =>
+      row.filter((number) => number),
+    );
+    console.log(resHintsLeftArr);
+    return resHintsLeftArr;
+  }
+
+  function addHintsLeft(arr, hintsArr) {
+    arr[0].unshift(null);
+    for (let i = 1; i < arr.length; i++) {
+      arr[i].unshift([]);
+    }
+    for (let i = 0; i < hintsArr.length; i++) {
+      arr[i + 1][0].push(...hintsArr[i]);
+    }
+  }
+
+  addHintsUp(originalFullTemplateArr, getHintsUpArr(templateArr));
+  addHintsLeft(originalFullTemplateArr, getHintsLeftArr(templateArr));
 }
 
-function addHintsUp(arr, hintsArr) {
-  arr.unshift([]);
-  hintsArr.forEach((column) => {
-    arr[0].push(column);
+addHints();
+
+function fillField(fullTemplateArr) {
+  fullTemplateArr.forEach((templateRow) => {
+    if (templateRow[0] !== null) {
+      const row = new Node({ classNames: ['field__row'] });
+      field.addNode(row);
+      templateRow.forEach((templateCell) => {
+        if (typeof templateCell === 'number') {
+          const cell = new Node({ classNames: ['field__cell'] });
+          row.addNode(cell);
+          if (templateCell) cell.addClass('black');
+        }
+      });
+    }
   });
 }
 
-function getHintsLeftArr(arr) {
-  for (let i = 0; i < arr.length; i++) {
-    let count = 0;
-    for (let j = 0; j < arr[0].length; j++) {
-      if (arr[i][j]) {
-        count++;
-      } else {
-        hintsLeftArr[i].push(count);
-        count = 0;
-      }
-    }
-    hintsLeftArr[i].push(count);
-  }
-  let resHintsLeftArr = hintsLeftArr.map((row) =>
-    row.filter((number) => number),
-  );
-  console.log(resHintsLeftArr);
-  return resHintsLeftArr;
-}
+fillField(originalFullTemplateArr);
 
-function addHintsLeft(arr, hintsArr) {
-  arr[0].unshift(null);
-  for (let i = 1; i < arr.length; i++) {
-    arr[i].unshift([]);
-  }
-  for (let i = 0; i < hintsArr.length; i++) {
-    arr[i + 1][0].push(...hintsArr[i]);
-  }
-}
-
-addHintsUp(originalFullTemplateArr, getHintsUpArr(templateArr));
-addHintsLeft(originalFullTemplateArr, getHintsLeftArr(templateArr));
-
-// /console.log(templateArr);
 console.table(originalFullTemplateArr);
 
 // ----------------------------------------------------------
