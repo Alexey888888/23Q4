@@ -10,6 +10,12 @@ class Node {
     this.node.textContent = texContent;
     if (parentNode) parentNode.append(this.node);
   }
+  addNode(childrenNode) {
+    this.node.append(childrenNode.node);
+  }
+  addClass(className) {
+    this.node.classList.add(className);
+  }
 }
 
 export default Node;

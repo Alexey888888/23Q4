@@ -70,7 +70,25 @@ body {
 .game-board {
   width: 500px;
   height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: #dcd0d0;
+}
+
+.field__cell {
+  background: #dad7d7;
+  width: 40px;
+  height: 40px;
+  border: solid 1px black;
+}
+
+.field__row {
+  display: flex;
+}
+
+.black {
+  background: #575252;
 }
 
 .tools-down {
