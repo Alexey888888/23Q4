@@ -105,8 +105,6 @@ function addHints() {
       arr.reverse();
     });
 
-    console.log(resHintsUpArr);
-
     return resHintsUpArr;
   }
 
@@ -133,7 +131,7 @@ function addHints() {
     let resHintsLeftArr = hintsLeftArr.map((row) =>
       row.filter((number) => number),
     );
-    console.log(resHintsLeftArr);
+
     //
     const maxLength = getMaxLengthArr(resHintsLeftArr);
     resHintsLeftArr.forEach((arr) => {
@@ -174,7 +172,7 @@ function fillField(fullTemplateArr) {
         if (typeof templateCell === 'number') {
           const cell = new Node({ classNames: ['field__cell'] });
           row.addNode(cell);
-          if (templateCell) cell.addClass('black');
+          if (templateCell) cell.addClass('grey');
         } else {
           templateRow.forEach((item) => {
             if (Array.isArray(item)) {
@@ -205,55 +203,4 @@ function fillField(fullTemplateArr) {
 
 fillField(originalFullTemplateArr);
 
-console.table(originalFullTemplateArr);
-
 // ----------------------------------------------------------
-
-// function fillField(templateArr) {
-//   templateArr.forEach((templateRow) => {
-//     const row = new Node({ classNames: ['field__row'] });
-//     field.addNode(row);
-//     templateRow.forEach((templateCell) => {
-//       const cell = new Node({ classNames: ['field__cell'] });
-//       row.addNode(cell);
-//       if (templateCell) cell.addClass('black');
-//     });
-//   });
-// }
-
-// fillField(imageTemplates[0].imageArr);
-
-// console.table(imageTemplates[0].imageArr);
-
-// const hintsUpArr = Array.from({ length: 5 }, () => []);
-
-// function getUpHintsArr(templateArr) {
-//   for (let j = 0; j < templateArr[0].length; j++) {
-//     let count = 0;
-//     for (let i = 0; i < templateArr.length; i++) {
-//       if (templateArr[i][j]) {
-//         count++;
-//       } else {
-//         hintsUpArr[j].push(count);
-//         count = 0;
-//       }
-//     }
-//     hintsUpArr[j].push(count);
-//   }
-//   let resHintsUpArr = hintsUpArr.map((column) =>
-//     column.filter((number) => number),
-//   );
-//   return resHintsUpArr;
-// }
-
-// function addUpHints(imgArr, hintsArr) {
-//   imgArr.unshift([]);
-//   hintsArr.forEach((column) => {
-//     imgArr[0].push(column);
-//   });
-// }
-
-// addUpHints(
-//   imageTemplates[0].imageArr,
-//   getUpHintsArr(imageTemplates[0].imageArr),
-// );
