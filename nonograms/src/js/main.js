@@ -67,6 +67,17 @@ function copyArr(arr) {
 }
 
 function addHints() {
+  //
+  function getMaxLengthArr(arr) {
+    let maxLength = 0;
+    let currentLength = 0;
+    arr.forEach((el) => {
+      if (Array.isArray(el)) currentLength = el.length;
+      if (currentLength > maxLength) maxLength = currentLength;
+    });
+    return maxLength;
+  }
+  //
   function getHintsUpArr(arr) {
     for (let j = 0; j < arr[0].length; j++) {
       let count = 0;
@@ -83,6 +94,20 @@ function addHints() {
     let resHintsUpArr = hintsUpArr.map((column) =>
       column.filter((number) => number),
     );
+    //
+    const maxLength = getMaxLengthArr(resHintsUpArr);
+    resHintsUpArr.forEach((arr) => {
+      if (arr.length !== maxLength) {
+        arr.length = maxLength;
+        for (let i = 0; i < arr.length; i++) {
+          if (!arr[i]) arr[i] = 0;
+        }
+      }
+      arr.reverse();
+    });
+
+    console.log(resHintsUpArr);
+
     return resHintsUpArr;
   }
 
