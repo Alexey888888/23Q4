@@ -66,18 +66,17 @@ function copyArr(arr) {
   return JSON.parse(JSON.stringify(arr));
 }
 
+function getMaxLengthArr(arr) {
+  let maxLength = 0;
+  let currentLength = 0;
+  arr.forEach((el) => {
+    if (Array.isArray(el)) currentLength = el.length;
+    if (currentLength > maxLength) maxLength = currentLength;
+  });
+  return maxLength;
+}
+
 function addHints() {
-  //
-  function getMaxLengthArr(arr) {
-    let maxLength = 0;
-    let currentLength = 0;
-    arr.forEach((el) => {
-      if (Array.isArray(el)) currentLength = el.length;
-      if (currentLength > maxLength) maxLength = currentLength;
-    });
-    return maxLength;
-  }
-  //
   function getHintsUpArr(arr) {
     for (let j = 0; j < arr[0].length; j++) {
       let count = 0;
@@ -135,6 +134,18 @@ function addHints() {
       row.filter((number) => number),
     );
     console.log(resHintsLeftArr);
+    //
+    const maxLength = getMaxLengthArr(resHintsLeftArr);
+    resHintsLeftArr.forEach((arr) => {
+      if (arr.length !== maxLength) {
+        arr.length = maxLength;
+        for (let i = 0; i < arr.length; i++) {
+          if (!arr[i]) arr[i] = 0;
+        }
+      }
+      arr.reverse();
+    });
+    //
     return resHintsLeftArr;
   }
 
