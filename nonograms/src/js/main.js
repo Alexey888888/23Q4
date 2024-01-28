@@ -181,7 +181,7 @@ function fillField(fullTemplateArr) {
               item.forEach((hint) => {
                 const cell = new Node({ classNames: ['field__cell'] });
                 row.addNode(cell);
-                cell.node.textContent = hint;
+                if (hint) cell.node.textContent = hint;
               });
             }
           });
@@ -195,7 +195,7 @@ function fillField(fullTemplateArr) {
             const cell = new Node({ classNames: ['field__cell'] });
             columnHint.addNode(cell);
             row.addNode(columnHint);
-            cell.node.textContent = hint;
+            if (hint) cell.node.textContent = hint;
           });
         }
       });
