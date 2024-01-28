@@ -56,7 +56,7 @@ let originalFullTemplateArr = null;
 let currentFullTemplateArr = null;
 let templateArr = null;
 
-templateArr = imageTemplates[0].imageArr;
+templateArr = imageTemplates[2].imageArr;
 originalFullTemplateArr = copyArr(templateArr);
 
 const hintsUpArr = Array.from({ length: templateArr[0].length }, () => []);

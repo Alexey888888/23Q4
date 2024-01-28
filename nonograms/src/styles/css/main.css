@@ -61,26 +61,46 @@ body {
   box-shadow: 0px 0px 85px 10px rgba(100, 100, 100, 0.75);
 }
 
+.game-box__wrapper {
+  display: flex;
+}
+
 .tools-up {
-  width: 100%;
-  height: 80px;
+  height: 700px;
+  width: 80px;
   background: #958d8d;
+}
+@media (max-height: 699px) {
+  .tools-up {
+    height: 640px;
+  }
 }
 
 .game-board {
-  width: 500px;
-  height: 500px;
+  width: 750px;
+  height: 700px;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #dcd0d0;
 }
+@media (max-height: 699px) {
+  .game-board {
+    height: 640px;
+  }
+}
 
 .field__cell {
   background: #dad7d7;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border: solid 1px black;
+}
+@media (max-height: 699px) {
+  .field__cell {
+    width: 27px;
+    height: 27px;
+  }
 }
 
 .field__row {
@@ -93,14 +113,18 @@ body {
 }
 
 .column-hint {
-  border-bottom: solid 2px black;
   display: flex;
   flex-direction: column;
   justify-content: end;
 }
 
 .tools-down {
-  width: 100%;
-  height: 80px;
+  height: 700px;
+  width: 80px;
   background: #958d8d;
+}
+@media (max-height: 699px) {
+  .tools-down {
+    height: 640px;
+  }
 }/*# sourceMappingURL=main.css.map */
