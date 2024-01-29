@@ -56,7 +56,7 @@ let originalFullTemplateArr = null;
 let currentTemplateArr = null;
 let templateArr = null;
 
-templateArr = imageTemplates[0].imageArr;
+templateArr = imageTemplates[2].imageArr;
 originalFullTemplateArr = copyArr(templateArr);
 
 const hintsUpArr = Array.from({ length: templateArr[0].length }, () => []);
@@ -230,11 +230,9 @@ function getNumClickedCell(event) {
 }
 
 function fillCurrentTemplateArr(i, j, event) {
-  console.log(i, j);
   if (event.target.classList.contains('black')) {
     currentTemplateArr[i][j] = 1;
   } else currentTemplateArr[i][j] = 0;
-  console.table(currentTemplateArr);
   checkGameStatus();
 }
 
