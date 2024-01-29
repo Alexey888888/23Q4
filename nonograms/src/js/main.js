@@ -229,10 +229,19 @@ function getNumClickedCell(event) {
   return numClickedCell;
 }
 
-function fillCurrentTemplateArr(i, j) {
+function fillCurrentTemplateArr(i, j, event) {
   console.log(i, j);
-  currentTemplateArr[i][j] = 1;
+  if (event.target.classList.contains('black')) {
+    currentTemplateArr[i][j] = 1;
+  } else currentTemplateArr[i][j] = 0;
   console.table(currentTemplateArr);
+  checkGameStatus();
+}
+
+function checkGameStatus() {
+  if (JSON.stringify(currentTemplateArr) === JSON.stringify(templateArr)) {
+    console.log('YOU WIN!');
+  }
 }
 
 function addClickHandler() {
@@ -242,7 +251,7 @@ function addClickHandler() {
     }
     const numClickedRow = getNumClickedRow(event);
     const numClickedCell = getNumClickedCell(event);
-    fillCurrentTemplateArr(numClickedRow, numClickedCell);
+    fillCurrentTemplateArr(numClickedRow, numClickedCell, event);
   });
 }
 
