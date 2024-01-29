@@ -53,10 +53,10 @@ const toolsDownWrapper = new Node({
 
 // ----------------------------------------------------------
 let originalFullTemplateArr = null;
-let currentFullTemplateArr = null;
+let currentTemplateArr = null;
 let templateArr = null;
 
-templateArr = imageTemplates[2].imageArr;
+templateArr = imageTemplates[0].imageArr;
 originalFullTemplateArr = copyArr(templateArr);
 
 const hintsUpArr = Array.from({ length: templateArr[0].length }, () => []);
@@ -177,7 +177,7 @@ function fillField(fullTemplateArr) {
           templateRow.forEach((item) => {
             if (Array.isArray(item)) {
               item.forEach((hint) => {
-                const cell = new Node({ classNames: ['field__cell'] });
+                const cell = new Node({ classNames: ['field__cell_hint'] });
                 row.addNode(cell);
                 if (hint) cell.node.textContent = hint;
               });
@@ -190,7 +190,7 @@ function fillField(fullTemplateArr) {
         if (Array.isArray(item)) {
           const columnHint = new Node({ classNames: ['column-hint'] });
           item.forEach((hint) => {
-            const cell = new Node({ classNames: ['field__cell'] });
+            const cell = new Node({ classNames: ['field__cell_hint'] });
             columnHint.addNode(cell);
             row.addNode(columnHint);
             if (hint) cell.node.textContent = hint;
@@ -203,4 +203,47 @@ function fillField(fullTemplateArr) {
 
 fillField(originalFullTemplateArr);
 
-// ----------------------------------------------------------
+// -----------------------------------------------------------
+
+function initCurrentTemplateArr() {
+  currentTemplateArr = Array.from({ length: templateArr.length }, () =>
+    Array.from({ length: templateArr[0].length }, () => 0),
+  );
+}
+
+initCurrentTemplateArr();
+
+function getNumClickedRow(event) {
+  const clickedRow = event.target.parentNode;
+  const parentNode = clickedRow.parentNode;
+  const childrenRowArr = Array.from(parentNode.children);
+  const numClickedRow = childrenRowArr.indexOf(clickedRow) - 1;
+  return numClickedRow;
+}
+
+function getNumClickedCell(event) {
+  const clickedCell = event.target;
+  const parentNode = clickedCell.parentNode;
+  const childrenCellArr = Array.from(parentNode.children);
+  const numClickedCell = childrenCellArr.indexOf(clickedCell) - 2;
+  return numClickedCell;
+}
+
+function fillCurrentTemplateArr(i, j) {
+  console.log(i, j);
+  currentTemplateArr[i][j] = 1;
+  console.table(currentTemplateArr);
+}
+
+function addClickHandler() {
+  body.addEventListener('click', (event) => {
+    if (event.target.classList.contains('field__cell')) {
+      event.target.classList.toggle('black');
+    }
+    const numClickedRow = getNumClickedRow(event);
+    const numClickedCell = getNumClickedCell(event);
+    fillCurrentTemplateArr(numClickedRow, numClickedCell);
+  });
+}
+
+addClickHandler();

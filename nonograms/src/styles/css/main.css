@@ -90,14 +90,16 @@ body {
   }
 }
 
-.field__cell {
+.field__cell,
+.field__cell_hint {
   background: #dad7d7;
   width: 30px;
   height: 30px;
   border: solid 1px black;
 }
 @media (max-height: 699px) {
-  .field__cell {
+  .field__cell,
+  .field__cell_hint {
     width: 27px;
     height: 27px;
   }
@@ -109,7 +111,11 @@ body {
 }
 
 .grey {
-  background: #575252;
+  background: #8e8989;
+}
+
+.black {
+  background: #323030;
 }
 
 .column-hint {

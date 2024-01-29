@@ -11,7 +11,8 @@
   }
 }
 
-.field__cell {
+.field__cell,
+.field__cell_hint {
   background: #dad7d7;
   width: 30px;
   height: 30px;
@@ -29,7 +30,11 @@
 }
 
 .grey {
-  background: #575252;
+  background: #8e8989;
+}
+
+.black {
+  background: #323030;
 }
 
 .column-hint {
