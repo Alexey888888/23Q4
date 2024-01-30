@@ -5,7 +5,7 @@
   justify-content: center;
   align-items: center;
 
-  background: rgb(212, 212, 212);
+  background: rgb(255, 255, 255);
   @media (max-height: 699px) {
     height: 640px;
   }
@@ -17,7 +17,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #dad7d7;
+  background: #ffffff;
   width: 30px;
   height: 30px;
 
@@ -78,7 +78,7 @@
 }
 
 .black {
-  background: #323030;
+  background: #000000;
 }
 
 .column-hint {

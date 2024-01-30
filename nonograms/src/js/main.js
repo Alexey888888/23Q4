@@ -56,7 +56,7 @@ let originalFullTemplateArr = null;
 let currentTemplateArr = null;
 let templateArr = null;
 
-templateArr = imageTemplates[2].imageArr;
+templateArr = imageTemplates[3].imageArr;
 originalFullTemplateArr = copyArr(templateArr);
 
 const hintsUpArr = Array.from({ length: templateArr[0].length }, () => []);
@@ -224,8 +224,13 @@ function getNumClickedRow(event) {
 function getNumClickedCell(event) {
   const clickedCell = event.target;
   const parentNode = clickedCell.parentNode;
-  const childrenCellArr = Array.from(parentNode.children);
-  const numClickedCell = childrenCellArr.indexOf(clickedCell) - 2;
+  let childrenCellArr = Array.from(parentNode.children);
+  for (let i = 0; i < childrenCellArr.length; i++) {
+    if (childrenCellArr[i].className === 'field__cell_hint')
+      childrenCellArr[i] = 0;
+  }
+  childrenCellArr = childrenCellArr.filter((cell) => cell);
+  const numClickedCell = childrenCellArr.indexOf(clickedCell);
   return numClickedCell;
 }
 
@@ -233,6 +238,7 @@ function fillCurrentTemplateArr(i, j, event) {
   if (event.target.classList.contains('black')) {
     currentTemplateArr[i][j] = 1;
   } else currentTemplateArr[i][j] = 0;
+
   checkGameStatus();
 }
 

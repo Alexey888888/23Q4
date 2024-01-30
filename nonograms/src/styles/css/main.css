@@ -82,7 +82,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: rgb(212, 212, 212);
+  background: rgb(255, 255, 255);
 }
 @media (max-height: 699px) {
   .game-board {
@@ -96,7 +96,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #dad7d7;
+  background: #ffffff;
   width: 30px;
   height: 30px;
   border: solid 0.5px rgb(101, 96, 96);
@@ -151,7 +151,7 @@ body {
 }
 
 .black {
-  background: #323030;
+  background: #000000;
 }
 
 .column-hint {
