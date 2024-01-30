@@ -85,12 +85,24 @@ const levelBtnHard = new Node({
 let originalFullTemplateArr = null;
 let currentTemplateArr = null;
 let templateArr = null;
+let hintsUpArr = null;
+let hintsLeftArr = null;
 
-templateArr = imageTemplates[12].imageArr;
-originalFullTemplateArr = copyArr(templateArr);
+templateArr = imageTemplates[0].imageArr;
 
-const hintsUpArr = Array.from({ length: templateArr[0].length }, () => []);
-const hintsLeftArr = Array.from({ length: templateArr.length }, () => []);
+function startGame() {
+  field.node.innerHTML = '';
+
+  originalFullTemplateArr = copyArr(templateArr);
+  hintsUpArr = Array.from({ length: templateArr[0].length }, () => []);
+  hintsLeftArr = Array.from({ length: templateArr.length }, () => []);
+  addHints();
+  fillField(originalFullTemplateArr);
+  initCurrentTemplateArr();
+  addClickHandler();
+}
+
+startGame();
 
 function copyArr(arr) {
   return JSON.parse(JSON.stringify(arr));
@@ -201,8 +213,6 @@ function addHints() {
   addHintsLeft(originalFullTemplateArr, getHintsLeftArr(templateArr));
 }
 
-addHints();
-
 function fillField(fullTemplateArr) {
   fullTemplateArr.forEach((templateRow) => {
     const row = new Node({ classNames: ['field__row'] });
@@ -241,8 +251,6 @@ function fillField(fullTemplateArr) {
   });
 }
 
-fillField(originalFullTemplateArr);
-
 // -----------------------------------------------------------
 
 function initCurrentTemplateArr() {
@@ -250,8 +258,6 @@ function initCurrentTemplateArr() {
     Array.from({ length: templateArr[0].length }, () => 0),
   );
 }
-
-initCurrentTemplateArr();
 
 function getNumClickedRow(event) {
   const clickedRow = event.target.parentNode;
@@ -278,7 +284,6 @@ function fillCurrentTemplateArr(i, j, event) {
   if (event.target.classList.contains('black')) {
     currentTemplateArr[i][j] = 1;
   } else currentTemplateArr[i][j] = 0;
-  console.log(JSON.stringify(currentTemplateArr));
   checkGameStatus();
 }
 
@@ -301,8 +306,6 @@ function addClickHandler() {
   });
 }
 
-addClickHandler();
-
 // ----
 
 function openModal(flag, mode) {
@@ -314,7 +317,24 @@ function openModal(flag, mode) {
     }
 
     if (flag === 'level') {
-      modalWindowInner.addText(mode);
+      const levelList = new Node({
+        classNames: ['level__list'],
+        parentNode: modalWindowInner.node,
+      });
+      imageTemplates.forEach((image) => {
+        if (image.level === mode) {
+          const levelItem = new Node({
+            classNames: ['level__item', 'btn'],
+            parentNode: levelList.node,
+          });
+          levelItem.addText(image.title);
+          levelItem.node.addEventListener('click', (event) => {
+            const template = event.target.innerHTML;
+            closeModalWindow();
+            playNewGame(template);
+          });
+        }
+      });
     }
 
     modalWindow.addClass('modal-window_open');
@@ -348,3 +368,10 @@ function createLevelBtn() {
 }
 
 createLevelBtn();
+
+function playNewGame(templateName) {
+  imageTemplates.forEach((template) => {
+    if (template.title === templateName) templateArr = template.imageArr;
+  });
+  startGame();
+}

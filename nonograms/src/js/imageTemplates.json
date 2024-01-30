@@ -1,7 +1,7 @@
 [
   {
     "id": 0,
-    "size": "5x5",
+    "level": "easy",
     "title": "smile",
     "imageArr": [
       [1, 1, 0, 1, 1],
@@ -13,7 +13,7 @@
   },
   {
     "id": 1,
-    "size": "5x5",
+    "level": "easy",
     "title": "camel",
     "imageArr": [
       [0, 0, 0, 0, 0],
@@ -25,7 +25,7 @@
   },
   {
     "id": 2,
-    "size": "5x5",
+    "level": "easy",
     "title": "skull",
     "imageArr": [
       [0, 1, 1, 1, 0],
@@ -37,7 +37,7 @@
   },
   {
     "id": 3,
-    "size": "5x5",
+    "level": "easy",
     "title": "owl",
     "imageArr": [
       [1, 0, 0, 0, 1],
@@ -49,7 +49,7 @@
   },
   {
     "id": 4,
-    "size": "5x5",
+    "level": "easy",
     "title": "fork",
     "imageArr": [
       [1, 0, 1, 0, 1],
@@ -61,7 +61,7 @@
   },
   {
     "id": 5,
-    "size": "10x10",
+    "level": "medium",
     "title": "tree",
     "imageArr": [
       [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
@@ -78,7 +78,7 @@
   },
   {
     "id": 6,
-    "size": "10x10",
+    "level": "medium",
     "title": "cuppa",
     "imageArr": [
       [0, 0, 1, 0, 1, 0, 1, 0, 0, 0],
@@ -95,7 +95,7 @@
   },
   {
     "id": 7,
-    "size": "10x10",
+    "level": "medium",
     "title": "leaf",
     "imageArr": [
       [0, 0, 0, 0, 1, 1, 1, 1, 1, 1],
@@ -112,7 +112,7 @@
   },
   {
     "id": 8,
-    "size": "10x10",
+    "level": "medium",
     "title": "clown",
     "imageArr": [
       [0, 0, 0, 1, 1, 1, 1, 0, 0, 0],
@@ -129,7 +129,7 @@
   },
   {
     "id": 9,
-    "size": "10x10",
+    "level": "medium",
     "title": "cat",
     "imageArr": [
       [0, 0, 0, 1, 0, 1, 0, 0, 0, 0],
@@ -146,7 +146,7 @@
   },
   {
     "id": 10,
-    "size": "15x15",
+    "level": "hard",
     "title": "house",
     "imageArr": [
       [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 1],
@@ -168,7 +168,7 @@
   },
   {
     "id": 11,
-    "size": "15x15",
+    "level": "hard",
     "title": "dog",
     "imageArr": [
       [0, 0, 1, 1, 1, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0],
@@ -190,7 +190,7 @@
   },
   {
     "id": 12,
-    "size": "15x15",
+    "level": "hard",
     "title": "duck",
     "imageArr": [
       [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0],
@@ -212,8 +212,8 @@
   },
   {
     "id": 13,
-    "size": "15x15",
-    "title": ",moose",
+    "level": "hard",
+    "title": "moose",
     "imageArr": [
       [1, 1, 0, 1, 1, 0, 0, 0, 0, 0, 0, 1, 1, 0, 1],
       [1, 1, 0, 1, 1, 0, 1, 0, 0, 1, 0, 1, 1, 0, 1],
@@ -234,7 +234,7 @@
   },
   {
     "id": 14,
-    "size": "15x15",
+    "level": "hard",
     "title": "swan",
     "imageArr": [
       [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1],

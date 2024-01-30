@@ -210,4 +210,8 @@ body {
 .modal-window_open {
   transform: translateY(0);
   transition: 0.5s;
+}
+
+.level__item {
+  width: 80px;
 }/*# sourceMappingURL=main.css.map */
