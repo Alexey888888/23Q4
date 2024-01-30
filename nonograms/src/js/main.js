@@ -86,7 +86,7 @@ let originalFullTemplateArr = null;
 let currentTemplateArr = null;
 let templateArr = null;
 
-templateArr = imageTemplates[14].imageArr;
+templateArr = imageTemplates[12].imageArr;
 originalFullTemplateArr = copyArr(templateArr);
 
 const hintsUpArr = Array.from({ length: templateArr[0].length }, () => []);
@@ -132,7 +132,12 @@ function addHints() {
           if (!arr[i]) arr[i] = 0;
         }
       }
-      arr.reverse();
+      //arr.reverse();
+      arr.sort((a, b) => {
+        if (a === 0) return -1;
+        if (a !== 0 && b === 0) return 1;
+        if (a !== 0 && b !== 0) return 0;
+      });
     });
 
     return resHintsUpArr;
@@ -171,7 +176,12 @@ function addHints() {
           if (!arr[i]) arr[i] = 0;
         }
       }
-      arr.reverse();
+      //  arr.reverse();
+      arr.sort((a, b) => {
+        if (a === 0) return -1;
+        if (a !== 0 && b === 0) return 1;
+        if (a !== 0 && b !== 0) return 0;
+      });
     });
     //
     return resHintsLeftArr;
