@@ -374,4 +374,5 @@ function playNewGame(templateName) {
     if (template.title === templateName) templateArr = template.imageArr;
   });
   startGame();
+  startGame();
 }
