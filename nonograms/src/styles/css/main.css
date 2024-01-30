@@ -53,6 +53,21 @@ body {
   filter: blur(2px);
 }
 
+.btn {
+  font-size: 16px;
+  background: #626262;
+  color: #ebebeb;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  cursor: pointer;
+}
+.btn:hover {
+  scale: 1.05;
+}
+
 .game-box {
   position: absolute;
   top: 50%;

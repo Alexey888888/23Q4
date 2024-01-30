@@ -31,7 +31,7 @@ const toolsUp = new Node({
   parentNode: gameBoxWrapper.node,
 });
 const toolsUpWrapper = new Node({
-  className: ['tools-up__wrapper'],
+  classNames: ['tools-up__wrapper'],
   parentNode: toolsUp.node,
 });
 const gameBoard = new Node({
@@ -47,7 +47,7 @@ const toolsDown = new Node({
   parentNode: gameBoxWrapper.node,
 });
 const toolsDownWrapper = new Node({
-  className: ['tools-down__wrapper'],
+  classNames: ['tools-down__wrapper'],
   parentNode: toolsDown.node,
 });
 // ----------------------------------------------------------
@@ -59,6 +59,28 @@ const modalWindowInner = new Node({
   classNames: ['modal-window__inner'],
   parentNode: modalWindow.node,
 });
+// ----------------------------------------------------------
+const levelBtnWrapper = new Node({
+  classNames: ['level-btn__wrapper'],
+  parentNode: toolsUpWrapper.node,
+});
+
+const levelBtnEasy = new Node({
+  classNames: ['btn', 'level-btn__easy'],
+  parentNode: levelBtnWrapper.node,
+  texContent: 'easy',
+});
+const levelBtnMedium = new Node({
+  classNames: ['btn', 'level-btn__medium'],
+  parentNode: levelBtnWrapper.node,
+  texContent: 'medium',
+});
+const levelBtnHard = new Node({
+  classNames: ['btn', 'level-btn__hard'],
+  parentNode: levelBtnWrapper.node,
+  texContent: 'hard',
+});
+
 // ----------------------------------------------------------
 let originalFullTemplateArr = null;
 let currentTemplateArr = null;
@@ -259,11 +281,13 @@ function checkGameStatus() {
 function addClickHandler() {
   body.addEventListener('click', (event) => {
     if (event.target.classList.contains('field__cell')) {
-      event.target.classList.toggle('black');
+      if (event.target.classList.contains('field__cell')) {
+        event.target.classList.toggle('black');
+      }
+      const numClickedRow = getNumClickedRow(event);
+      const numClickedCell = getNumClickedCell(event);
+      fillCurrentTemplateArr(numClickedRow, numClickedCell, event);
     }
-    const numClickedRow = getNumClickedRow(event);
-    const numClickedCell = getNumClickedCell(event);
-    fillCurrentTemplateArr(numClickedRow, numClickedCell, event);
   });
 }
 
@@ -272,8 +296,32 @@ addClickHandler();
 // ----
 
 function openModal(flag) {
-  if (flag === 'win') {
-    modalWindowInner.addText('Great! You have solved the nonogram!');
+  modalWindowInner.node.textContent = '';
+  if (modalWindow.node.classList.contains('modal-window_open')) {
+    closeModalWindow();
   }
-  modalWindow.addClass('modal-window_open');
+  setTimeout(() => {
+    if (flag === 'win') {
+      modalWindowInner.addText('Great! You have solved the nonogram!');
+    }
+    modalWindow.addClass('modal-window_open');
+  }, 500);
 }
+
+function closeModalWindow() {
+  modalWindow.removeClass('modal-window_open');
+}
+
+// ---
+const levelBtnArr = [];
+
+function createLevelBtn() {
+  levelBtnArr.push(levelBtnEasy.node, levelBtnMedium.node, levelBtnHard.node);
+  levelBtnArr.forEach((btn) =>
+    btn.addEventListener('click', (event) => {
+      openModal('level', event);
+    }),
+  );
+}
+
+createLevelBtn();

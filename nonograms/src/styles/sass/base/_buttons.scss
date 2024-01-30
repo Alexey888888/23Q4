@@ -1,0 +1,15 @@
+.btn {
+  font-size: 16px;
+  background: #626262;
+  color: #ebebeb;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 5px;
+  cursor: pointer;
+
+  &:hover {
+    scale: 1.05;
+  }
+}
