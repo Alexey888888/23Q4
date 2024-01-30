@@ -86,7 +86,7 @@ let originalFullTemplateArr = null;
 let currentTemplateArr = null;
 let templateArr = null;
 
-templateArr = imageTemplates[0].imageArr;
+templateArr = imageTemplates[14].imageArr;
 originalFullTemplateArr = copyArr(templateArr);
 
 const hintsUpArr = Array.from({ length: templateArr[0].length }, () => []);
@@ -268,7 +268,7 @@ function fillCurrentTemplateArr(i, j, event) {
   if (event.target.classList.contains('black')) {
     currentTemplateArr[i][j] = 1;
   } else currentTemplateArr[i][j] = 0;
-
+  console.log(JSON.stringify(currentTemplateArr));
   checkGameStatus();
 }
 
@@ -295,17 +295,29 @@ addClickHandler();
 
 // ----
 
-function openModal(flag) {
+function openModal(flag, mode) {
   modalWindowInner.node.textContent = '';
-  if (modalWindow.node.classList.contains('modal-window_open')) {
-    closeModalWindow();
-  }
-  setTimeout(() => {
+
+  function afterCloseModalWindow() {
     if (flag === 'win') {
       modalWindowInner.addText('Great! You have solved the nonogram!');
     }
+
+    if (flag === 'level') {
+      modalWindowInner.addText(mode);
+    }
+
     modalWindow.addClass('modal-window_open');
-  }, 500);
+  }
+
+  if (modalWindow.node.classList.contains('modal-window_open')) {
+    closeModalWindow();
+    setTimeout(() => {
+      afterCloseModalWindow();
+    }, 500);
+  } else {
+    afterCloseModalWindow();
+  }
 }
 
 function closeModalWindow() {
@@ -319,7 +331,8 @@ function createLevelBtn() {
   levelBtnArr.push(levelBtnEasy.node, levelBtnMedium.node, levelBtnHard.node);
   levelBtnArr.forEach((btn) =>
     btn.addEventListener('click', (event) => {
-      openModal('level', event);
+      const mode = event.target.textContent;
+      openModal('level', mode);
     }),
   );
 }
