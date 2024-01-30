@@ -50,7 +50,11 @@ const toolsDownWrapper = new Node({
   className: ['tools-down__wrapper'],
   parentNode: toolsDown.node,
 });
-
+// ----------------------------------------------------------
+const modalWindow = new Node({
+  classNames: ['modal-window'],
+  parentNode: gameBoard.node,
+});
 // ----------------------------------------------------------
 let originalFullTemplateArr = null;
 let currentTemplateArr = null;
