@@ -16,6 +16,12 @@ class Node {
   addClass(className) {
     this.node.classList.add(className);
   }
+  removeClass(className) {
+    this.node.classList.remove(className);
+  }
+  addText(text) {
+    this.node.textContent = text;
+  }
 }
 
 export default Node;

@@ -55,12 +55,16 @@ const modalWindow = new Node({
   classNames: ['modal-window'],
   parentNode: gameBoard.node,
 });
+const modalWindowInner = new Node({
+  classNames: ['modal-window__inner'],
+  parentNode: modalWindow.node,
+});
 // ----------------------------------------------------------
 let originalFullTemplateArr = null;
 let currentTemplateArr = null;
 let templateArr = null;
 
-templateArr = imageTemplates[3].imageArr;
+templateArr = imageTemplates[0].imageArr;
 originalFullTemplateArr = copyArr(templateArr);
 
 const hintsUpArr = Array.from({ length: templateArr[0].length }, () => []);
@@ -248,7 +252,7 @@ function fillCurrentTemplateArr(i, j, event) {
 
 function checkGameStatus() {
   if (JSON.stringify(currentTemplateArr) === JSON.stringify(templateArr)) {
-    console.log('YOU WIN!');
+    openModal('win');
   }
 }
 
@@ -264,3 +268,12 @@ function addClickHandler() {
 }
 
 addClickHandler();
+
+// ----
+
+function openModal(flag) {
+  if (flag === 'win') {
+    modalWindowInner.addText('Great! You have solved the nonogram!');
+  }
+  modalWindow.addClass('modal-window_open');
+}

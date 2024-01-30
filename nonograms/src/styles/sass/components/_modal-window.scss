@@ -1,11 +1,20 @@
 .modal-window {
   width: 100%;
   height: 100%;
-  background: #3f3c3c;
+  background: #8e8e8e;
   position: absolute;
-  opacity: 0.9;
+  opacity: 0.99;
   transform: translateY(100%);
   transition: 0.5s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-window__inner {
+  background-color: #737272;
+  color: #000000;
+  padding: 20px 50px;
 }
 
 .modal-window_open {
