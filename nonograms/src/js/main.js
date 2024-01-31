@@ -432,3 +432,8 @@ function playNewGame(templateName) {
   startGame();
   startGame();
 }
+
+resetGameBtn.node.addEventListener('click', () => {
+  startGame();
+  startGame();
+});
