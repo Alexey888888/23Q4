@@ -335,31 +335,35 @@ function checkGameStatus() {
   }
 }
 
-function addClickCellHandler() {
-  body.addEventListener('click', (event) => {
+function leftClickCellHandler(event) {
+  if (event.target.classList.contains('field__cell')) {
+    event.target.textContent = '';
     if (event.target.classList.contains('field__cell')) {
-      event.target.textContent = '';
-      if (event.target.classList.contains('field__cell')) {
-        event.target.classList.toggle('black');
-      }
-      const numClickedRow = getNumClickedRow(event);
-      const numClickedCell = getNumClickedCell(event);
-      fillCurrentTemplateArr(numClickedRow, numClickedCell, event);
-    }
-  });
-
-  body.addEventListener('contextmenu', (event) => {
-    if (event.target.classList.contains('field__cell')) {
-      event.preventDefault();
-      event.target.classList.remove('black');
-      if (event.target.textContent !== '✖') {
-        event.target.textContent = '✖';
-      } else event.target.textContent = '';
+      event.target.classList.toggle('black');
     }
     const numClickedRow = getNumClickedRow(event);
     const numClickedCell = getNumClickedCell(event);
     fillCurrentTemplateArr(numClickedRow, numClickedCell, event);
-  });
+  }
+}
+
+function rightClickHandler(event) {
+  if (event.target.classList.contains('field__cell')) {
+    event.preventDefault();
+    event.target.classList.remove('black');
+    if (event.target.textContent !== '✖') {
+      event.target.textContent = '✖';
+    } else event.target.textContent = '';
+  }
+  const numClickedRow = getNumClickedRow(event);
+  const numClickedCell = getNumClickedCell(event);
+  fillCurrentTemplateArr(numClickedRow, numClickedCell, event);
+}
+
+function addClickCellHandler() {
+  body.addEventListener('click', leftClickCellHandler);
+
+  body.addEventListener('contextmenu', rightClickHandler);
 }
 
 // ----
@@ -430,10 +434,10 @@ function playNewGame(templateName) {
     if (template.title === templateName) templateArr = template.imageArr;
   });
   startGame();
-  startGame();
+  // startGame();
 }
 
 resetGameBtn.node.addEventListener('click', () => {
   startGame();
-  startGame();
+  // startGame();
 });
