@@ -97,7 +97,7 @@ function startGame() {
   addHints();
   fillField(originalFullTemplateArr);
   initCurrentTemplateArr();
-  addClickHandler();
+  addClickCellHandler();
 }
 
 startGame();
@@ -291,9 +291,10 @@ function checkGameStatus() {
   }
 }
 
-function addClickHandler() {
+function addClickCellHandler() {
   body.addEventListener('click', (event) => {
     if (event.target.classList.contains('field__cell')) {
+      event.target.textContent = '';
       if (event.target.classList.contains('field__cell')) {
         event.target.classList.toggle('black');
       }
@@ -301,6 +302,19 @@ function addClickHandler() {
       const numClickedCell = getNumClickedCell(event);
       fillCurrentTemplateArr(numClickedRow, numClickedCell, event);
     }
+  });
+
+  body.addEventListener('contextmenu', (event) => {
+    event.preventDefault();
+    event.target.classList.remove('black');
+    if (event.target.classList.contains('field__cell')) {
+      if (event.target.textContent !== '✖') {
+        event.target.textContent = '✖';
+      } else event.target.textContent = '';
+    }
+    const numClickedRow = getNumClickedRow(event);
+    const numClickedCell = getNumClickedCell(event);
+    fillCurrentTemplateArr(numClickedRow, numClickedCell, event);
   });
 }
 

@@ -30,6 +30,10 @@
   }
 }
 
+.field__cell {
+  color: black;
+}
+
 //-
 .field > :nth-child(5n + 6) > * {
   //  > *
