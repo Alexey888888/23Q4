@@ -91,6 +91,13 @@ body {
   }
 }
 
+.tools-up__wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 .game-board {
   position: relative;
   overflow: hidden;
@@ -190,6 +197,13 @@ body {
   .tools-down {
     height: 640px;
   }
+}
+
+.tools-down__wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
 .modal-window {

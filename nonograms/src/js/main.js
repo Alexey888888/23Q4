@@ -80,6 +80,50 @@ const levelBtnHard = new Node({
 });
 
 // ----------------------------------------------------------
+
+const resetGameBtn = new Node({
+  classNames: ['btn'],
+  parentNode: toolsUpWrapper.node,
+  texContent: 'Reset game',
+});
+
+const changeThemeBtn = new Node({
+  classNames: ['btn'],
+  parentNode: toolsUpWrapper.node,
+  texContent: 'Theme',
+});
+
+const soundBtn = new Node({
+  classNames: ['btn'],
+  parentNode: toolsUpWrapper.node,
+  texContent: 'Sound',
+});
+
+const saveGameBtn = new Node({
+  classNames: ['btn'],
+  parentNode: toolsDownWrapper.node,
+  texContent: 'Save game',
+});
+
+const continueGameBtn = new Node({
+  classNames: ['btn'],
+  parentNode: toolsDownWrapper.node,
+  texContent: 'Continue last game',
+});
+
+const randomGameBtn = new Node({
+  classNames: ['btn'],
+  parentNode: toolsDownWrapper.node,
+  texContent: 'Random game',
+});
+
+const solutionsBtn = new Node({
+  classNames: ['btn'],
+  parentNode: toolsDownWrapper.node,
+  texContent: 'Solutions',
+});
+
+// ----------------------------------------------------------
 let originalFullTemplateArr = null;
 let currentTemplateArr = null;
 let templateArr = null;
@@ -305,9 +349,9 @@ function addClickCellHandler() {
   });
 
   body.addEventListener('contextmenu', (event) => {
-    event.preventDefault();
-    event.target.classList.remove('black');
     if (event.target.classList.contains('field__cell')) {
+      event.preventDefault();
+      event.target.classList.remove('black');
       if (event.target.textContent !== '✖') {
         event.target.textContent = '✖';
       } else event.target.textContent = '';
