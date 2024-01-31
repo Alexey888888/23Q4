@@ -3,8 +3,6 @@ import imageTemplates from './imageTemplates.json' assert { type: 'json' };
 
 const { body } = document;
 
-body.innerHTML = ''; // ------REMOVE
-
 const header = new Node({
   tagName: 'header',
   classNames: ['header'],
