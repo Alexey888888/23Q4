@@ -81,6 +81,13 @@ const levelBtnHard = new Node({
 
 // ----------------------------------------------------------
 
+const gameDuration = new Node({
+  classNames: ['game-duration'],
+  parentNode: gameBoard.node,
+});
+
+//
+
 const resetGameBtn = new Node({
   classNames: ['btn'],
   parentNode: toolsUpWrapper.node,
@@ -129,12 +136,18 @@ let currentTemplateArr = null;
 let templateArr = null;
 let hintsUpArr = null;
 let hintsLeftArr = null;
+let sec = 0;
+let isDuration = false;
+let timerID;
 
 templateArr = imageTemplates[0].imageArr;
 
 function startGame() {
   field.node.innerHTML = '';
-
+  clearInterval(timerID);
+  gameDuration.node.textContent = '00:00';
+  isDuration = false;
+  sec = 0;
   originalFullTemplateArr = copyArr(templateArr);
   hintsUpArr = Array.from({ length: templateArr[0].length }, () => []);
   hintsLeftArr = Array.from({ length: templateArr.length }, () => []);
@@ -331,12 +344,15 @@ function fillCurrentTemplateArr(i, j, event) {
 
 function checkGameStatus() {
   if (JSON.stringify(currentTemplateArr) === JSON.stringify(templateArr)) {
+    isDuration = false;
+    clearInterval(timerID);
     openModal('win');
   }
 }
 
 function leftClickCellHandler(event) {
   if (event.target.classList.contains('field__cell')) {
+    if (!isDuration) startGameDuration();
     event.target.textContent = '';
     if (event.target.classList.contains('field__cell')) {
       event.target.classList.toggle('black');
@@ -349,6 +365,7 @@ function leftClickCellHandler(event) {
 
 function rightClickHandler(event) {
   if (event.target.classList.contains('field__cell')) {
+    if (!isDuration) startGameDuration();
     event.preventDefault();
     event.target.classList.remove('black');
     if (event.target.textContent !== '✖') {
@@ -362,7 +379,6 @@ function rightClickHandler(event) {
 
 function addClickCellHandler() {
   body.addEventListener('click', leftClickCellHandler);
-
   body.addEventListener('contextmenu', rightClickHandler);
 }
 
@@ -373,7 +389,9 @@ function openModal(flag, mode) {
 
   function afterCloseModalWindow() {
     if (flag === 'win') {
-      modalWindowInner.addText('Great! You have solved the nonogram!');
+      modalWindowInner.addText(
+        `Great! You have solved the nonogram in ${sec} seconds!`,
+      );
     }
 
     if (flag === 'level') {
@@ -430,14 +448,27 @@ function createLevelBtn() {
 createLevelBtn();
 
 function playNewGame(templateName) {
+  sec = 0;
   imageTemplates.forEach((template) => {
     if (template.title === templateName) templateArr = template.imageArr;
   });
   startGame();
-  // startGame();
 }
 
 resetGameBtn.node.addEventListener('click', () => {
+  modalWindow.removeClass('modal-window_open');
   startGame();
-  // startGame();
 });
+
+//--
+
+function startGameDuration() {
+  isDuration = true;
+  timerID = setInterval(() => {
+    sec++;
+    gameDuration.node.textContent =
+      String(Math.floor(sec / 60)).padStart(2, '0') +
+      ':' +
+      String(sec % 60).padStart(2, '0');
+  }, 1000);
+}

@@ -104,6 +104,7 @@ body {
   width: 750px;
   height: 700px;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   background: rgb(255, 255, 255);
