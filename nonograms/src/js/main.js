@@ -131,6 +131,14 @@ const solutionsBtn = new Node({
 });
 
 // ----------------------------------------------------------
+
+const paintSound = new Audio('./src/audio/paint.mp3');
+const crossSound = new Audio('./src/audio/cross.mp3');
+const removeSound = new Audio('./src/audio/remove.mp3');
+const winSound = new Audio('./src/audio/win.mp3');
+
+//-----------------------------------------------------------
+
 let originalFullTemplateArr = null;
 let currentTemplateArr = null;
 let templateArr = null;
@@ -352,6 +360,8 @@ function checkGameStatus() {
 
 function leftClickCellHandler(event) {
   if (event.target.classList.contains('field__cell')) {
+    if (!event.target.classList.contains('black')) paintSound.play();
+    if (event.target.classList.contains('black')) removeSound.play();
     if (!isDuration) startGameDuration();
     event.target.textContent = '';
     if (event.target.classList.contains('field__cell')) {
@@ -366,6 +376,8 @@ function leftClickCellHandler(event) {
 function rightClickHandler(event) {
   if (event.target.classList.contains('field__cell')) {
     if (!isDuration) startGameDuration();
+    if (event.target.textContent !== '✖') crossSound.play();
+    if (event.target.textContent === '✖') removeSound.play();
     event.preventDefault();
     event.target.classList.remove('black');
     if (event.target.textContent !== '✖') {
@@ -389,6 +401,7 @@ function openModal(flag, mode) {
 
   function afterCloseModalWindow() {
     if (flag === 'win') {
+      winSound.play();
       modalWindowInner.addText(
         `Great! You have solved the nonogram in ${sec} seconds!`,
       );
