@@ -1,5 +1,7 @@
 .btn {
   font-size: 16px;
+  line-height: 18px;
+  padding: 8px 0;
   background: #626262;
   color: #ebebeb;
   border-radius: 5px;
@@ -8,13 +10,32 @@
   align-items: center;
   margin: 5px;
   cursor: pointer;
+  text-align: center;
 
   &:hover {
     scale: 1.05;
   }
+
+  @media (max-width: 870px) {
+    font-size: 14px;
+    line-height: 18px;
+  }
+
+  @media (max-width: 731px) {
+    width: 100px;
+    height: 50px;
+  }
 }
 
-.sound-btn__icon {
-  width: 100%;
-  opacity: 0.5;
+.sound-btn__icon,
+.theme-btn__icon {
+  width: 40%;
+
+  filter: invert(90%);
+}
+
+.level-btn__wrapper {
+  @media (max-width: 731px) {
+    display: flex;
+  }
 }

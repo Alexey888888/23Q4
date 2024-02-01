@@ -8,4 +8,8 @@
 
 .game-box__wrapper {
   display: flex;
+
+  @media (max-width: 731px) {
+    flex-direction: column;
+  }
 }

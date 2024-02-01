@@ -43,6 +43,12 @@ body {
   font-weight: 400;
   line-height: 30px;
 }
+@media (max-width: 731px) {
+  body {
+    font-size: 18px;
+    line-height: 20px;
+  }
+}
 
 .main-background {
   position: absolute;
@@ -55,6 +61,8 @@ body {
 
 .btn {
   font-size: 16px;
+  line-height: 18px;
+  padding: 8px 0;
   background: #626262;
   color: #ebebeb;
   border-radius: 5px;
@@ -63,14 +71,34 @@ body {
   align-items: center;
   margin: 5px;
   cursor: pointer;
+  text-align: center;
 }
 .btn:hover {
   scale: 1.05;
 }
+@media (max-width: 870px) {
+  .btn {
+    font-size: 14px;
+    line-height: 18px;
+  }
+}
+@media (max-width: 731px) {
+  .btn {
+    width: 100px;
+    height: 50px;
+  }
+}
 
-.sound-btn__icon {
-  width: 100%;
-  opacity: 0.5;
+.sound-btn__icon,
+.theme-btn__icon {
+  width: 40%;
+  filter: invert(90%);
+}
+
+@media (max-width: 731px) {
+  .level-btn__wrapper {
+    display: flex;
+  }
 }
 
 .game-box {
@@ -84,10 +112,15 @@ body {
 .game-box__wrapper {
   display: flex;
 }
+@media (max-width: 731px) {
+  .game-box__wrapper {
+    flex-direction: column;
+  }
+}
 
 .tools-up {
   height: 700px;
-  width: 80px;
+  width: 120px;
   background: #958d8d;
 }
 @media (max-height: 699px) {
@@ -95,12 +128,43 @@ body {
     height: 640px;
   }
 }
+@media (max-width: 870px) {
+  .tools-up {
+    width: 80px;
+  }
+}
+@media (max-width: 731px) {
+  .tools-up {
+    height: 60px;
+    width: 555px;
+  }
+}
+@media (max-width: 571px) {
+  .tools-up {
+    width: 496px;
+  }
+}
+@media (max-width: 513px) {
+  .tools-up {
+    width: 480px;
+  }
+}
 
 .tools-up__wrapper {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 50px 0;
+}
+@media (max-width: 731px) {
+  .tools-up__wrapper {
+    flex-direction: row;
+    padding: 0;
+  }
+  .tools-up__wrapper .btn {
+    width: 80px;
+  }
 }
 
 .game-board {
@@ -117,6 +181,31 @@ body {
 @media (max-height: 699px) {
   .game-board {
     height: 640px;
+  }
+}
+@media (max-width: 1015px) {
+  .game-board {
+    width: 600px;
+  }
+}
+@media (max-width: 785px) {
+  .game-board {
+    width: 555px;
+  }
+}
+@media (max-width: 731px) {
+  .game-board {
+    height: 500px;
+  }
+}
+@media (max-width: 571px) {
+  .game-board {
+    width: 496px;
+  }
+}
+@media (max-width: 513px) {
+  .game-board {
+    width: 480px;
   }
 }
 
@@ -138,9 +227,52 @@ body {
     height: 27px;
   }
 }
+@media (max-width: 785px) {
+  .field__cell,
+  .field__cell_hint {
+    width: 25px;
+    height: 25px;
+  }
+}
+@media (max-width: 731px) {
+  .field__cell,
+  .field__cell_hint {
+    width: 23.7px;
+    height: 23.7px;
+  }
+}
+@media (max-width: 571px) {
+  .field__cell,
+  .field__cell_hint {
+    width: 22.1px;
+    height: 22.1px;
+  }
+}
+@media (max-width: 513px) {
+  .field__cell,
+  .field__cell_hint {
+    width: 21.5px;
+    height: 21.5px;
+  }
+}
 
 .field__cell {
   color: black;
+}
+
+.field__cell_hint {
+  font-size: 20px;
+  line-height: 20px;
+}
+@media (max-width: 785px) {
+  .field__cell_hint {
+    font-size: 17px;
+  }
+}
+@media (max-width: 571px) {
+  .field__cell_hint {
+    font-size: 15px;
+  }
 }
 
 .field > :nth-child(5n+6) > * {
@@ -194,9 +326,23 @@ body {
   justify-content: end;
 }
 
+.game-duration {
+  margin-top: 15px;
+}
+@media (max-width: 731px) {
+  .game-duration {
+    margin-top: 0;
+  }
+}
+@media (max-width: 571px) {
+  .game-duration {
+    margin-top: 15px;
+  }
+}
+
 .tools-down {
   height: 700px;
-  width: 80px;
+  width: 120px;
   background: #958d8d;
 }
 @media (max-height: 699px) {
@@ -204,12 +350,30 @@ body {
     height: 640px;
   }
 }
+@media (max-width: 870px) {
+  .tools-down {
+    width: 80px;
+  }
+}
+@media (max-width: 731px) {
+  .tools-down {
+    height: 60px;
+    width: 100%;
+  }
+}
 
 .tools-down__wrapper {
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 50px 0;
+}
+@media (max-width: 731px) {
+  .tools-down__wrapper {
+    flex-direction: row;
+    padding: 0;
+  }
 }
 
 .modal-window {

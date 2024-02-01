@@ -94,10 +94,10 @@ const resetGameBtn = new Node({
   texContent: 'Reset game',
 });
 
-const changeThemeBtn = new Node({
+const randomGameBtn = new Node({
   classNames: ['btn'],
   parentNode: toolsUpWrapper.node,
-  texContent: 'Theme',
+  texContent: 'Random game',
 });
 
 const soundBtn = new Node({
@@ -124,17 +124,23 @@ const continueGameBtn = new Node({
   texContent: 'Continue last game',
 });
 
-const randomGameBtn = new Node({
-  classNames: ['btn'],
-  parentNode: toolsDownWrapper.node,
-  texContent: 'Random game',
-});
-
 const solutionsBtn = new Node({
   classNames: ['btn'],
   parentNode: toolsDownWrapper.node,
   texContent: 'Solutions',
 });
+
+const themeBtn = new Node({
+  classNames: ['btn'],
+  parentNode: toolsDownWrapper.node,
+});
+
+const themeBtnIcon = new Node({
+  tagName: 'img',
+  classNames: ['theme-btn__icon'],
+  parentNode: themeBtn.node,
+});
+themeBtnIcon.node.src = './src/img/png/theme_light_dark_icon.png';
 
 // ----------------------------------------------------------
 

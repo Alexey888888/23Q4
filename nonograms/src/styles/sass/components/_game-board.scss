@@ -7,10 +7,29 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   background: rgb(255, 255, 255);
+
   @media (max-height: 699px) {
     height: 640px;
+  }
+
+  @media (max-width: 1015px) {
+    width: 600px;
+  }
+
+  @media (max-width: 785px) {
+    width: 555px;
+  }
+  @media (max-width: 731px) {
+    height: 500px;
+  }
+
+  @media (max-width: 571px) {
+    width: 496px;
+  }
+
+  @media (max-width: 513px) {
+    width: 480px;
   }
 }
 
@@ -29,10 +48,42 @@
     width: 27px;
     height: 27px;
   }
+
+  @media (max-width: 785px) {
+    width: 25px;
+    height: 25px;
+  }
+
+  @media (max-width: 731px) {
+    width: 23.7px;
+    height: 23.7px;
+  }
+
+  @media (max-width: 571px) {
+    width: 22.1px;
+    height: 22.1px;
+  }
+  @media (max-width: 513px) {
+    width: 21.5px;
+    height: 21.5px;
+  }
 }
 
 .field__cell {
   color: black;
+}
+
+.field__cell_hint {
+  font-size: 20px;
+  line-height: 20px;
+
+  @media (max-width: 785px) {
+    font-size: 17px;
+  }
+
+  @media (max-width: 571px) {
+    font-size: 15px;
+  }
 }
 
 //-
@@ -93,4 +144,16 @@
   display: flex; // temp
   flex-direction: column; // temp
   justify-content: end;
+}
+
+.game-duration {
+  margin-top: 15px;
+
+  @media (max-width: 731px) {
+    margin-top: 0;
+  }
+
+  @media (max-width: 571px) {
+    margin-top: 15px;
+  }
 }
