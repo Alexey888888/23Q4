@@ -68,6 +68,11 @@ body {
   scale: 1.05;
 }
 
+.sound-btn__icon {
+  width: 100%;
+  opacity: 0.5;
+}
+
 .game-box {
   position: absolute;
   top: 50%;

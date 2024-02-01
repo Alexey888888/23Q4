@@ -103,8 +103,14 @@ const changeThemeBtn = new Node({
 const soundBtn = new Node({
   classNames: ['btn'],
   parentNode: toolsUpWrapper.node,
-  texContent: 'Sound',
 });
+
+const soundBtnIcon = new Node({
+  tagName: 'img',
+  classNames: ['sound-btn__icon'],
+  parentNode: soundBtn.node,
+});
+soundBtnIcon.node.src = './src/img/png/sound-on.png';
 
 const saveGameBtn = new Node({
   classNames: ['btn'],
@@ -147,6 +153,7 @@ let hintsLeftArr = null;
 let sec = 0;
 let isDuration = false;
 let timerID;
+let isSound = true;
 
 templateArr = imageTemplates[0].imageArr;
 
@@ -360,8 +367,8 @@ function checkGameStatus() {
 
 function leftClickCellHandler(event) {
   if (event.target.classList.contains('field__cell')) {
-    if (!event.target.classList.contains('black')) paintSound.play();
-    if (event.target.classList.contains('black')) removeSound.play();
+    if (!event.target.classList.contains('black') && isSound) paintSound.play();
+    if (event.target.classList.contains('black') && isSound) removeSound.play();
     if (!isDuration) startGameDuration();
     event.target.textContent = '';
     if (event.target.classList.contains('field__cell')) {
@@ -376,8 +383,8 @@ function leftClickCellHandler(event) {
 function rightClickHandler(event) {
   if (event.target.classList.contains('field__cell')) {
     if (!isDuration) startGameDuration();
-    if (event.target.textContent !== '✖') crossSound.play();
-    if (event.target.textContent === '✖') removeSound.play();
+    if (event.target.textContent !== '✖' && isSound) crossSound.play();
+    if (event.target.textContent === '✖' && isSound) removeSound.play();
     event.preventDefault();
     event.target.classList.remove('black');
     if (event.target.textContent !== '✖') {
@@ -401,7 +408,7 @@ function openModal(flag, mode) {
 
   function afterCloseModalWindow() {
     if (flag === 'win') {
-      winSound.play();
+      if (isSound) winSound.play();
       modalWindowInner.addText(
         `Great! You have solved the nonogram in ${sec} seconds!`,
       );
@@ -485,3 +492,19 @@ function startGameDuration() {
       String(sec % 60).padStart(2, '0');
   }, 1000);
 }
+
+// --
+
+function soundBtnHandler() {
+  soundBtn.node.addEventListener('click', () => {
+    if (isSound) {
+      soundBtnIcon.node.src = './src/img/png/sound-off.png';
+      isSound = false;
+    } else {
+      soundBtnIcon.node.src = './src/img/png/sound-on.png';
+      isSound = true;
+    }
+  });
+}
+
+soundBtnHandler();
