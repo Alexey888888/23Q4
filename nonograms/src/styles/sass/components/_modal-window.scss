@@ -13,7 +13,8 @@
 
 .modal-window__inner {
   background-color: #737272;
-  color: #000000;
+  border-radius: 5px;
+  color: #ffffff;
   padding: 20px 50px;
 }
 
@@ -24,4 +25,13 @@
 
 .level__item {
   width: 80px;
+}
+
+.modal-window_dark {
+  background: #505050;
+
+  .modal-window__inner {
+    background-color: #272626;
+    color: #55a07d;
+  }
 }

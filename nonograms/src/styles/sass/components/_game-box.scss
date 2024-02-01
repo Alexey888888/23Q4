@@ -13,3 +13,74 @@
     flex-direction: column;
   }
 }
+
+.game-box_dark {
+  .game-board {
+    background: linear-gradient(45deg, rgb(70, 70, 70), rgb(129, 129, 129));
+  }
+
+  .field__cell,
+  .field__cell_hint {
+    color: #55a07d;
+    background: rgb(100, 100, 100);
+    border-color: #003e3e;
+  }
+
+  .black {
+    background: rgb(3, 42, 37);
+  }
+
+  .tools-up,
+  .tools-down {
+    background: linear-gradient(45deg, rgb(28, 28, 28), rgb(69, 69, 69));
+  }
+
+  .btn {
+    background: linear-gradient(45deg, rgb(0, 0, 0), rgb(35, 35, 35));
+    color: #7fc8a6;
+
+    .theme-btn__icon,
+    .sound-btn__icon {
+      filter: invert(40%) sepia(100%) hue-rotate(90deg);
+    }
+  }
+
+  .game-duration {
+    color: #55a07d;
+  }
+
+  // --
+  .field > :nth-child(5n + 6) > * {
+    //  > *
+    border-bottom: 2px solid #003e3e;
+  }
+
+  .field__cell:nth-last-child(5n) {
+    border-left: 2px solid #003e3e;
+  }
+
+  .field__cell:last-child {
+    border-right: 2px solid #003e3e;
+  }
+
+  .field__row:first-child > :nth-child(5n + 1) > * {
+    border-left: 2px solid #003e3e;
+  }
+
+  .field__row:first-child {
+    border-top: 2px solid #003e3e;
+  }
+
+  .field__row:first-child > :last-child > * {
+    border-right: 2px solid #003e3e;
+  }
+
+  .field__row {
+    border-left: 2px solid #003e3e;
+  }
+
+  .field__row:nth-child(2) > * {
+    border-top: 2px solid #003e3e;
+  }
+  // --
+}

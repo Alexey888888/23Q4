@@ -59,6 +59,11 @@ body {
   filter: blur(2px);
 }
 
+.main-background_dark {
+  opacity: 1;
+  filter: blur(5px) sepia(100%) hue-rotate(90deg);
+}
+
 .btn {
   font-size: 16px;
   line-height: 18px;
@@ -75,6 +80,9 @@ body {
 }
 .btn:hover {
   scale: 1.05;
+}
+.btn .btn_dark {
+  background: #000000;
 }
 @media (max-width: 870px) {
   .btn {
@@ -116,6 +124,58 @@ body {
   .game-box__wrapper {
     flex-direction: column;
   }
+}
+
+.game-box_dark .game-board {
+  background: linear-gradient(45deg, rgb(70, 70, 70), rgb(129, 129, 129));
+}
+.game-box_dark .field__cell,
+.game-box_dark .field__cell_hint {
+  color: #55a07d;
+  background: rgb(100, 100, 100);
+  border-color: #003e3e;
+}
+.game-box_dark .black {
+  background: rgb(3, 42, 37);
+}
+.game-box_dark .tools-up,
+.game-box_dark .tools-down {
+  background: linear-gradient(45deg, rgb(28, 28, 28), rgb(69, 69, 69));
+}
+.game-box_dark .btn {
+  background: linear-gradient(45deg, rgb(0, 0, 0), rgb(35, 35, 35));
+  color: #7fc8a6;
+}
+.game-box_dark .btn .theme-btn__icon,
+.game-box_dark .btn .sound-btn__icon {
+  filter: invert(40%) sepia(100%) hue-rotate(90deg);
+}
+.game-box_dark .game-duration {
+  color: #55a07d;
+}
+.game-box_dark .field > :nth-child(5n+6) > * {
+  border-bottom: 2px solid #003e3e;
+}
+.game-box_dark .field__cell:nth-last-child(5n) {
+  border-left: 2px solid #003e3e;
+}
+.game-box_dark .field__cell:last-child {
+  border-right: 2px solid #003e3e;
+}
+.game-box_dark .field__row:first-child > :nth-child(5n+1) > * {
+  border-left: 2px solid #003e3e;
+}
+.game-box_dark .field__row:first-child {
+  border-top: 2px solid #003e3e;
+}
+.game-box_dark .field__row:first-child > :last-child > * {
+  border-right: 2px solid #003e3e;
+}
+.game-box_dark .field__row {
+  border-left: 2px solid #003e3e;
+}
+.game-box_dark .field__row:nth-child(2) > * {
+  border-top: 2px solid #003e3e;
 }
 
 .tools-up {
@@ -304,7 +364,7 @@ body {
 }
 
 .field__row:nth-child(2) > * {
-  border-top: 2px solid #040404;
+  border-top: 2px solid #000;
 }
 
 .field__row {
@@ -313,7 +373,7 @@ body {
 }
 
 .grey {
-  background: #dbdada;
+  background: #ffffff;
 }
 
 .black {
@@ -391,7 +451,8 @@ body {
 
 .modal-window__inner {
   background-color: #737272;
-  color: #000000;
+  border-radius: 5px;
+  color: #ffffff;
   padding: 20px 50px;
 }
 
@@ -402,4 +463,12 @@ body {
 
 .level__item {
   width: 80px;
+}
+
+.modal-window_dark {
+  background: #505050;
+}
+.modal-window_dark .modal-window__inner {
+  background-color: #272626;
+  color: #55a07d;
 }/*# sourceMappingURL=main.css.map */

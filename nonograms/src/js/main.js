@@ -514,3 +514,13 @@ function soundBtnHandler() {
 }
 
 soundBtnHandler();
+
+function themeBtnHandler() {
+  themeBtn.node.addEventListener('click', () => {
+    background.node.classList.toggle('main-background_dark');
+    gameBox.node.classList.toggle('game-box_dark');
+    modalWindow.node.classList.toggle('modal-window_dark');
+  });
+}
+
+themeBtnHandler();
