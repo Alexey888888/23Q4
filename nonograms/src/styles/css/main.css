@@ -478,6 +478,9 @@ body {
     flex-direction: row;
     padding: 0;
   }
+  .tools-down__wrapper .btn {
+    width: 80px;
+  }
 }
 
 .modal-window {

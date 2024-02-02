@@ -143,6 +143,12 @@ const solutionsBtn = new Node({
   texContent: 'Solutions',
 });
 
+const highScoreBtn = new Node({
+  classNames: ['btn'],
+  parentNode: toolsDownWrapper.node,
+  texContent: 'High score',
+});
+
 const themeBtn = new Node({
   classNames: ['btn'],
   parentNode: toolsDownWrapper.node,

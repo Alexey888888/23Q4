@@ -29,5 +29,9 @@
   @media (max-width: 731px) {
     flex-direction: row;
     padding: 0;
+
+    .btn {
+      width: 80px;
+    }
   }
 }
