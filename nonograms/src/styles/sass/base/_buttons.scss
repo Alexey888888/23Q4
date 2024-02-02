@@ -34,8 +34,12 @@
 .sound-btn__icon,
 .theme-btn__icon {
   width: 40%;
-
   filter: invert(90%);
+}
+
+.theme-btn__icon {
+  transform: rotate(180deg);
+  transition: 0.5s;
 }
 
 .level-btn__wrapper {

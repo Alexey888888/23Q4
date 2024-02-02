@@ -4,6 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0px 0px 85px 10px rgba(100, 100, 100, 0.75);
+  transition: 0.5s;
 }
 
 .game-box__wrapper {
@@ -42,6 +43,10 @@
     .theme-btn__icon,
     .sound-btn__icon {
       filter: invert(40%) sepia(100%) hue-rotate(90deg);
+    }
+
+    .theme-btn__icon {
+      transform: rotate(0);
     }
   }
 
