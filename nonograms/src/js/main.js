@@ -357,14 +357,18 @@ function getNumClickedCell(event) {
 }
 
 function fillCurrentTemplateArr(i, j, event) {
-  if (event.target.classList.contains('black')) {
-    currentTemplateArr[i][j] = 1;
-  } else currentTemplateArr[i][j] = 0;
+  if (event.target.classList.contains('black')) currentTemplateArr[i][j] = 1;
+  if (!event.target.classList.contains('black')) currentTemplateArr[i][j] = 0;
+  if (event.target.textContent === '✖') currentTemplateArr[i][j] = 2;
   checkGameStatus();
 }
 
 function checkGameStatus() {
-  if (JSON.stringify(currentTemplateArr) === JSON.stringify(templateArr)) {
+  if (
+    JSON.stringify(
+      currentTemplateArr.map((row) => row.map((el) => (el === 2 ? 0 : el))),
+    ) === JSON.stringify(templateArr)
+  ) {
     isDuration = false;
     clearInterval(timerID);
     openModal('win');
@@ -524,3 +528,63 @@ function themeBtnHandler() {
 }
 
 themeBtnHandler();
+
+// -----------------------
+
+function saveBtnHandler() {
+  saveGameBtn.node.addEventListener('click', saveGame);
+}
+
+function saveGame() {
+  localStorage.setItem('templateArr_888888', JSON.stringify(templateArr));
+  localStorage.setItem(
+    'currentTemplateArr_888888',
+    JSON.stringify(currentTemplateArr),
+  );
+  localStorage.setItem('gameDuration_888888', sec);
+}
+
+function continueBtnHandler() {
+  continueGameBtn.node.addEventListener('click', continueGame);
+}
+
+function continueGame() {
+  templateArr = JSON.parse(localStorage.getItem('templateArr_888888'));
+  startGame();
+  currentTemplateArr = JSON.parse(
+    localStorage.getItem('currentTemplateArr_888888'),
+  );
+  fieldRecovery();
+  gameDurationRecovery();
+}
+
+function fieldRecovery() {
+  const startFieldArr = Array.from(field.node.children);
+  startFieldArr.shift();
+  let totalLeftHintNumber = 0;
+  startFieldArr.forEach((row) => {
+    Array.from(row.children).forEach((cell) => {
+      if (!cell.classList.contains('field__cell')) totalLeftHintNumber++;
+    });
+  });
+  const displacement = totalLeftHintNumber / startFieldArr.length;
+  for (let i = 0; i < currentTemplateArr.length; i++) {
+    for (let j = 0; j < currentTemplateArr[0].length; j++) {
+      if (currentTemplateArr[i][j] === 1)
+        startFieldArr[i].children[j + displacement].classList.add('black');
+      if (currentTemplateArr[i][j] === 2)
+        startFieldArr[i].children[j + displacement].textContent = '✖';
+    }
+  }
+}
+
+function gameDurationRecovery() {
+  sec = localStorage.getItem('gameDuration_888888');
+  gameDuration.node.textContent =
+    String(Math.floor(sec / 60)).padStart(2, '0') +
+    ':' +
+    String(sec % 60).padStart(2, '0');
+}
+
+saveBtnHandler();
+continueBtnHandler();
