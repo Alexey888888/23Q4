@@ -179,12 +179,14 @@ let sec = 0;
 let isDuration = false;
 let timerID;
 let isSound = true;
+let win = false;
 let templateNum = 0;
 localStorage.setItem('templateNum_888888', templateNum);
 
 templateArr = imageTemplates[templateNum].imageArr;
 
 function startGame() {
+  win = false;
   field.node.innerHTML = '';
   clearInterval(timerID);
   gameDuration.node.textContent = '00:00';
@@ -391,6 +393,7 @@ function checkGameStatus() {
       currentTemplateArr.map((row) => row.map((el) => (el === 2 ? 0 : el))),
     ) === JSON.stringify(templateArr)
   ) {
+    win = true;
     isDuration = false;
     openGameBoardBlackout();
     clearInterval(timerID);
@@ -441,6 +444,7 @@ function openModal(flag, mode) {
 
   function afterCloseModalWindow() {
     if (flag === 'win') {
+      openGameBoxBlackout();
       if (isSound) winSound.play();
       modalWindowInner.addText(
         `Great! You have solved the nonogram in ${sec} seconds!`,
@@ -448,6 +452,7 @@ function openModal(flag, mode) {
     }
 
     if (flag === 'level') {
+      openGameBoxBlackout();
       const levelList = new Node({
         classNames: ['level__list'],
         parentNode: modalWindowInner.node,
@@ -460,6 +465,7 @@ function openModal(flag, mode) {
           });
           levelItem.addText(image.title);
           levelItem.node.addEventListener('click', (event) => {
+            closeGameBoxBlackout();
             const template = event.target.innerHTML;
             closeModalWindow();
             playNewGame(template);
@@ -469,7 +475,12 @@ function openModal(flag, mode) {
     }
 
     if (flag === 'error' && mode === 'localStorage') {
-      modalWindowInner.addText('You have not saved game!');
+      modalWindowInner.addText('You have no saved games!');
+      openGameBoxBlackout();
+    }
+
+    if (flag === 'error' && mode === 'win') {
+      modalWindowInner.addText("You can't save finalized game!");
       openGameBoxBlackout();
     }
 
@@ -581,16 +592,22 @@ function saveBtnHandler() {
 
 function saveGame() {
   closeModalWindow();
-  localStorage.setItem('templateArr_888888', JSON.stringify(templateArr));
-  localStorage.setItem(
-    'currentTemplateArr_888888',
-    JSON.stringify(currentTemplateArr),
-  );
-  localStorage.setItem('gameDuration_888888', sec);
+  if (win === true) {
+    closeModalWindow();
+    openModal('error', 'win');
+  } else {
+    localStorage.setItem('templateArr_888888', JSON.stringify(templateArr));
+    localStorage.setItem(
+      'currentTemplateArr_888888',
+      JSON.stringify(currentTemplateArr),
+    );
+    localStorage.setItem('gameDuration_888888', sec);
+  }
 }
 
 function continueBtnHandler() {
   continueGameBtn.node.addEventListener('click', () => {
+    closeModalWindow();
     if (
       localStorage.getItem('templateArr_888888') &&
       localStorage.getItem('currentTemplateArr_888888') &&
@@ -669,6 +686,7 @@ function setTemplateNumLocalStorage() {
 
 function addRandomGameBtnHandler() {
   randomGameBtn.node.addEventListener('click', () => {
+    closeModalWindow();
     setTemplateNumLocalStorage();
     templateArr = imageTemplates[templateNum].imageArr;
     startGame();
