@@ -179,8 +179,10 @@ let sec = 0;
 let isDuration = false;
 let timerID;
 let isSound = true;
+let templateNum = 0;
+localStorage.setItem('templateNum_888888', templateNum);
 
-templateArr = imageTemplates[0].imageArr;
+templateArr = imageTemplates[templateNum].imageArr;
 
 function startGame() {
   field.node.innerHTML = '';
@@ -648,3 +650,29 @@ function addCloseBtnHandler() {
 }
 
 addCloseBtnHandler();
+
+// ----------
+
+function getRandomNum() {
+  const randomNum = Math.floor(Math.random() * imageTemplates.length);
+  return randomNum;
+}
+
+function setTemplateNumLocalStorage() {
+  templateNum = getRandomNum();
+  if (localStorage.getItem('templateNum_888888')) {
+    if (+localStorage.getItem('templateNum_888888') === templateNum)
+      setTemplateNumLocalStorage();
+  }
+  localStorage.setItem('templateNum_888888', templateNum);
+}
+
+function addRandomGameBtnHandler() {
+  randomGameBtn.node.addEventListener('click', () => {
+    setTemplateNumLocalStorage();
+    templateArr = imageTemplates[templateNum].imageArr;
+    startGame();
+  });
+}
+
+addRandomGameBtnHandler();
