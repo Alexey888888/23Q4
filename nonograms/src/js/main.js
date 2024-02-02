@@ -24,6 +24,10 @@ const gameBoxWrapper = new Node({
   classNames: ['game-box__wrapper'],
   parentNode: gameBox.node,
 });
+const gameBoxBlackout = new Node({
+  classNames: ['game-box__blackout'],
+  parentNode: gameBoxWrapper.node,
+});
 const toolsUp = new Node({
   classNames: ['tools-up'],
   parentNode: gameBoxWrapper.node,
@@ -35,6 +39,10 @@ const toolsUpWrapper = new Node({
 const gameBoard = new Node({
   classNames: ['game-board'],
   parentNode: gameBoxWrapper.node,
+});
+const gameBoardBlackout = new Node({
+  classNames: ['game-board__blackout'],
+  parentNode: gameBoard.node,
 });
 const field = new Node({
   classNames: ['field'],
@@ -55,6 +63,11 @@ const modalWindow = new Node({
 });
 const modalWindowInner = new Node({
   classNames: ['modal-window__inner'],
+  parentNode: modalWindow.node,
+});
+const closeBtn = new Node({
+  classNames: ['btn', 'modal-window__close-btn'],
+  texContent: 'Close',
   parentNode: modalWindow.node,
 });
 // ----------------------------------------------------------
@@ -176,6 +189,7 @@ function startGame() {
   fillField(originalFullTemplateArr);
   initCurrentTemplateArr();
   addClickCellHandler();
+  closeGameBoardBlackout();
 }
 
 startGame();
@@ -370,6 +384,7 @@ function checkGameStatus() {
     ) === JSON.stringify(templateArr)
   ) {
     isDuration = false;
+    openGameBoardBlackout();
     clearInterval(timerID);
     openModal('win');
   }
@@ -445,6 +460,11 @@ function openModal(flag, mode) {
       });
     }
 
+    if (flag === 'error' && mode === 'localStorage') {
+      modalWindowInner.addText('You have not saved game!');
+      openGameBoxBlackout();
+    }
+
     modalWindow.addClass('modal-window_open');
   }
 
@@ -456,6 +476,22 @@ function openModal(flag, mode) {
   } else {
     afterCloseModalWindow();
   }
+}
+
+function openGameBoxBlackout() {
+  gameBoxBlackout.node.classList.add('game-box__blackout_active');
+}
+
+function closeGameBoxBlackout() {
+  gameBoxBlackout.node.classList.remove('game-box__blackout_active');
+}
+
+function openGameBoardBlackout() {
+  gameBoardBlackout.node.classList.add('game-board__blackout_active');
+}
+
+function closeGameBoardBlackout() {
+  gameBoardBlackout.node.classList.remove('game-board__blackout_active');
 }
 
 function closeModalWindow() {
@@ -536,6 +572,7 @@ function saveBtnHandler() {
 }
 
 function saveGame() {
+  closeModalWindow();
   localStorage.setItem('templateArr_888888', JSON.stringify(templateArr));
   localStorage.setItem(
     'currentTemplateArr_888888',
@@ -545,7 +582,15 @@ function saveGame() {
 }
 
 function continueBtnHandler() {
-  continueGameBtn.node.addEventListener('click', continueGame);
+  continueGameBtn.node.addEventListener('click', () => {
+    if (
+      localStorage.getItem('templateArr_888888') &&
+      localStorage.getItem('currentTemplateArr_888888') &&
+      localStorage.getItem('gameDuration_888888')
+    ) {
+      continueGame();
+    } else openModal('error', 'localStorage');
+  });
 }
 
 function continueGame() {
@@ -588,3 +633,12 @@ function gameDurationRecovery() {
 
 saveBtnHandler();
 continueBtnHandler();
+
+function addCloseBtnHandler() {
+  closeBtn.node.addEventListener('click', () => {
+    closeModalWindow();
+    closeGameBoxBlackout();
+  });
+}
+
+addCloseBtnHandler();

@@ -115,6 +115,11 @@ body {
   }
 }
 
+.modal-window__close-btn {
+  width: 80px;
+  margin-top: 20px;
+}
+
 .game-box {
   position: absolute;
   top: 50%;
@@ -124,7 +129,22 @@ body {
   transition: 0.5s;
 }
 
+.game-box__blackout {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: none;
+  z-index: 10;
+  opacity: 0.5;
+}
+
+.game-box__blackout_active {
+  display: block;
+}
+
 .game-box__wrapper {
+  position: relative;
   display: flex;
 }
 @media (max-width: 731px) {
@@ -410,6 +430,20 @@ body {
   }
 }
 
+.game-board__blackout {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: none;
+  z-index: 10;
+  opacity: 0.2;
+}
+
+.game-board__blackout_active {
+  display: block;
+}
+
 .tools-down {
   height: 700px;
   width: 120px;
@@ -457,6 +491,9 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-window__inner {
