@@ -27,6 +27,17 @@
   transition: 0.5s;
 }
 
+.level__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.level__list__title {
+  color: #d3d3d3;
+  margin-bottom: 10px;
+}
+
 .level__item {
   width: 80px;
 }

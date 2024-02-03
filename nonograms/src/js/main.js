@@ -458,6 +458,23 @@ function openModal(flag, mode) {
         classNames: ['level__list'],
         parentNode: modalWindowInner.node,
       });
+      let size = '';
+      switch (mode) {
+        case 'easy':
+          size = '5x5';
+          break;
+        case 'medium':
+          size = '10x10';
+          break;
+        case 'hard':
+          size = '15x15';
+          break;
+      }
+      new Node({
+        parentNode: levelList.node,
+        texContent: `${mode} ${size}`,
+        classNames: ['level__list__title'],
+      });
       imageTemplates.forEach((image) => {
         if (image.level === mode) {
           const levelItem = new Node({
