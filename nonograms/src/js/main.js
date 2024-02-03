@@ -398,6 +398,7 @@ function checkGameStatus() {
     openGameBoardBlackout();
     clearInterval(timerID);
     openModal('win');
+    setScore();
   }
 }
 
@@ -535,7 +536,11 @@ createLevelBtn();
 function playNewGame(templateName) {
   sec = 0;
   imageTemplates.forEach((template) => {
-    if (template.title === templateName) templateArr = template.imageArr;
+    if (template.title === templateName) {
+      templateArr = template.imageArr;
+      templateNum = template.id;
+      localStorage.setItem('templateNum_888888', templateNum);
+    }
   });
   startGame();
 }
@@ -694,3 +699,23 @@ function addRandomGameBtnHandler() {
 }
 
 addRandomGameBtnHandler();
+
+function setScore() {
+  if (!localStorage.getItem('scoreArr_888888'))
+    localStorage.setItem('scoreArr_888888', JSON.stringify([]));
+
+  const scoreArr = JSON.parse(localStorage.getItem('scoreArr_888888'));
+  scoreArr.push({
+    title: imageTemplates[templateNum].title,
+    level: imageTemplates[templateNum].level,
+    durationMinSec:
+      String(Math.floor(sec / 60)).padStart(2, '0') +
+      ':' +
+      String(sec % 60).padStart(2, '0'),
+    durationSec: sec,
+  });
+
+  if (scoreArr.length > 5) scoreArr.shift();
+
+  localStorage.setItem('scoreArr_888888', JSON.stringify(scoreArr));
+}
