@@ -475,13 +475,69 @@ function openModal(flag, mode) {
       });
     }
 
-    if (flag === 'error' && mode === 'localStorage') {
+    if (flag === 'error' && mode === 'save') {
       modalWindowInner.addText('You have no saved games!');
       openGameBoxBlackout();
     }
 
     if (flag === 'error' && mode === 'win') {
       modalWindowInner.addText("You can't save finalized game!");
+      openGameBoxBlackout();
+    }
+
+    if (flag === 'score') {
+      openGameBoxBlackout();
+      const scoreArr = JSON.parse(localStorage.getItem('scoreArr_888888'));
+      scoreArr.sort((a, b) => a.durationSec - b.durationSec);
+      const resultTable = new Node({
+        tagName: 'table',
+        classNames: ['result__table'],
+        parentNode: modalWindowInner.node,
+      });
+      const resultTableHead = new Node({
+        tagName: 'tr',
+        parentNode: resultTable.node,
+      });
+      new Node({
+        tagName: 'th',
+        parentNode: resultTableHead.node,
+      });
+      const columnHead2 = new Node({
+        tagName: 'th',
+        parentNode: resultTableHead.node,
+      });
+      columnHead2.addText('solved puzzle');
+      const columnHead3 = new Node({
+        tagName: 'th',
+        parentNode: resultTableHead.node,
+      });
+      columnHead3.addText('difficulty');
+      const columnHead4 = new Node({
+        tagName: 'th',
+        parentNode: resultTableHead.node,
+      });
+      columnHead4.addText('stop-watch');
+
+      let num = 0;
+      scoreArr.forEach((result) => {
+        num++;
+        const resultRow = new Node({
+          tagName: 'tr',
+          parentNode: resultTable.node,
+        });
+        const column1 = new Node({ tagName: 'td', parentNode: resultRow.node });
+        column1.addText(num);
+        const column2 = new Node({ tagName: 'td', parentNode: resultRow.node });
+        column2.addText(result.title);
+        const column3 = new Node({ tagName: 'td', parentNode: resultRow.node });
+        column3.addText(result.level);
+        const column4 = new Node({ tagName: 'td', parentNode: resultRow.node });
+        column4.addText(result.durationMinSec);
+      });
+    }
+
+    if (flag === 'error' && mode === 'score') {
+      modalWindowInner.addText('You have no results in score yet!');
       openGameBoxBlackout();
     }
 
@@ -619,7 +675,7 @@ function continueBtnHandler() {
       localStorage.getItem('gameDuration_888888')
     ) {
       continueGame();
-    } else openModal('error', 'localStorage');
+    } else openModal('error', 'save');
   });
 }
 
@@ -719,3 +775,13 @@ function setScore() {
 
   localStorage.setItem('scoreArr_888888', JSON.stringify(scoreArr));
 }
+
+function addHighScoreBtnHandler() {
+  highScoreBtn.node.addEventListener('click', () => {
+    if (localStorage.getItem('scoreArr_888888')) {
+      openModal('score');
+    } else openModal('error', 'score');
+  });
+}
+
+addHighScoreBtnHandler();

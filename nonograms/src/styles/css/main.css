@@ -207,6 +207,13 @@ body {
 .game-box_dark .field__row:nth-child(2) > * {
   border-top: 2px solid #003e3e;
 }
+.game-box_dark .result__table td {
+  border: 2px solid #2e5443;
+}
+.game-box_dark .result__table th {
+  border: 2px solid #2e5443;
+  color: #458769;
+}
 
 .tools-up {
   height: 700px;
@@ -522,4 +529,21 @@ body {
 .modal-window_dark .modal-window__inner {
   background-color: #272626;
   color: #55a07d;
+}
+
+.result__table {
+  border-collapse: collapse;
+}
+
+.result__table td {
+  border: 2px solid rgb(190, 190, 190);
+  padding: 10px;
+  text-align: left;
+}
+
+.result__table th {
+  border: 2px solid rgb(190, 190, 190);
+  padding: 10px;
+  text-align: center;
+  color: rgb(212, 212, 212);
 }/*# sourceMappingURL=main.css.map */

@@ -39,3 +39,20 @@
     color: #55a07d;
   }
 }
+
+.result__table {
+  border-collapse: collapse;
+}
+
+.result__table td {
+  border: 2px solid rgb(190, 190, 190);
+  padding: 10px;
+  text-align: left;
+}
+
+.result__table th {
+  border: 2px solid rgb(190, 190, 190);
+  padding: 10px;
+  text-align: center;
+  color: rgb(212, 212, 212);
+}
