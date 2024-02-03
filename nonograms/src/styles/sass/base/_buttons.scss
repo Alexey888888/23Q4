@@ -51,4 +51,12 @@
 .modal-window__close-btn {
   width: 80px;
   margin-top: 20px;
+
+  &:hover {
+    border: 2px solid #545454;
+  }
+}
+
+.pulse {
+  scale: 1.1;
 }

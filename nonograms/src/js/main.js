@@ -178,6 +178,7 @@ let hintsLeftArr = null;
 let sec = 0;
 let isDuration = false;
 let timerID;
+let timerIDforPulseCloseBtn;
 let isSound = true;
 let win = false;
 let templateNum = 0;
@@ -559,6 +560,14 @@ function openModal(flag, mode) {
     }
 
     modalWindow.addClass('modal-window_open');
+
+    function pulseCloseBtn() {
+      timerIDforPulseCloseBtn = setInterval(() => {
+        closeBtn.node.classList.toggle('pulse');
+      }, 500);
+    }
+
+    pulseCloseBtn();
   }
 
   if (modalWindow.node.classList.contains('modal-window_open')) {
@@ -588,6 +597,7 @@ function closeGameBoardBlackout() {
 }
 
 function closeModalWindow() {
+  clearInterval(timerIDforPulseCloseBtn);
   modalWindow.removeClass('modal-window_open');
 }
 
