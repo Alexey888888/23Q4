@@ -1,0 +1,119 @@
+.game-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 85px 10px rgba(100, 100, 100, 0.75);
+  transition: 0.5s;
+}
+
+.game-box__blackout {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: black;
+  display: none;
+  z-index: 10;
+  opacity: 0.5;
+}
+
+.game-box__blackout_active {
+  display: block;
+}
+
+.game-box__wrapper {
+  position: relative;
+  display: flex;
+
+  @media (max-width: 731px) {
+    flex-direction: column;
+  }
+}
+
+.game-box_dark {
+  .game-board {
+    background: linear-gradient(45deg, rgb(70, 70, 70), rgb(129, 129, 129));
+  }
+
+  .field__cell,
+  .field__cell_hint {
+    color: #55a07d;
+    background: rgb(100, 100, 100);
+    border-color: #003e3e;
+  }
+
+  .black {
+    background: rgb(3, 42, 37);
+  }
+
+  .tools-up,
+  .tools-down {
+    background: linear-gradient(45deg, rgb(28, 28, 28), rgb(69, 69, 69));
+  }
+
+  .btn {
+    background: linear-gradient(45deg, rgb(0, 0, 0), rgb(35, 35, 35));
+    color: #7fc8a6;
+
+    .theme-btn__icon,
+    .sound-btn__icon {
+      filter: invert(40%) sepia(100%) hue-rotate(90deg);
+    }
+
+    .theme-btn__icon {
+      transform: rotate(0);
+    }
+  }
+
+  .game-duration {
+    color: #55a07d;
+  }
+
+  // --
+  .field > :nth-child(5n + 6) > * {
+    //  > *
+    border-bottom: 2px solid #003e3e;
+  }
+
+  .field__cell:nth-last-child(5n) {
+    border-left: 2px solid #003e3e;
+  }
+
+  .field__cell:last-child {
+    border-right: 2px solid #003e3e;
+  }
+
+  .field__row:first-child > :nth-child(5n + 1) > * {
+    border-left: 2px solid #003e3e;
+  }
+
+  .field__row:first-child {
+    border-top: 2px solid #003e3e;
+  }
+
+  .field__row:first-child > :last-child > * {
+    border-right: 2px solid #003e3e;
+  }
+
+  .field__row {
+    border-left: 2px solid #003e3e;
+  }
+
+  .field__row:nth-child(2) > * {
+    border-top: 2px solid #003e3e;
+  }
+  // --
+
+  .result__table td {
+    border: 2px solid #2e5443;
+  }
+
+  .result__table th {
+    border: 2px solid #2e5443;
+    color: #458769;
+  }
+
+  .level__list__title {
+    color: #4a9976;
+  }
+}
