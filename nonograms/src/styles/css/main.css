@@ -248,7 +248,7 @@ body {
     width: 496px;
   }
 }
-@media (max-width: 516px) {
+@media (max-width: 519px) {
   .tools-up {
     width: 480px;
   }
@@ -318,7 +318,7 @@ body {
     width: 496px;
   }
 }
-@media (max-width: 516px) {
+@media (max-width: 519px) {
   .game-board {
     width: 480px;
   }
@@ -368,7 +368,7 @@ body {
     height: 22.1px;
   }
 }
-@media (max-width: 516px) {
+@media (max-width: 519px) {
   .field__cell,
   .field__cell_hint {
     width: 21.5px;
