@@ -22,8 +22,12 @@
     width: 496px;
   }
 
-  @media (max-width: 513px) {
+  @media (max-width: 516px) {
     width: 480px;
+  }
+
+  @media (max-width: 496px) {
+    width: 370px;
   }
 }
 
@@ -39,6 +43,12 @@
     padding: 0;
     .btn {
       width: 80px;
+    }
+  }
+  @media (max-width: 496px) {
+    .btn {
+      width: 50px;
+      font-size: 12px;
     }
   }
 }

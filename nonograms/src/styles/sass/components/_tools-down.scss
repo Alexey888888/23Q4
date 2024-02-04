@@ -34,4 +34,11 @@
       width: 80px;
     }
   }
+
+  @media (max-width: 496px) {
+    .btn {
+      width: 60px;
+      font-size: 12px;
+    }
+  }
 }

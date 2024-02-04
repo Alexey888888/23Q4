@@ -248,9 +248,14 @@ body {
     width: 496px;
   }
 }
-@media (max-width: 513px) {
+@media (max-width: 516px) {
   .tools-up {
     width: 480px;
+  }
+}
+@media (max-width: 496px) {
+  .tools-up {
+    width: 370px;
   }
 }
 
@@ -268,6 +273,12 @@ body {
   }
   .tools-up__wrapper .btn {
     width: 80px;
+  }
+}
+@media (max-width: 496px) {
+  .tools-up__wrapper .btn {
+    width: 50px;
+    font-size: 12px;
   }
 }
 
@@ -307,9 +318,14 @@ body {
     width: 496px;
   }
 }
-@media (max-width: 513px) {
+@media (max-width: 516px) {
   .game-board {
     width: 480px;
+  }
+}
+@media (max-width: 496px) {
+  .game-board {
+    width: 370px;
   }
 }
 
@@ -352,11 +368,18 @@ body {
     height: 22.1px;
   }
 }
-@media (max-width: 513px) {
+@media (max-width: 516px) {
   .field__cell,
   .field__cell_hint {
     width: 21.5px;
     height: 21.5px;
+  }
+}
+@media (max-width: 496px) {
+  .field__cell,
+  .field__cell_hint {
+    width: 17.5px;
+    height: 17.5px;
   }
 }
 
@@ -494,6 +517,12 @@ body {
   }
   .tools-down__wrapper .btn {
     width: 80px;
+  }
+}
+@media (max-width: 496px) {
+  .tools-down__wrapper .btn {
+    width: 60px;
+    font-size: 12px;
   }
 }
 
