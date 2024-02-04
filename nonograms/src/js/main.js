@@ -137,10 +137,10 @@ const continueGameBtn = new Node({
   texContent: 'Continue last game',
 });
 
-const solutionsBtn = new Node({
+const solutionBtn = new Node({
   classNames: ['btn'],
   parentNode: toolsDownWrapper.node,
-  texContent: 'Solutions',
+  texContent: 'Solution',
 });
 
 const highScoreBtn = new Node({
@@ -170,6 +170,7 @@ const winSound = new Audio('./src/audio/win.mp3');
 
 //-----------------------------------------------------------
 
+let solutionMode = false;
 let originalFullTemplateArr = null;
 let currentTemplateArr = null;
 let templateArr = null;
@@ -187,6 +188,7 @@ localStorage.setItem('templateNum_888888', templateNum);
 templateArr = imageTemplates[templateNum].imageArr;
 
 function startGame() {
+  solutionMode = false;
   win = false;
   field.node.innerHTML = '';
   clearInterval(timerID);
@@ -559,6 +561,11 @@ function openModal(flag, mode) {
       openGameBoxBlackout();
     }
 
+    if (flag === 'error' && mode === 'solutionMode') {
+      modalWindowInner.addText("You can't save the game scored with solution!");
+      openGameBoxBlackout();
+    }
+
     modalWindow.addClass('modal-window_open');
 
     function pulseCloseBtn() {
@@ -680,17 +687,20 @@ function saveBtnHandler() {
 
 function saveGame() {
   closeModalWindow();
-  if (win === true) {
-    closeModalWindow();
-    openModal('error', 'win');
-  } else {
-    localStorage.setItem('templateArr_888888', JSON.stringify(templateArr));
-    localStorage.setItem(
-      'currentTemplateArr_888888',
-      JSON.stringify(currentTemplateArr),
-    );
-    localStorage.setItem('gameDuration_888888', sec);
-  }
+  if (!solutionMode) {
+    if (win === true) {
+      closeModalWindow();
+      openModal('error', 'win');
+    } else {
+      localStorage.setItem('templateArr_888888', JSON.stringify(templateArr));
+      localStorage.setItem(
+        'currentTemplateArr_888888',
+        JSON.stringify(currentTemplateArr),
+      );
+      localStorage.setItem('gameDuration_888888', sec);
+      localStorage.setItem('templateNumSavedGame_888888', templateNum);
+    }
+  } else openModal('error', 'solutionMode');
 }
 
 function continueBtnHandler() {
@@ -708,6 +718,9 @@ function continueBtnHandler() {
 
 function continueGame() {
   templateArr = JSON.parse(localStorage.getItem('templateArr_888888'));
+  templateNum = localStorage.getItem('templateNumSavedGame_888888');
+  localStorage.setItem('templateNum_888888', templateNum);
+  console.log(templateNum);
   startGame();
   currentTemplateArr = JSON.parse(
     localStorage.getItem('currentTemplateArr_888888'),
@@ -812,3 +825,23 @@ function addHighScoreBtnHandler() {
 }
 
 addHighScoreBtnHandler();
+
+function addSolutionBtnHandler() {
+  solutionBtn.node.addEventListener('click', displaySolution);
+}
+
+addSolutionBtnHandler();
+
+function displaySolution() {
+  solutionMode = true;
+
+  openGameBoardBlackout();
+  const cells = document.querySelectorAll('.field__cell');
+  for (let i = 0; i < cells.length; i++) {
+    cells[i].classList.remove('black');
+    cells[i].textContent = '';
+    if (imageTemplates[templateNum].imageArr.flat()[i] === 1)
+      cells[i].classList.add('black');
+  }
+  clearInterval(timerID);
+}

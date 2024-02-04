@@ -119,9 +119,6 @@ body {
   width: 80px;
   margin-top: 20px;
 }
-.modal-window__close-btn:hover {
-  border: 2px solid #545454;
-}
 
 .pulse {
   scale: 1.1;
@@ -420,7 +417,7 @@ body {
 }
 
 .grey {
-  background: #cdcdcd;
+  background: #ffffff;
 }
 
 .black {
