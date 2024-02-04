@@ -1,0 +1,410 @@
+* {
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  scroll-behavior: smooth;
+}
+
+ul li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  vertical-align: top;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
+}
+@media (max-width: 780px) {
+  body {
+    font-size: 20px;
+    line-height: 22px;
+  }
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  margin: 0 10px;
+  max-width: 1440px;
+  padding: 20px 120px;
+  background: #e1dfdf;
+  -moz-column-gap: 270px;
+       column-gap: 270px;
+  box-sizing: content-box;
+}
+@media (max-width: 1390px) {
+  .container {
+    padding: 20px 50px;
+    -moz-column-gap: 200px;
+         column-gap: 200px;
+  }
+}
+@media (max-width: 1190px) {
+  .container {
+    -moz-column-gap: 150px;
+         column-gap: 150px;
+  }
+}
+@media (max-width: 1170px) {
+  .container {
+    -moz-column-gap: unset;
+         column-gap: unset;
+  }
+}
+@media (max-width: 780px) {
+  .container {
+    flex-direction: column;
+  }
+}
+@media (max-width: 525px) {
+  .container {
+    padding: 20px 10px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.blackout {
+  position: absolute;
+  background: rgba(67, 67, 67, 0);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 10;
+}
+
+.modal {
+  position: fixed;
+  width: 300px;
+  height: 400px;
+  background: #8a7878;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  opacity: 0.97;
+}
+
+.modal__wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.modal__btn {
+  width: 100px;
+  height: 40px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.modal__btn:hover {
+  scale: 1.1;
+}
+
+.gallows__wrapper {
+  background: #e1dfdf;
+}
+@media (max-width: 780px) {
+  .gallows__wrapper {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.gallows__gallows-image {
+  position: relative;
+}
+@media (max-width: 780px) {
+  .gallows__gallows-image {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+img {
+  max-width: 80%;
+}
+@media (max-width: 780px) {
+  img {
+    max-width: 20%;
+  }
+}
+
+.hangman__head {
+  background: #e1dfdf;
+  width: 20%;
+  height: 15%;
+  border-radius: 100px;
+  border: 6px solid #808080;
+  position: absolute;
+  top: 25%;
+  left: 58.5%;
+}
+@media (max-width: 780px) {
+  .hangman__head {
+    width: 6%;
+    height: 18%;
+    left: 54.09%;
+  }
+}
+@media (max-width: 520px) {
+  .hangman__head {
+    border-width: 4px;
+  }
+}
+
+.hangman__body {
+  background: #808080;
+  width: 2%;
+  height: 20%;
+  position: absolute;
+  top: 39.5%;
+  left: 67.5%;
+  border-radius: 10px;
+}
+@media (max-width: 780px) {
+  .hangman__body {
+    width: 1%;
+    height: 25%;
+    top: 42.2%;
+    left: 56.6%;
+  }
+}
+
+.hangman__hand-one {
+  background: #808080;
+  width: 2%;
+  height: 15%;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 41%;
+  left: 61%;
+  border-radius: 10px;
+}
+@media (max-width: 780px) {
+  .hangman__hand-one {
+    width: 1%;
+    height: 18%;
+    top: 42.5%;
+    left: 54.6%;
+  }
+}
+
+.hangman__hand-two {
+  background: #808080;
+  width: 2%;
+  height: 15%;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 41%;
+  left: 74%;
+  border-radius: 10px;
+}
+@media (max-width: 780px) {
+  .hangman__hand-two {
+    width: 1%;
+    height: 18%;
+    top: 42.5%;
+    left: 58.6%;
+  }
+}
+
+.hangman__leg-one {
+  background: #808080;
+  width: 2%;
+  height: 15%;
+  transform: rotate(45deg);
+  position: absolute;
+  top: 56.2%;
+  left: 61%;
+  border-radius: 10px;
+}
+@media (max-width: 780px) {
+  .hangman__leg-one {
+    width: 1%;
+    height: 18%;
+    top: 63.4%;
+    left: 54.8%;
+  }
+}
+
+.hangman__leg-two {
+  background: #808080;
+  width: 2%;
+  height: 15%;
+  transform: rotate(-45deg);
+  position: absolute;
+  top: 56.2%;
+  left: 74%;
+  border-radius: 10px;
+}
+@media (max-width: 780px) {
+  .hangman__leg-two {
+    width: 1%;
+    height: 18%;
+    top: 64%;
+    left: 58.5%;
+  }
+}
+
+.title {
+  margin-top: 20px;
+  text-align: center;
+}
+@media (max-width: 780px) {
+  .title {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 24px;
+  }
+}
+
+.quiz {
+  background: #e1dfdf;
+}
+
+.quiz__wrapper {
+  margin: 0 50px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+@media (max-width: 905px) {
+  .quiz__wrapper {
+    margin: 0 20px;
+  }
+}
+
+.secret-word {
+  font-size: 46px;
+  display: flex;
+  margin-top: 10%;
+  margin-bottom: 5%;
+}
+@media (max-width: 905px) {
+  .secret-word {
+    font-size: 42px;
+    margin-top: 5%;
+  }
+}
+@media (max-width: 780px) {
+  .secret-word {
+    font-size: 30px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+}
+
+.letter {
+  width: 40px;
+  display: flex;
+  justify-content: center;
+}
+@media (max-width: 780px) {
+  .letter {
+    width: 25px;
+  }
+}
+
+.hint {
+  text-align: center;
+}
+
+.hint__inner {
+  font-weight: 900;
+}
+
+.incorrect-guesses-counter__inner {
+  color: #c11c1c;
+  font-weight: 900;
+}
+
+.keyboard__wrapper {
+  max-width: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+@media (max-width: 780px) {
+  .keyboard__wrapper {
+    margin-top: 5%;
+  }
+}
+
+.keyboard__key {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 52px;
+  height: 52px;
+  background: #a06a6a;
+  margin: 5px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+@media (max-width: 905px) {
+  .keyboard__key {
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+@media (max-width: 525px) {
+  .keyboard__key {
+    width: 40px;
+    height: 40px;
+    margin: 3px;
+  }
+}
+@media (hover: hover) {
+  .keyboard__key:hover {
+    background: #e26565;
+  }
+}
+
+.key_disable {
+  cursor: default;
+  background: #c11c1c;
+}
+@media (hover: hover) {
+  .key_disable:hover {
+    background: #c11c1c;
+  }
+}/*# sourceMappingURL=main.css.map */
