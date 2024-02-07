@@ -336,8 +336,8 @@ body {
   justify-content: center;
   align-items: center;
   background: #ffffff;
-  width: 30px;
-  height: 30px;
+  width: 28px;
+  height: 28px;
   border: solid 0.5px rgb(101, 96, 96);
 }
 @media (max-height: 699px) {
