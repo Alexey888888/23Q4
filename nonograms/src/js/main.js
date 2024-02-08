@@ -735,7 +735,6 @@ function continueGame() {
   templateArr = JSON.parse(localStorage.getItem('templateArr_888888'));
   templateNum = localStorage.getItem('templateNumSavedGame_888888');
   localStorage.setItem('templateNum_888888', templateNum);
-  console.log(templateNum);
   startGame();
   currentTemplateArr = JSON.parse(
     localStorage.getItem('currentTemplateArr_888888'),
