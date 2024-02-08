@@ -407,8 +407,14 @@ function checkGameStatus() {
 
 function leftClickCellHandler(event) {
   if (event.target.classList.contains('field__cell')) {
-    if (!event.target.classList.contains('black') && isSound) paintSound.play();
-    if (event.target.classList.contains('black') && isSound) removeSound.play();
+    if (!event.target.classList.contains('black') && isSound) {
+      paintSound.currentTime = 0;
+      paintSound.play();
+    }
+    if (event.target.classList.contains('black') && isSound) {
+      removeSound.currentTime = 0;
+      removeSound.play();
+    }
     if (!isDuration) startGameDuration();
     event.target.textContent = '';
     if (event.target.classList.contains('field__cell')) {
@@ -423,8 +429,14 @@ function leftClickCellHandler(event) {
 function rightClickHandler(event) {
   if (event.target.classList.contains('field__cell')) {
     if (!isDuration) startGameDuration();
-    if (event.target.textContent !== '✖' && isSound) crossSound.play();
-    if (event.target.textContent === '✖' && isSound) removeSound.play();
+    if (event.target.textContent !== '✖' && isSound) {
+      crossSound.currentTime = 0;
+      crossSound.play();
+    }
+    if (event.target.textContent === '✖' && isSound) {
+      removeSound.currentTime = 0;
+      removeSound.play();
+    }
     event.preventDefault();
     event.target.classList.remove('black');
     if (event.target.textContent !== '✖') {
@@ -449,7 +461,10 @@ function openModal(flag, mode) {
   function afterCloseModalWindow() {
     if (flag === 'win') {
       openGameBoxBlackout();
-      if (isSound) winSound.play();
+      if (isSound) {
+        winSound.currentTime = 0;
+        winSound.play();
+      }
       modalWindowInner.addText(
         `Great! You have solved the nonogram in ${sec} seconds!`,
       );
