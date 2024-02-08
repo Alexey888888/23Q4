@@ -442,10 +442,10 @@ function rightClickHandler(event) {
     if (event.target.textContent !== '✖') {
       event.target.textContent = '✖';
     } else event.target.textContent = '';
+    const numClickedRow = getNumClickedRow(event);
+    const numClickedCell = getNumClickedCell(event);
+    fillCurrentTemplateArr(numClickedRow, numClickedCell, event);
   }
-  const numClickedRow = getNumClickedRow(event);
-  const numClickedCell = getNumClickedCell(event);
-  fillCurrentTemplateArr(numClickedRow, numClickedCell, event);
 }
 
 function addClickCellHandler() {
