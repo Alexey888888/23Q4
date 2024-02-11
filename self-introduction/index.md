@@ -1,5 +1,7 @@
 [link to YouTube video](https://youtu.be/0bQAPtQOmRk)
-**Transcript**
+
+###Transcript of my presentation:###
+
 Hi! Nice to e-meet you! I’m Alexey. I’m from Minsk, but in 2023 I relocated to Bulgaria. So at the moment I’m living in Sofia. I graduated from Belarusian State University of Informatics and Radioelectronics, Faculty of Information Technology and Control.
 
 Before relocation, I worked in the field of security and safety systems. In my job, I used to configure security systems, which also involved a kind of programming, but it was quite specific and not at all similar to programming languages. I had some experience supporting and creating content for a corporate website developed on WordPress. I enjoyed it, it was interesting.
