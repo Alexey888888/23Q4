@@ -1,6 +1,6 @@
 [link to YouTube video](https://youtu.be/0bQAPtQOmRk)
 
-###Transcript of my presentation:
+### Transcript of my presentation:
 
 Hi! Nice to e-meet you! I’m Alexey. I’m from Minsk, but in 2023 I relocated to Bulgaria. So at the moment I’m living in Sofia. I graduated from Belarusian State University of Informatics and Radioelectronics, Faculty of Information Technology and Control.
 
