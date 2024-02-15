@@ -10,3 +10,4 @@ Below is a collection of badges I earned from completing Microsoft Learn's TypeS
 4. [x] **Develop Typed Functions in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/QDRQUYGE?sharingId=7354EA968FA6E449)
 5. [x] **Declare and instantiate classes in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/9NS3WGDU?sharingId=7354EA968FA6E449)
 6. [x] **Generics in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/DGQL39RJ?sharingId=7354EA968FA6E449)
+7. [x] **Work with External Libraries in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/J6EGZZJT?sharingId=7354EA968FA6E449)
