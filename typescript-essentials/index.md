@@ -4,14 +4,14 @@
 
 Below is a collection of badges I earned from completing Microsoft Learn's TypeScript modules:
 
-1. [x] **Getting Started with TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/24FHW9MV?sharingId=7354EA968FA6E449)
+1. [x] **Get started with TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/24FHW9MV?sharingId=7354EA968FA6E449)
 2. [x] **Declare Variable Types in TypeScrip**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/N7CUTGRF?sharingId=7354EA968FA6E449)
 3. [x] **Implement Interfaces in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/8RGHJDXW?sharingId=7354EA968FA6E449)
 4. [x] **Develop Typed Functions in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/QDRQUYGE?sharingId=7354EA968FA6E449)
 5. [x] **Declare and instantiate classes in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/9NS3WGDU?sharingId=7354EA968FA6E449)
-6. [x] **Generics in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/DGQL39RJ?sharingId=7354EA968FA6E449)
-7. [x] **Work with External Libraries in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/J6EGZZJT?sharingId=7354EA968FA6E449)
-8. [x] **Organize Code with Namespaces in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/9NSW972U?sharingId=7354EA968FA6E449)
+6. [x] **Define generics in TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/DGQL39RJ?sharingId=7354EA968FA6E449)
+7. [x] **Access external libraries from TypeScript**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/J6EGZZJT?sharingId=7354EA968FA6E449)
+8. [x] **Organize code using TypeScript namespaces**: [Badge](https://learn.microsoft.com/api/achievements/share/en-us/alexey888888-9179/9NSW972U?sharingId=7354EA968FA6E449)
 
 ## Reflections 🖋️
 
@@ -82,7 +82,7 @@ In the real world, this can be used to create user objects in a web application 
 
 ---
 
-#### After taking the `Generics in TypeScript` module, I learned:
+#### After taking the `Define generics in TypeScript` module, I learned:
 
 - how to identify use cases for generics
 - how to define a generic function
@@ -94,7 +94,7 @@ This can be very useful in real life, especially when developing complex and sca
 
 ---
 
-#### After taking the `Work with External Libraries in TypeScript` module, I learned:
+#### After taking the `Access external libraries from TypeScript` module, I learned:
 
 - how to organize code using modules
 - how to import an external type library
@@ -103,7 +103,7 @@ In real-world development, this allows me to use third-party libraries written i
 
 ---
 
-#### After taking the `Organize Code with Namespaces in TypeScript` module, I learned:
+#### After taking the `Organize code using TypeScript namespaces` module, I learned:
 
 - how to explain the purpose of namespaces.
 - how to implement single-file namespaces.
