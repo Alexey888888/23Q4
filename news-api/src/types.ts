@@ -3,7 +3,7 @@ export interface ISources {
   id: number;
 }
 
-export interface INews {
+export interface NewsData {
   urlToImage: string;
   author: string;
   source: { name: string };
