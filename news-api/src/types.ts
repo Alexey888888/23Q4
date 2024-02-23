@@ -1,6 +1,6 @@
-export interface ISources {
+export interface SourcesData {
   name: string;
-  id: number;
+  id: string;
 }
 
 export interface NewsData {
