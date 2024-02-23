@@ -6,11 +6,10 @@ class Loader {
   constructor(baseLink: string, options: { apiKey: string }) {
     this.baseLink = baseLink;
     this.options = options;
-    //console.log(this.options);
   }
 
   getResp<Data>(
-    { endpoint, options = {} }: { endpoint: string; options: Record<string, string> },
+    { endpoint, options }: { endpoint: string; options: { apiKey: string } },
     callback: Callback<Data> = () => {
       console.error('No callback for GET response');
     },
@@ -19,7 +18,6 @@ class Loader {
   }
 
   errorHandler(res: Response) {
-    //console.log(res);
     if (!res.ok) {
       if (res.status === 401 || res.status === 404)
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
