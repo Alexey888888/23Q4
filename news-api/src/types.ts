@@ -12,3 +12,5 @@ export interface NewsData {
   description: string;
   url: string;
 }
+
+export type Callback<Data> = (data: Data) => void;
