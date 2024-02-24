@@ -3,13 +3,13 @@ import { Callback } from '../../types';
 class Loader {
   baseLink: string;
   options: Record<string, string>;
-  constructor(baseLink: string, options: { apiKey: string }) {
+  constructor(baseLink: string, options: Record<string, string>) {
     this.baseLink = baseLink;
     this.options = options;
   }
 
   getResp<Data>(
-    { endpoint, options }: { endpoint: string; options: { apiKey: string } },
+    { endpoint, options }: { endpoint: string; options?: Record<string, string> },
     callback: Callback<Data> = () => {
       console.error('No callback for GET response');
     },
