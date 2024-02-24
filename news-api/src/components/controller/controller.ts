@@ -1,8 +1,8 @@
 import AppLoader from './appLoader';
 import { Callback } from '../../types';
 
-class AppController<Data> extends AppLoader {
-  getSources(callback: Callback<Data>) {
+class AppController extends AppLoader {
+  getSources<Data>(callback: Callback<Data>) {
     super.getResp(
       {
         endpoint: 'sources',
@@ -11,8 +11,7 @@ class AppController<Data> extends AppLoader {
     );
   }
 
-  getNews<Data>(e: PointerEvent, callback: Callback<Data>) {
-    console.log(e);
+  getNews<Data>(e: Event, callback: Callback<Data>) {
     let target = e.target;
     const newsContainer = e.currentTarget;
     if (newsContainer === null) throw new Error();
