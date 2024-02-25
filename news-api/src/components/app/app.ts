@@ -1,4 +1,4 @@
-import { Controller, View, NewsData, SourcesData } from '../../types';
+import { Controller, View, NewsData, SourcesData } from '../service/types';
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
 

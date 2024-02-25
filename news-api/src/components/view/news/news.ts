@@ -1,4 +1,4 @@
-import { NewsData, NewsInterface } from '../../../types';
+import { NewsData, NewsInterface } from '../../service/types';
 import './news.css';
 
 class News implements NewsInterface {

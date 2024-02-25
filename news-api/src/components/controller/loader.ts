@@ -1,4 +1,4 @@
-import { Callback } from '../../types';
+import { Callback } from '../service/types';
 
 class Loader {
   baseLink: string;

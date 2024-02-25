@@ -1,5 +1,5 @@
-import { NewsData } from '../../types';
-import { SourcesData } from '../../types';
+import { NewsData } from '../service/types';
+import { SourcesData } from '../service/types';
 import News from './news/news';
 import Sources from './sources/sources';
 

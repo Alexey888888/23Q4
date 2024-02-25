@@ -1,4 +1,4 @@
-import { SourcesData, SourcesInterface } from '../../../types';
+import { SourcesData, SourcesInterface } from '../../service/types';
 import './sources.css';
 
 class Sources implements SourcesInterface {

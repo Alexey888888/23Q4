@@ -1,5 +1,5 @@
 import AppLoader from './appLoader';
-import { Callback } from '../../types';
+import { Callback } from '../service/types';
 
 class AppController extends AppLoader {
   getSources<Data>(callback: Callback<Data>) {
