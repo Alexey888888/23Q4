@@ -1,5 +1,6 @@
 import AppLoader from './appLoader';
 import { Callback } from '../service/types';
+import { isDefined } from '../service/functions';
 
 class AppController extends AppLoader {
   getSources<Data>(callback: Callback<Data>) {
@@ -13,16 +14,14 @@ class AppController extends AppLoader {
 
   getNews<Data>(e: Event, callback: Callback<Data>) {
     let target = e.target;
-    const newsContainer = e.currentTarget;
-    if (newsContainer === null) throw new Error();
-    if (!(newsContainer instanceof HTMLElement)) throw new Error();
+    const newsContainer = isDefined(e.currentTarget);
+    if (!(newsContainer instanceof HTMLElement)) throw new Error(`Invalid type for ${newsContainer}`);
 
     while (target !== newsContainer) {
-      if (target === null) throw new Error();
-      if (!(target instanceof HTMLElement)) throw new Error();
+      isDefined(target);
+      if (!(target instanceof HTMLElement)) throw new Error(`Invalid type for ${target}`);
       if (target.classList.contains('source__item')) {
-        const sourceId: string | null = target.getAttribute('data-source-id');
-        if (sourceId === null) throw new Error();
+        const sourceId: string = isDefined(target.getAttribute('data-source-id'));
         if (newsContainer.getAttribute('data-source') !== sourceId) {
           newsContainer.setAttribute('data-source', sourceId);
           super.getResp(

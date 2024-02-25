@@ -1,3 +1,4 @@
+import { isDefined } from '../../service/functions';
 import { NewsData, NewsInterface } from '../../service/types';
 import './news.css';
 
@@ -6,53 +7,43 @@ class News implements NewsInterface {
     const news = data.length >= 10 ? data.filter((_item, idx) => idx < 10) : data;
 
     const fragment: DocumentFragment = document.createDocumentFragment();
-    const newsItemTemp: HTMLTemplateElement | null = document.querySelector('#newsItemTemp');
-    if (newsItemTemp === null) throw new Error();
+    const newsItemTemp: HTMLTemplateElement = isDefined(document.querySelector('#newsItemTemp'));
 
     news.forEach((item, idx) => {
       const newsClone = newsItemTemp.content.cloneNode(true);
-      if (!(newsClone instanceof DocumentFragment)) throw new Error();
+      if (!(newsClone instanceof DocumentFragment)) throw new Error(`Invalid type for ${newsClone}`);
 
       if (idx % 2) {
-        const newsItem = newsClone.querySelector('.news__item');
-        if (newsItem === null) throw new Error();
+        const newsItem = isDefined(newsClone.querySelector('.news__item'));
         newsItem.classList.add('alt');
       }
 
-      const metaPhoto = newsClone.querySelector('.news__meta-photo');
-      if (metaPhoto === null) throw new Error();
-      if (!(metaPhoto instanceof HTMLElement)) throw new Error();
+      const metaPhoto = isDefined(newsClone.querySelector('.news__meta-photo'));
+      if (!(metaPhoto instanceof HTMLElement)) throw new Error(`Invalid type for ${metaPhoto}`);
       metaPhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
 
-      const metaAuthor = newsClone.querySelector('.news__meta-author');
-      if (metaAuthor === null) throw new Error();
+      const metaAuthor = isDefined(newsClone.querySelector('.news__meta-author'));
       metaAuthor.textContent = item.author || item.source.name;
 
-      const metaDate = newsClone.querySelector('.news__meta-date');
-      if (metaDate === null) throw new Error();
-      metaAuthor.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');
+      const metaDate = isDefined(newsClone.querySelector('.news__meta-date'));
+      metaDate.textContent = item.publishedAt.slice(0, 10).split('-').reverse().join('-');
 
-      const descriptionTitle = newsClone.querySelector('.news__description-title');
-      if (descriptionTitle === null) throw new Error();
+      const descriptionTitle = isDefined(newsClone.querySelector('.news__description-title'));
       descriptionTitle.textContent = item.title;
 
-      const descriptionSource = newsClone.querySelector('.news__description-source');
-      if (descriptionSource === null) throw new Error();
+      const descriptionSource = isDefined(newsClone.querySelector('.news__description-source'));
       descriptionSource.textContent = item.source.name;
 
-      const descriptionContent = newsClone.querySelector('.news__description-content');
-      if (descriptionContent === null) throw new Error();
+      const descriptionContent = isDefined(newsClone.querySelector('.news__description-content'));
       descriptionContent.textContent = item.description;
 
-      const readMore = newsClone.querySelector('.news__read-more a');
-      if (readMore === null) throw new Error();
+      const readMore = isDefined(newsClone.querySelector('.news__read-more a'));
       readMore.setAttribute('href', item.url);
 
       fragment.append(newsClone);
     });
 
-    const documentNews = document.querySelector('.news');
-    if (documentNews === null) throw new Error();
+    const documentNews = isDefined(document.querySelector('.news'));
     documentNews.innerHTML = '';
     documentNews.appendChild(fragment);
   }

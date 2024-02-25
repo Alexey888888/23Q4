@@ -1,6 +1,7 @@
 import { Controller, View, NewsData, SourcesData } from '../service/types';
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
+import { isDefined } from '../service/functions';
 
 class App {
   controller: Controller;
@@ -11,8 +12,7 @@ class App {
   }
 
   start() {
-    const sources = document.querySelector('.sources');
-    if (sources === null) throw new Error();
+    const sources = isDefined(document.querySelector('.sources'));
     sources.addEventListener('click', (e) =>
       this.controller.getNews(e, (data: { articles: NewsData[] }) => this.view.drawNews(data)),
     );
