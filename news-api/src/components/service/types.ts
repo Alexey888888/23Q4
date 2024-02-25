@@ -1,3 +1,5 @@
+import { Endpoint } from '../controller/loader';
+
 export interface SourcesData {
   name: string;
   id: string;
@@ -34,3 +36,8 @@ export interface View {
   drawNews(data: { articles: NewsData[] }): void;
   drawSources(data: { sources: SourcesData[] }): void;
 }
+
+export type requestData = {
+  endpoint: Endpoint;
+  options?: Record<string, string>;
+};

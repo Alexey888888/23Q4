@@ -1,6 +1,6 @@
-import { Callback } from '../service/types';
+import { Callback, requestData } from '../service/types';
 
-enum errorStatus {
+export enum errorStatus {
   Unauthorized = 401,
   NotFound = 404,
 }
@@ -19,7 +19,7 @@ class Loader {
   }
 
   getResp<Data>(
-    { endpoint, options }: { endpoint: Endpoint; options?: Record<string, string> },
+    { endpoint, options }: requestData,
     callback: Callback<Data> = () => {
       console.error('No callback for GET response');
     },
