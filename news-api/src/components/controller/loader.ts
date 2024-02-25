@@ -11,14 +11,14 @@ export enum Endpoint {
 }
 
 class Loader {
-  baseLink: Endpoint | string;
-  options: Record<string, string>;
+  private baseLink: Endpoint | string;
+  private options: Record<string, string>;
   constructor(baseLink: Endpoint | string, options: Record<string, string>) {
     this.baseLink = baseLink;
     this.options = options;
   }
 
-  getResp<Data>(
+  public getResp<Data>(
     { endpoint, options }: requestData,
     callback: Callback<Data> = () => {
       console.error('No callback for GET response');
@@ -27,7 +27,7 @@ class Loader {
     this.load('GET', endpoint, callback, options);
   }
 
-  errorHandler(res: Response) {
+  private errorHandler(res: Response) {
     if (!res.ok) {
       if (res.status === errorStatus.Unauthorized || res.status === errorStatus.NotFound)
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
@@ -37,7 +37,7 @@ class Loader {
     return res;
   }
 
-  makeUrl(options: Record<string, string>, endpoint: Endpoint) {
+  private makeUrl(options: Record<string, string>, endpoint: Endpoint) {
     const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
@@ -48,7 +48,7 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  load<Data>(method: string, endpoint: Endpoint, callback: Callback<Data>, options = {}) {
+  private load<Data>(method: string, endpoint: Endpoint, callback: Callback<Data>, options = {}) {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())

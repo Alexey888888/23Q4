@@ -4,7 +4,7 @@ import { isDefined } from '../service/functions';
 import { Endpoint } from './loader';
 
 class AppController extends AppLoader {
-  getSources<Data>(callback: Callback<Data>) {
+  public getSources<Data>(callback: Callback<Data>) {
     super.getResp(
       {
         endpoint: Endpoint.Sources,
@@ -13,7 +13,7 @@ class AppController extends AppLoader {
     );
   }
 
-  getNews<Data>(e: Event, callback: Callback<Data>) {
+  public getNews<Data>(e: Event, callback: Callback<Data>) {
     let target = e.target;
     const newsContainer = isDefined(e.currentTarget);
     if (!(newsContainer instanceof HTMLElement)) throw new Error(`Invalid type for ${newsContainer}`);

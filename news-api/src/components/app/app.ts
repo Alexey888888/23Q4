@@ -11,7 +11,7 @@ class App {
     this.view = new AppView();
   }
 
-  start() {
+  public start() {
     const sources = isDefined(document.querySelector('.sources'));
     sources.addEventListener('click', (e) =>
       this.controller.getNews(e, (data: { articles: NewsData[] }) => this.view.drawNews(data)),
