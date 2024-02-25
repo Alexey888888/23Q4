@@ -1,15 +1,25 @@
 import { Callback } from '../service/types';
 
+enum errorStatus {
+  Unauthorized = 401,
+  NotFound = 404,
+}
+
+export enum Endpoint {
+  Sources = 'sources',
+  Everything = 'everything',
+}
+
 class Loader {
-  baseLink: string;
+  baseLink: Endpoint | string;
   options: Record<string, string>;
-  constructor(baseLink: string, options: Record<string, string>) {
+  constructor(baseLink: Endpoint | string, options: Record<string, string>) {
     this.baseLink = baseLink;
     this.options = options;
   }
 
   getResp<Data>(
-    { endpoint, options }: { endpoint: string; options?: Record<string, string> },
+    { endpoint, options }: { endpoint: Endpoint; options?: Record<string, string> },
     callback: Callback<Data> = () => {
       console.error('No callback for GET response');
     },
@@ -19,7 +29,7 @@ class Loader {
 
   errorHandler(res: Response) {
     if (!res.ok) {
-      if (res.status === 401 || res.status === 404)
+      if (res.status === errorStatus.Unauthorized || res.status === errorStatus.NotFound)
         console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
       throw Error(res.statusText);
     }
@@ -27,7 +37,7 @@ class Loader {
     return res;
   }
 
-  makeUrl(options: Record<string, string>, endpoint: string) {
+  makeUrl(options: Record<string, string>, endpoint: Endpoint) {
     const urlOptions = { ...this.options, ...options };
     let url = `${this.baseLink}${endpoint}?`;
 
@@ -38,7 +48,7 @@ class Loader {
     return url.slice(0, -1);
   }
 
-  load<Data>(method: string, endpoint: string, callback: Callback<Data>, options = {}) {
+  load<Data>(method: string, endpoint: Endpoint, callback: Callback<Data>, options = {}) {
     fetch(this.makeUrl(options, endpoint), { method })
       .then(this.errorHandler)
       .then((res) => res.json())
