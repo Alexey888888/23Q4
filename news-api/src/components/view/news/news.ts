@@ -20,7 +20,7 @@ class News implements NewsInterface {
 
       const metaPhoto = isDefined(newsClone.querySelector('.news__meta-photo'));
       if (!(metaPhoto instanceof HTMLElement)) throw new Error(`Invalid type for ${metaPhoto}`);
-      metaPhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+      metaPhoto.style.backgroundImage = `url(${item.urlToImage || 'assets/img/news_placeholder.png'})`;
 
       const metaAuthor = isDefined(newsClone.querySelector('.news__meta-author'));
       metaAuthor.textContent = item.author || item.source.name;
