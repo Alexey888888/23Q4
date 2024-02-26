@@ -11,6 +11,17 @@
     sans-serif;
 }
 
+.sources::-webkit-scrollbar {
+  width: 8px;
+  background-color: #96dffc;
+  border-radius: 5px;
+}
+
+.sources::-webkit-scrollbar-thumb {
+  background-color: #0099d5;
+  border-radius: 5px;
+}
+
 .source__item {
   background: none;
   border: 2px solid #30c5ff;
