@@ -1,35 +1,81 @@
 body {
-    color: #fff;
-    background: #17181c;
-    font-family: sans-serif;
+  color: #fff;
+  background: #17181c;
+  font-family: sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 header {
-    padding: 10px 30px;
+  padding: 10px 30px;
 }
 
 header h1 {
-    font-size: 40px;
-    font-weight: 800;
+  font-size: 40px;
+  font-weight: 800;
 }
 
 footer {
-    height: 100px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 footer .copyright {
-    font-size: 14px;
-    color: #333;
-    text-align: center;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
 }
 footer .copyright a {
-    color: #444;
+  color: #444;
 }
 footer .copyright a:hover {
-    color: #555;
+  color: #555;
 }
 footer .copyright:before {
-    content: '©';
+  content: '©';
+}
+
+.year {
+  color: #fff;
+  font-size: 24px;
+}
+
+.git__wrapper {
+  border-radius: 10px;
+  width: 90px;
+  overflow: hidden;
+}
+
+.github {
+  width: 90px;
+  display: flex;
+}
+
+.rsschool {
+  width: 90px;
+  height: 50px;
+  display: flex;
+  background: white;
+  border-radius: 10px;
+}
+
+.git__wrapper,
+.rsschool,
+.year {
+  opacity: 0.15;
+  transition: all 0.5s;
+}
+
+.git__wrapper:hover,
+.rsschool:hover {
+  opacity: 0.2;
+}
+
+img {
+  width: 100%;
 }
