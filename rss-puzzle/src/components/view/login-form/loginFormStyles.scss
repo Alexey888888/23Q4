@@ -4,7 +4,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
-  height: 230px;
+  height: 280px;
   background: #a1a1a1;
   border-radius: 5px;
 
@@ -21,5 +21,14 @@
 
   .button {
     margin-top: 25px;
+  }
+
+  .error-message {
+    display: block;
+    margin-top: 3px;
+    font-size: 13px;
+    line-height: 16px;
+    color: #b30707;
+    height: 14px;
   }
 }

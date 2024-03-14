@@ -1,9 +1,15 @@
 export default class InputValidator {
-  static validateName(name: string): boolean {
-    return name.trim() !== '';
+  static isNotEmptyString(string: string): boolean {
+    return string.trim() !== '';
   }
 
-  static validateSurname(surname: string): boolean {
-    return surname.trim() !== '';
+  static isEnglishAbc(text: string): boolean {
+    const englishAbc = /^[a-zA-Z]*-?[a-zA-Z]*$/;
+    return englishAbc.test(text);
+  }
+
+  static isFirstLetterUppercase(text: string): boolean {
+    const englishAbc = /^[A-Z]/;
+    return englishAbc.test(text);
   }
 }
