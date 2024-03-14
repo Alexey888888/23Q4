@@ -5,6 +5,7 @@ import Input from '../../input/input';
 import Form from '../../form/form';
 import InputValidator from '../../../utils/validateLoginForm';
 import Button from '../../button/button';
+import { userName, userSurname } from '../../../services/local-storage.service';
 
 interface FormValidationResult {
   isNotEmptyName: boolean;
@@ -81,8 +82,8 @@ class LoginForm extends BaseComponent {
 
   private onSubmit(event: Event): void {
     event.preventDefault();
-    console.log(this.inputName.getNode().value);
-    console.log(this.inputSurname.getNode().value);
+    userName.saveData(this.inputName.getNode().value);
+    userSurname.saveData(this.inputSurname.getNode().value);
   }
 
   private validateForm(): FormValidationResult {
