@@ -1,0 +1,21 @@
+.button {
+  border-radius: 5px;
+  width: 100px;
+  height: 26px;
+  cursor: pointer;
+  padding: 3px 5px;
+  background: #ffffff;
+  border: none;
+
+  &:hover {
+    scale: 1.05;
+  }
+}
+
+.button_disabled {
+  cursor: default;
+
+  &:hover {
+    scale: 1;
+  }
+}
