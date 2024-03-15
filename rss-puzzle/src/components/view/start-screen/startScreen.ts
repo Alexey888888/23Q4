@@ -27,6 +27,10 @@ export default class StartScreen extends BaseComponent {
       { classNames: ['start-screen'] },
       new BaseComponent(
         { classNames: ['content'] },
+        new BaseComponent({
+          classNames: ['greeting'],
+          text: `Welcome ${userName.getData()} ${userSurname.getData()}, enjoy the game!`,
+        }),
         new BaseComponent({ classNames: ['title'], text: 'RSS PUZZLE' }),
         new BaseComponent({
           classNames: ['description'],

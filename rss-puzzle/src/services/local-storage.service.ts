@@ -16,6 +16,10 @@ export class LocaleStorageService {
   public clearData(): void {
     localStorage.removeItem(this.storageKey);
   }
+
+  public getData(): string | null {
+    return localStorage.getItem(this.storageKey);
+  }
 }
 
 export const userName = new LocaleStorageService('userNamePuzzleGame888');
