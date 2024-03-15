@@ -6,6 +6,7 @@ import Form from '../../form/form';
 import InputValidator from '../../../utils/validateLoginForm';
 import Button from '../../button/button';
 import { userName, userSurname } from '../../../services/local-storage.service';
+import startScreen from '../start-screen/startScreen';
 
 interface FormValidationResult {
   isNotEmptyName: boolean;
@@ -84,6 +85,8 @@ class LoginForm extends BaseComponent {
     event.preventDefault();
     userName.saveData(this.inputName.getNode().value);
     userSurname.saveData(this.inputSurname.getNode().value);
+    this.destroy();
+    document.body.append(startScreen.getNode());
   }
 
   private validateForm(): FormValidationResult {
