@@ -6,7 +6,7 @@ import Form from '../../form/form';
 import InputValidator from '../../../utils/validateLoginForm';
 import Button from '../../button/button';
 import { userName, userSurname } from '../../../services/local-storage.service';
-import startScreen from '../start-screen/startScreen';
+import StartScreen from '../start-screen/startScreen';
 
 interface FormValidationResult {
   isNotEmptyName: boolean;
@@ -19,7 +19,7 @@ interface FormValidationResult {
   isMinimumLengthSurname: boolean;
 }
 
-class LoginForm extends BaseComponent {
+export default class LoginForm extends BaseComponent {
   inputName: Input;
 
   inputSurname: Input;
@@ -86,7 +86,7 @@ class LoginForm extends BaseComponent {
     userName.saveData(this.inputName.getNode().value);
     userSurname.saveData(this.inputSurname.getNode().value);
     this.destroy();
-    document.body.append(startScreen.getNode());
+    document.body.append(new StartScreen().getNode());
   }
 
   private validateForm(): FormValidationResult {
@@ -149,6 +149,3 @@ class LoginForm extends BaseComponent {
     }
   }
 }
-
-const loginForm = new LoginForm();
-export default loginForm;

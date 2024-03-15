@@ -1,4 +1,4 @@
-export default class LocaleStorageService {
+export class LocaleStorageService {
   private storageKey: string;
 
   constructor(storageKey: string) {
@@ -7,6 +7,14 @@ export default class LocaleStorageService {
 
   public saveData(data: string): void {
     localStorage.setItem(this.storageKey, data);
+  }
+
+  public checkData(): boolean {
+    return !!localStorage.getItem(this.storageKey);
+  }
+
+  public clearData(): void {
+    localStorage.removeItem(this.storageKey);
   }
 }
 
