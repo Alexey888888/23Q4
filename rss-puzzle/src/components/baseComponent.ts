@@ -6,9 +6,8 @@ type BaseComponentProps = {
   value?: string;
 };
 
-export default class BaseComponent<T extends HTMLElement = HTMLElement> {
-  // eslint-disable-next-line no-use-before-define
-  private children: BaseComponent[] = [];
+class BaseComponent<T extends HTMLElement = HTMLElement> {
+  protected children: BaseComponent[] = [];
 
   protected node: T;
 
@@ -80,3 +79,5 @@ export default class BaseComponent<T extends HTMLElement = HTMLElement> {
     this.node.remove();
   }
 }
+
+export default BaseComponent;

@@ -17,8 +17,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^7.1.1",
-    "@typescript-eslint/parser": "^7.1.1",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
     "clean-webpack-plugin": "^4.0.0",
     "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^6.10.0",
@@ -46,6 +46,7 @@
     "pattern": "^(chore|feat|fix|refactor)/RSS-PZ-\\d+_[a-zA-Z]+$"
   },
   "dependencies": {
+    "eslint-config-airbnb-typescript": "^18.0.0",
     "modern-normalize": "^2.0.0"
   }
 }
