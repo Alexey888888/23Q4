@@ -5,22 +5,31 @@ import startScreenDescription from './textContent';
 import Button from '../../button/button';
 import { userName, userSurname } from '../../../services/local-storage.service';
 import app from '../../app/app';
+import { game } from '../../game/game';
 
 export default class StartScreen extends BaseComponent {
   startScreen: BaseComponent;
 
   buttonLogOut: Button;
 
+  buttonStart: Button;
+
   constructor() {
     super({ classNames: ['start-screen'] });
     this.buttonLogOut = new Button({
-      classNames: ['button'],
       text: 'Logout',
       onClick: () => {
         userName.clearData();
         userSurname.clearData();
         this.destroy();
         app.start();
+      },
+    });
+    this.buttonStart = new Button({
+      text: 'Start',
+      onClick: () => {
+        this.destroy();
+        game.start();
       },
     });
     this.startScreen = new BaseComponent(
@@ -36,7 +45,7 @@ export default class StartScreen extends BaseComponent {
           classNames: ['description'],
           text: startScreenDescription,
         }),
-        new BaseComponent({ classNames: ['button-wrapper'] }, this.buttonLogOut),
+        new BaseComponent({ classNames: ['button-wrapper'] }, this.buttonLogOut, this.buttonStart),
       ),
     );
     this.append(this.startScreen);

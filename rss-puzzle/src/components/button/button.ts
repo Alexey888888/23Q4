@@ -14,7 +14,7 @@ type ButtonProps = {
 export default class Button extends BaseComponent<HTMLButtonElement> {
   protected node: HTMLButtonElement;
 
-  constructor({ classNames, text, attribute, value, disabled = false, onClick }: ButtonProps) {
+  constructor({ classNames = ['button'], text, attribute, value, disabled = false, onClick }: ButtonProps) {
     super({ tag: 'button', text, classNames, attribute, value });
     this.node = this.getNode();
     if (disabled) this.setDisabled(disabled);
