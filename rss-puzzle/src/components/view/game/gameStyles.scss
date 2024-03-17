@@ -49,12 +49,11 @@
 }
 
 .word {
-  border: 1px solid black;
-  flex: 1;
+  margin: 2px;
+  border: 1px solid #000000;
   display: flex;
   align-items: center;
   justify-content: center;
-  max-width: 93.5px;
   cursor: pointer;
   background: #ededed;
   transition: all 0.3s;

@@ -40,6 +40,12 @@ export class Game {
       };
       wordCard.addListener('click', onClick);
       wordCard.setTextContent(word);
+      const wordWidth = (word.length * 100) / shuffledWords.length;
+      wordCard.getNode().style.width = `${wordWidth}%`;
+      setTimeout(() => {
+        const currentWidth = wordCard.getNode().offsetWidth;
+        wordCard.getNode().style.maxWidth = `${currentWidth}px`;
+      }, 1);
       this.sourceBlock.getNode().append(wordCard.getNode());
     });
   }
