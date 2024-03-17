@@ -3,9 +3,9 @@ import './startScreenStyles.scss';
 import BaseComponent from '../../baseComponent';
 import startScreenDescription from './textContent';
 import Button from '../../button/button';
-import { userName, userSurname } from '../../../services/local-storage.service';
+import { userName, userSurname } from '../../../services/localStorageService';
 import app from '../../app/app';
-import { game } from '../../game/game';
+import { game } from '../game/game';
 
 export default class StartScreen extends BaseComponent {
   startScreen: BaseComponent;

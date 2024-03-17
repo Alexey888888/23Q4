@@ -5,7 +5,7 @@ import Input from '../../input/input';
 import Form from '../../form/form';
 import InputValidator from '../../../utils/validateLoginForm';
 import Button from '../../button/button';
-import { userName, userSurname } from '../../../services/local-storage.service';
+import { userName, userSurname } from '../../../services/localStorageService';
 import app from '../../app/app';
 
 interface FormValidationResult {

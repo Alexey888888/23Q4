@@ -1,4 +1,4 @@
-import { LocaleStorageService, userName, userSurname } from '../../services/local-storage.service';
+import { LocaleStorageService, userName, userSurname } from '../../services/localStorageService';
 import PageRenderer from './pageRenderer';
 
 class App {
