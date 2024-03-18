@@ -10,7 +10,10 @@ export class Game {
 
   sourceBlock: BaseComponent;
 
+  resultRow: BaseComponent;
+
   constructor() {
+    this.resultRow = new BaseComponent({ classNames: ['result-row'] });
     this.resultBlock = new BaseComponent({ classNames: ['result-block'] });
     this.sourceBlock = new BaseComponent({ classNames: ['source-block'] });
     this.container = new BaseComponent(
@@ -24,34 +27,47 @@ export class Game {
 
   start() {
     document.body.append(this.container.getNode());
-    this.fillSourceBlock();
+    this.fillSourceBlock(null);
   }
 
-  fillSourceBlock() {
-    const resultRow = new BaseComponent({ classNames: ['result-row'] });
-    this.resultBlock.getNode().append(resultRow.getNode());
-    const wordsArr = wordCollectionLevel1.rounds[0].words[0].textExample.split(' ');
-    const shuffledWords = wordsArr.sort(() => Math.random() - 0.5);
-    shuffledWords.forEach((word) => {
-      const wordCard = new BaseComponent({ classNames: ['word'] });
+  fillSourceBlock(backWordCard: BaseComponent | null) {
+    if (backWordCard) {
+      this.sourceBlock.getNode().append(backWordCard.getNode());
       const onClick = () => {
-        Game.fillResultBlock(wordCard, resultRow);
-        wordCard.removeListener('click', onClick);
+        this.fillResultBlock(backWordCard, this.resultRow);
+        backWordCard.removeListener('click', onClick);
       };
-      wordCard.addListener('click', onClick);
-      wordCard.setTextContent(word);
-      const wordWidth = (word.length * 100) / shuffledWords.length;
-      wordCard.getNode().style.width = `${wordWidth}%`;
-      setTimeout(() => {
-        const currentWidth = wordCard.getNode().offsetWidth;
-        wordCard.getNode().style.maxWidth = `${currentWidth}px`;
-      }, 1);
-      this.sourceBlock.getNode().append(wordCard.getNode());
-    });
+      backWordCard.addListener('click', onClick);
+    } else {
+      this.resultBlock.getNode().append(this.resultRow.getNode());
+      const wordsArr = wordCollectionLevel1.rounds[0].words[0].textExample.split(' ');
+      const shuffledWords = wordsArr.sort(() => Math.random() - 0.5);
+      shuffledWords.forEach((word) => {
+        const wordCard = new BaseComponent({ classNames: ['word'] });
+        const onClick = () => {
+          this.fillResultBlock(wordCard, this.resultRow);
+          wordCard.removeListener('click', onClick);
+        };
+        wordCard.addListener('click', onClick);
+        wordCard.setTextContent(word);
+        const wordWidth = (word.length * 100) / shuffledWords.length;
+        wordCard.getNode().style.width = `${wordWidth}%`;
+        setTimeout(() => {
+          const currentWidth = wordCard.getNode().offsetWidth;
+          wordCard.getNode().style.maxWidth = `${currentWidth}px`;
+        }, 1);
+        this.sourceBlock.getNode().append(wordCard.getNode());
+      });
+    }
   }
 
-  static fillResultBlock(wordCard: BaseComponent, resultRow: BaseComponent) {
+  fillResultBlock(wordCard: BaseComponent, resultRow: BaseComponent) {
     resultRow.getNode().append(wordCard.getNode());
+    const onClick = () => {
+      this.fillSourceBlock(wordCard);
+      wordCard.removeListener('click', onClick);
+    };
+    wordCard.addListener('click', onClick);
   }
 }
 
