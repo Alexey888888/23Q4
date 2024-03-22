@@ -1,3 +1,5 @@
+import '../../node_modules/modern-normalize/modern-normalize.css';
+
 const block = document.createElement('div');
 block.className = 'block1';
 let count = 0;
