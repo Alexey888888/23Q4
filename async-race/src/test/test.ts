@@ -1,8 +1,8 @@
-import '../../node_modules/modern-normalize/modern-normalize.css';
+import 'modern-normalize/modern-normalize.css';
 
 const block = document.createElement('div');
 block.className = 'block1';
-let count = 0;
+let count: any = 0;
 block.textContent = count.toString();
 
 block.addEventListener('click', () => {
