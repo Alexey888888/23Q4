@@ -7,21 +7,36 @@ enum Endpoint {
   winners = '/winners',
 }
 
-export default class Api {
+export interface CarObjProps {
+  name: string;
+  color: string;
+  id: number;
+}
+
+interface GetCarsResponse {
+  totalNumberCars: string | null;
+  carsArr: CarObjProps[];
+}
+
+export class Api {
   private static handleFetchError(err: Error) {
     const errorMessage = `Error message: ${err.message}`;
     console.log(errorMessage);
   }
 
   static async getCars(pageNumber: number, limit: number) {
-    let totalNumberCars;
+    const responseObj: GetCarsResponse = {
+      totalNumberCars: null,
+      carsArr: [],
+    };
     try {
       const response = await fetch(`${baseUrl}${Endpoint.garage}?_page=${pageNumber}&_limit=${limit}`);
-      totalNumberCars = response.headers.get(keyForTotalCount);
+      responseObj.totalNumberCars = response.headers.get(keyForTotalCount);
+      responseObj.carsArr = await response.json();
     } catch (err) {
       this.handleFetchError(err as Error);
     }
-    return totalNumberCars;
+    return responseObj;
   }
 
   static async getWinners(pageNumber: number, limit: number) {
@@ -29,7 +44,6 @@ export default class Api {
     try {
       const response = await fetch(`${baseUrl}${Endpoint.winners}?_page=${pageNumber}&_limit=${limit}`);
       totalNumberWinners = response.headers.get(keyForTotalCount);
-      console.log(totalNumberWinners);
     } catch (err) {
       this.handleFetchError(err as Error);
     }

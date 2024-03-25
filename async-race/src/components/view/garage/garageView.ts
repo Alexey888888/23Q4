@@ -1,7 +1,8 @@
 import './garage.scss';
 
 import BaseComponent from '../../baseComponent';
-import Api from '../../../api/api';
+import { Api, CarObjProps } from '../../../api/api';
+import carSvg from './carSvg';
 
 export default class GarageView extends BaseComponent {
   container: BaseComponent;
@@ -26,19 +27,27 @@ export default class GarageView extends BaseComponent {
 
   renderGaragePage() {
     this.append(this.container);
-    this.setTotalNumberCars();
+    this.setTotalNumberCarsAndRenderCars();
     this.setPageNumber();
   }
 
-  async setTotalNumberCars() {
-    const totalNumberCars = await Api.getCars(this.pageNumber, this.limit);
+  async setTotalNumberCarsAndRenderCars() {
+    const { totalNumberCars, carsArr } = await Api.getCars(this.pageNumber, this.limit);
     const titleInner = `Garage (${totalNumberCars})`;
     this.title.setTextContent(titleInner);
+    carsArr.forEach((car) => this.renderCar(car));
   }
 
   setPageNumber() {
     const pageNumber = 1;
     const pageNumberContent = `Page #${pageNumber}`;
     this.pageNumberNode.setTextContent(pageNumberContent);
+  }
+
+  renderCar(car: CarObjProps) {
+    const carNode = new BaseComponent({ classNames: ['garage__car'] });
+    carNode.getNode().insertAdjacentHTML('beforeend', carSvg);
+    this.container.append(carNode);
+    console.log(car);
   }
 }

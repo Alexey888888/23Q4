@@ -1,7 +1,7 @@
 import './winners.scss';
 
 import BaseComponent from '../../baseComponent';
-import Api from '../../../api/api';
+import { Api } from '../../../api/api';
 
 export default class WinnersView extends BaseComponent {
   container: BaseComponent;
