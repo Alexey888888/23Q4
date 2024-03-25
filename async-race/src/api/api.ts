@@ -49,4 +49,23 @@ export class Api {
     }
     return totalNumberWinners;
   }
+
+  static async createCar(name: string, color: string) {
+    try {
+      await fetch(`${baseUrl}${Endpoint.garage}`, {
+        method: 'POST',
+        body: JSON.stringify({ name, color }),
+      });
+    } catch (err) {
+      this.handleFetchError(err as Error);
+    }
+  }
+
+  static deleteCar(id: number) {
+    try {
+      fetch(`${baseUrl}${Endpoint.garage}/${id}`, { method: 'DELETE' });
+    } catch (err) {
+      this.handleFetchError(err as Error);
+    }
+  }
 }
