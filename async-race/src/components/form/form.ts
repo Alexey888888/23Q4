@@ -8,4 +8,8 @@ export default class Form extends BaseComponent<HTMLFormElement> {
     this.addListener('submit', onSubmit);
     this.appendChildren(children);
   }
+
+  getNode(): HTMLFormElement {
+    return this.node;
+  }
 }

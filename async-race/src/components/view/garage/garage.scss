@@ -2,9 +2,16 @@
   color: #fff;
 }
 
-// .garage__car {
-//   svg {
-//     width: 100px;
-//     height: 40px;
-//   }
-// }
+.car__node {
+  margin-top: 25px;
+}
+
+.car-node__top {
+  display: flex;
+  column-gap: 5px;
+}
+
+.car-name {
+  margin-left: 15px;
+  color: #ffe95b;
+}

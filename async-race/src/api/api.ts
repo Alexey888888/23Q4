@@ -55,6 +55,7 @@ export class Api {
       await fetch(`${baseUrl}${Endpoint.garage}`, {
         method: 'POST',
         body: JSON.stringify({ name, color }),
+        headers: { 'Content-Type': 'application/json' },
       });
     } catch (err) {
       this.handleFetchError(err as Error);

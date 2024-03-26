@@ -63,7 +63,7 @@ export default class GarageView extends BaseComponent {
     const { totalNumberCars, carsArr } = await Api.getCars(this.pageNumber, this.limit);
     const titleInner = `Garage (${totalNumberCars})`;
     this.title.setTextContent(titleInner);
-    carsArr.forEach((car) => this.renderCar(car));
+    carsArr.forEach((car) => this.renderCarNode(car));
   }
 
   setPageNumber() {
@@ -72,11 +72,16 @@ export default class GarageView extends BaseComponent {
     this.pageNumberNode.setTextContent(pageNumberContent);
   }
 
-  renderCar(car: CarObjProps) {
+  renderCarNode(car: CarObjProps) {
     const carId = car.id;
     const carNode: BaseComponent = new BaseComponent(
-      { classNames: ['garage__car'] },
-      new Button({ text: 'REMOVE', onClick: () => this.removeCar(carId) }),
+      { classNames: ['car__node'] },
+      new BaseComponent(
+        { classNames: ['car-node__top'] },
+        new Button({ text: 'SELECT' }),
+        new Button({ text: 'REMOVE', onClick: () => this.removeCar(carId) }),
+        new BaseComponent({ classNames: ['car-name'], text: car.name }),
+      ),
     );
     carNode.getNode().insertAdjacentHTML('beforeend', carSvg);
     this.carBox.append(carNode);
@@ -104,13 +109,14 @@ export default class GarageView extends BaseComponent {
     const carName = this.carNameInput.getNode().value;
     const carColor = this.carNameInput.getNode().value;
     Api.createCar(carName, carColor);
+    (event.target as HTMLFormElement).reset();
     this.carBox.getNode().innerHTML = '';
     this.setTotalNumberCarsAndRenderCars();
   }
 
   async removeCar(carId: number) {
     await Api.deleteCar(carId);
-    this.carBox.getNode().innerHTML = '';
+    this.carBox.destroyChildren();
     this.setTotalNumberCarsAndRenderCars();
   }
 }
