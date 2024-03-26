@@ -1,4 +1,4 @@
-const carSvg = (color: string) => `<?xml version="1.0" standalone="no"?>
+const getCarSvg = (color: string) => `<?xml version="1.0" standalone="no"?>
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 20010904//EN"
  "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <svg version="1.0" xmlns="http://www.w3.org/2000/svg"
@@ -100,4 +100,4 @@ l-15 -73 3006 7 c1653 4 3007 8 3009 9 1 1 -8 37 -20 81 -19 67 -22 105 -22
 </g>
 </svg>`;
 
-export default carSvg;
+export default getCarSvg;

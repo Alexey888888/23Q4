@@ -51,8 +51,9 @@ export class Api {
   }
 
   static async createCar(name: string, color: string) {
+    let response;
     try {
-      await fetch(`${baseUrl}${Endpoint.garage}`, {
+      response = await fetch(`${baseUrl}${Endpoint.garage}`, {
         method: 'POST',
         body: JSON.stringify({ name, color }),
         headers: { 'Content-Type': 'application/json' },
@@ -60,6 +61,7 @@ export class Api {
     } catch (err) {
       this.handleFetchError(err as Error);
     }
+    return response;
   }
 
   static deleteCar(id: number) {

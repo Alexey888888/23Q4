@@ -2,7 +2,7 @@ import './garage.scss';
 
 import BaseComponent from '../../baseComponent';
 import { Api, CarObjProps } from '../../../api/api';
-import carSvg from './carSvg';
+import getCarSvg from './carSvg';
 import Button from '../../button/button';
 import Input from '../../input/input';
 import Form from '../../form/form';
@@ -84,7 +84,7 @@ export default class GarageView extends BaseComponent {
       ),
     );
     const { color } = car;
-    carNode.getNode().insertAdjacentHTML('beforeend', carSvg(color));
+    carNode.getNode().insertAdjacentHTML('beforeend', getCarSvg(color));
     this.carBox.append(carNode);
     console.log(car);
   }
@@ -105,13 +105,12 @@ export default class GarageView extends BaseComponent {
     this.container.append(this.carBox);
   }
 
-  createCar(event: Event) {
+  async createCar(event: Event) {
     event.preventDefault();
     const carName = this.carNameInput.getNode().value;
     const carColor = this.carColorInput.getNode().value;
     console.log(carColor);
-    Api.createCar(carName, carColor);
-    // (event.target as HTMLFormElement).reset();
+    await Api.createCar(carName, carColor);
     this.carNameInput.getNode().value = '';
     this.carBox.getNode().innerHTML = '';
     this.setTotalNumberCarsAndRenderCars();
