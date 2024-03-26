@@ -83,7 +83,8 @@ export default class GarageView extends BaseComponent {
         new BaseComponent({ classNames: ['car-name'], text: car.name }),
       ),
     );
-    carNode.getNode().insertAdjacentHTML('beforeend', carSvg);
+    const { color } = car;
+    carNode.getNode().insertAdjacentHTML('beforeend', carSvg(color));
     this.carBox.append(carNode);
     console.log(car);
   }
@@ -107,9 +108,11 @@ export default class GarageView extends BaseComponent {
   createCar(event: Event) {
     event.preventDefault();
     const carName = this.carNameInput.getNode().value;
-    const carColor = this.carNameInput.getNode().value;
+    const carColor = this.carColorInput.getNode().value;
+    console.log(carColor);
     Api.createCar(carName, carColor);
-    (event.target as HTMLFormElement).reset();
+    // (event.target as HTMLFormElement).reset();
+    this.carNameInput.getNode().value = '';
     this.carBox.getNode().innerHTML = '';
     this.setTotalNumberCarsAndRenderCars();
   }
