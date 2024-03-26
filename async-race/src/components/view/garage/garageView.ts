@@ -34,7 +34,7 @@ export default class GarageView extends BaseComponent {
     super({ classNames: ['garage'] });
     this.title = new BaseComponent();
     this.pageNumberNode = new BaseComponent();
-    this.container = new BaseComponent({ classNames: ['container'] }, this.title, this.pageNumberNode);
+    this.container = new BaseComponent({ classNames: ['container'] });
     this.pageNumber = 1;
     this.limit = 7;
     this.garageControl = new BaseComponent();
@@ -49,9 +49,14 @@ export default class GarageView extends BaseComponent {
   renderGaragePage() {
     this.append(this.container);
     this.renderGarageControl();
+    this.renderTitle();
     this.renderCarBox();
     this.setTotalNumberCarsAndRenderCars();
     this.setPageNumber();
+  }
+
+  renderTitle() {
+    this.container.appendChildren([this.title, this.pageNumberNode]);
   }
 
   async setTotalNumberCarsAndRenderCars() {
@@ -71,7 +76,7 @@ export default class GarageView extends BaseComponent {
     const carId = car.id;
     const carNode: BaseComponent = new BaseComponent(
       { classNames: ['garage__car'] },
-      new Button({ text: 'REMOVE', onClick: () => this.removeCar(carId, carNode) }),
+      new Button({ text: 'REMOVE', onClick: () => this.removeCar(carId) }),
     );
     carNode.getNode().insertAdjacentHTML('beforeend', carSvg);
     this.carBox.append(carNode);
@@ -103,9 +108,9 @@ export default class GarageView extends BaseComponent {
     this.setTotalNumberCarsAndRenderCars();
   }
 
-  // eslint-disable-next-line class-methods-use-this
-  removeCar(carId: number, carNode: BaseComponent) {
-    Api.deleteCar(carId);
-    carNode.destroy();
+  async removeCar(carId: number) {
+    await Api.deleteCar(carId);
+    this.carBox.getNode().innerHTML = '';
+    this.setTotalNumberCarsAndRenderCars();
   }
 }

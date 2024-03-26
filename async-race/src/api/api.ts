@@ -62,10 +62,12 @@ export class Api {
   }
 
   static deleteCar(id: number) {
+    let response;
     try {
-      fetch(`${baseUrl}${Endpoint.garage}/${id}`, { method: 'DELETE' });
+      response = fetch(`${baseUrl}${Endpoint.garage}/${id}`, { method: 'DELETE' });
     } catch (err) {
       this.handleFetchError(err as Error);
     }
+    return response;
   }
 }
