@@ -97,6 +97,11 @@ export default class GarageView extends BaseComponent {
     carsArr.forEach((car) => this.renderCarNode(car));
     this.totalNumberCars = Number(totalNumberCars);
     this.pagination();
+    if (this.carBox.getNode().childNodes.length === 0 && this.pageNumber !== 1) {
+      this.pageNumber -= 1;
+      this.setPageNumber();
+      this.setTotalNumberCarsAndRenderCars();
+    }
   }
 
   setPageNumber() {
