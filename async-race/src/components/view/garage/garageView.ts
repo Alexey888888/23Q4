@@ -42,6 +42,10 @@ export default class GarageView extends BaseComponent {
 
   paginationNode: BaseComponent;
 
+  prevButton: Button;
+
+  nextButton: Button;
+
   constructor() {
     super({ classNames: ['garage'] });
     this.title = new BaseComponent();
@@ -67,6 +71,8 @@ export default class GarageView extends BaseComponent {
     this.carColorUpdateInput = new Input({ name: 'car-color-update', type: 'color', disabled: true });
     this.carBox = new BaseComponent();
     this.paginationNode = new BaseComponent({ classNames: ['pagination-buttons'] });
+    this.prevButton = new Button({ text: 'PREV', onClick: () => this.changePage('prev') });
+    this.nextButton = new Button({ text: 'NEXT', onClick: () => this.changePage('next') });
     this.renderGaragePage();
   }
 
@@ -94,8 +100,7 @@ export default class GarageView extends BaseComponent {
   }
 
   setPageNumber() {
-    const pageNumber = 1;
-    const pageNumberContent = `Page #${pageNumber}`;
+    const pageNumberContent = `Page #${this.pageNumber}`;
     this.pageNumberNode.setTextContent(pageNumberContent);
   }
 
@@ -194,11 +199,38 @@ export default class GarageView extends BaseComponent {
   pagination() {
     if (this.totalNumberCars > this.limit && !this.isPagination) {
       this.isPagination = true;
-      this.paginationNode.appendChildren([new Button({ text: 'PREV' }), new Button({ text: 'NEXT' })]);
+      this.paginationNode.appendChildren([this.prevButton, this.nextButton]);
     }
     if (this.totalNumberCars <= 7 && this.isPagination) {
       this.paginationNode.destroyChildren();
       this.isPagination = false;
+    }
+    this.setDisablePaginationButton();
+  }
+
+  changePage(mode: string) {
+    if (mode === 'next') this.pageNumber += 1;
+    if (mode === 'prev') this.pageNumber -= 1;
+    this.setPageNumber();
+    this.carBox.destroyChildren();
+    this.setTotalNumberCarsAndRenderCars();
+  }
+
+  setDisablePaginationButton() {
+    const lastPage = Math.ceil(this.totalNumberCars / this.limit);
+    if (this.pageNumber === 1) {
+      this.prevButton.setDisabled(true);
+      this.prevButton.addClass(['button_disabled']);
+    } else {
+      this.prevButton.setDisabled(false);
+      this.prevButton.removeClass('button_disabled');
+    }
+    if (this.pageNumber === lastPage) {
+      this.nextButton.setDisabled(true);
+      this.nextButton.addClass(['button_disabled']);
+    } else {
+      this.nextButton.setDisabled(false);
+      this.nextButton.removeClass('button_disabled');
     }
   }
 }
