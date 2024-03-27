@@ -6,6 +6,7 @@ import getCarSvg from './carSvg';
 import Button from '../../button/button';
 import Input from '../../input/input';
 import Form from '../../form/form';
+import Utils from '../../../utils/utils';
 
 export default class GarageView extends BaseComponent {
   container: BaseComponent;
@@ -261,7 +262,7 @@ export default class GarageView extends BaseComponent {
   generateHundredCars() {
     const carsNum = 100;
     for (let i = 0; i < carsNum; i += 1) {
-      Api.createCar('car100', '#888888');
+      Api.createCar('car100', Utils.getRandomColor());
     }
     this.carBox.destroyChildren();
     this.setTotalNumberCarsAndRenderCars();
