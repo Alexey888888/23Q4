@@ -28,7 +28,13 @@ export default class GarageView extends BaseComponent {
 
   updateButton: Button;
 
+  carNameUpdateInput: Input;
+
+  carColorUpdateInput: Input;
+
   carBox: BaseComponent;
+
+  currentCarId: number | null;
 
   constructor() {
     super({ classNames: ['garage'] });
@@ -37,13 +43,23 @@ export default class GarageView extends BaseComponent {
     this.container = new BaseComponent({ classNames: ['container'] });
     this.pageNumber = 1;
     this.limit = 7;
+    this.currentCarId = null;
     this.garageControl = new BaseComponent();
     this.createButton = new Button({ text: 'CREATE ', attribute: 'type', value: 'submit' });
-    this.updateButton = new Button({ text: 'UPDATE' });
+    this.updateButton = new Button({
+      classNames: ['button', 'button_disabled'],
+      text: 'UPDATE',
+      attribute: 'type',
+      value: 'submit',
+      disabled: true,
+    });
     this.carNameInput = new Input({ name: 'car-name' });
     this.carColorInput = new Input({ name: 'car-color', type: 'color' });
+    this.carNameUpdateInput = new Input({ name: 'car-name-update', disabled: true });
+    this.carColorUpdateInput = new Input({ name: 'car-color-update', type: 'color', disabled: true });
     this.carBox = new BaseComponent();
     this.renderGaragePage();
+    // this.updateButtonDisable();
   }
 
   renderGaragePage() {
@@ -78,7 +94,7 @@ export default class GarageView extends BaseComponent {
       { classNames: ['car__node'] },
       new BaseComponent(
         { classNames: ['car-node__top'] },
-        new Button({ text: 'SELECT' }),
+        new Button({ text: 'SELECT', onClick: () => this.selectCar(carId) }),
         new Button({ text: 'REMOVE', onClick: () => this.removeCar(carId) }),
         new BaseComponent({ classNames: ['car-name'], text: car.name }),
       ),
@@ -90,14 +106,20 @@ export default class GarageView extends BaseComponent {
   }
 
   renderGarageControl() {
-    this.garageControl.append(
+    this.garageControl.appendChildren([
       new Form(
         { classNames: ['garage-control__row'], onSubmit: this.createCar.bind(this) },
         this.carNameInput,
         this.carColorInput,
         this.createButton,
       ),
-    );
+      new Form(
+        { classNames: ['garage-control__row'], onSubmit: this.updateCar.bind(this) },
+        this.carNameUpdateInput,
+        this.carColorUpdateInput,
+        this.updateButton,
+      ),
+    ]);
     this.container.append(this.garageControl);
   }
 
@@ -112,13 +134,52 @@ export default class GarageView extends BaseComponent {
     console.log(carColor);
     await Api.createCar(carName, carColor);
     this.carNameInput.getNode().value = '';
-    this.carBox.getNode().innerHTML = '';
+    this.carBox.destroyChildren();
     this.setTotalNumberCarsAndRenderCars();
+  }
+
+  async updateCar(event: Event) {
+    event.preventDefault();
+    const carName = this.carNameUpdateInput.getNode().value;
+    const carColor = this.carColorUpdateInput.getNode().value;
+    await Api.updateCar(this.currentCarId as number, carName, carColor);
+    this.carNameUpdateInput.getNode().value = '';
+    this.carBox.destroyChildren();
+    this.setTotalNumberCarsAndRenderCars();
+    this.updateFormDisable();
   }
 
   async removeCar(carId: number) {
     await Api.deleteCar(carId);
     this.carBox.destroyChildren();
     this.setTotalNumberCarsAndRenderCars();
+  }
+
+  selectCar(carId: number) {
+    this.currentCarId = carId;
+    this.updateButton.removeClass('button_disabled');
+    this.updateButton.setDisabled(false);
+    this.carNameUpdateInput.setDisabled(false);
+    this.carColorUpdateInput.setDisabled(false);
+    this.carNameUpdateInput.getNode().focus();
+    this.inputCarDataToForm();
+  }
+
+  async inputCarDataToForm() {
+    if (this.currentCarId) {
+      const carObj = await Api.getCar(this.currentCarId);
+      this.carNameUpdateInput.getNode().value = carObj.name;
+      this.carColorUpdateInput.getNode().value = carObj.color;
+      console.log(carObj);
+    }
+  }
+
+  updateFormDisable() {
+    const defaultColor = '#000000';
+    this.updateButton.addClass(['button_disabled']);
+    this.updateButton.setDisabled(true);
+    this.carNameUpdateInput.setDisabled(true);
+    this.carColorUpdateInput.setDisabled(true);
+    this.carColorUpdateInput.getNode().value = defaultColor;
   }
 }

@@ -64,13 +64,38 @@ export class Api {
     return response;
   }
 
-  static deleteCar(id: number) {
+  static async deleteCar(id: number) {
     let response;
     try {
-      response = fetch(`${baseUrl}${Endpoint.garage}/${id}`, { method: 'DELETE' });
+      response = await fetch(`${baseUrl}${Endpoint.garage}/${id}`, { method: 'DELETE' });
     } catch (err) {
       this.handleFetchError(err as Error);
     }
     return response;
+  }
+
+  static async updateCar(id: number, name: string, color: string) {
+    let response;
+    try {
+      response = await fetch(`${baseUrl}${Endpoint.garage}/${id}`, {
+        method: 'PUT',
+        body: JSON.stringify({ name, color }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+    } catch (err) {
+      this.handleFetchError(err as Error);
+    }
+    return response;
+  }
+
+  static async getCar(id: number) {
+    let carObj;
+    try {
+      const response = await fetch(`${baseUrl}${Endpoint.garage}/${id}`, { method: 'GET' });
+      carObj = await response.json();
+    } catch (err) {
+      this.handleFetchError(err as Error);
+    }
+    return carObj;
   }
 }
