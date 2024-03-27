@@ -81,7 +81,11 @@ export default class GarageView extends BaseComponent {
     this.nextButton = new Button({ text: 'NEXT', onClick: () => this.changePage('next') });
     this.raceButton = new Button({ classNames: ['button', 'race-button'], text: 'RACE' });
     this.resetButton = new Button({ classNames: ['button', 'race-button'], text: 'RESET' });
-    this.generateCarsButton = new Button({ classNames: ['button', 'generate-button'], text: 'GENERATE CARS' });
+    this.generateCarsButton = new Button({
+      classNames: ['button', 'generate-button'],
+      text: 'GENERATE CARS',
+      onClick: () => this.generateHundredCars(),
+    });
     this.renderGaragePage();
   }
 
@@ -162,8 +166,8 @@ export default class GarageView extends BaseComponent {
     this.container.append(this.carBox);
   }
 
-  async createCar(event: Event) {
-    event.preventDefault();
+  async createCar(event?: Event) {
+    if (event) event.preventDefault();
     const carName = this.carNameInput.getNode().value;
     const carColor = this.carColorInput.getNode().value;
     await Api.createCar(carName, carColor);
@@ -252,5 +256,14 @@ export default class GarageView extends BaseComponent {
       this.nextButton.setDisabled(false);
       this.nextButton.removeClass('button_disabled');
     }
+  }
+
+  generateHundredCars() {
+    const carsNum = 100;
+    for (let i = 0; i < carsNum; i += 1) {
+      Api.createCar('car100', '#888888');
+    }
+    this.carBox.destroyChildren();
+    this.setTotalNumberCarsAndRenderCars();
   }
 }
