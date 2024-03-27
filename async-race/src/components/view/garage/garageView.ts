@@ -59,7 +59,6 @@ export default class GarageView extends BaseComponent {
     this.carColorUpdateInput = new Input({ name: 'car-color-update', type: 'color', disabled: true });
     this.carBox = new BaseComponent();
     this.renderGaragePage();
-    // this.updateButtonDisable();
   }
 
   renderGaragePage() {
@@ -102,7 +101,6 @@ export default class GarageView extends BaseComponent {
     const { color } = car;
     carNode.getNode().insertAdjacentHTML('beforeend', getCarSvg(color));
     this.carBox.append(carNode);
-    console.log(car);
   }
 
   renderGarageControl() {
@@ -131,7 +129,6 @@ export default class GarageView extends BaseComponent {
     event.preventDefault();
     const carName = this.carNameInput.getNode().value;
     const carColor = this.carColorInput.getNode().value;
-    console.log(carColor);
     await Api.createCar(carName, carColor);
     this.carNameInput.getNode().value = '';
     this.carBox.destroyChildren();
@@ -170,7 +167,6 @@ export default class GarageView extends BaseComponent {
       const carObj = await Api.getCar(this.currentCarId);
       this.carNameUpdateInput.getNode().value = carObj.name;
       this.carColorUpdateInput.getNode().value = carObj.color;
-      console.log(carObj);
     }
   }
 
