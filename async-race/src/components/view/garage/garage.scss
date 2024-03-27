@@ -21,3 +21,16 @@
   margin-left: 15px;
   color: #ffe95b;
 }
+
+.pagination-buttons {
+  margin-top: 25px;
+
+  button {
+    width: 60px;
+    border-bottom-color: #989898;
+
+    &:nth-child(2) {
+      margin-left: 5px;
+    }
+  }
+}

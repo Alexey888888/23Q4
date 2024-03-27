@@ -36,6 +36,12 @@ export default class GarageView extends BaseComponent {
 
   currentCarId: number | null;
 
+  totalNumberCars: number;
+
+  isPagination: boolean;
+
+  paginationNode: BaseComponent;
+
   constructor() {
     super({ classNames: ['garage'] });
     this.title = new BaseComponent();
@@ -44,6 +50,8 @@ export default class GarageView extends BaseComponent {
     this.pageNumber = 1;
     this.limit = 7;
     this.currentCarId = null;
+    this.totalNumberCars = 0;
+    this.isPagination = false;
     this.garageControl = new BaseComponent();
     this.createButton = new Button({ text: 'CREATE ', attribute: 'type', value: 'submit' });
     this.updateButton = new Button({
@@ -58,6 +66,7 @@ export default class GarageView extends BaseComponent {
     this.carNameUpdateInput = new Input({ name: 'car-name-update', disabled: true });
     this.carColorUpdateInput = new Input({ name: 'car-color-update', type: 'color', disabled: true });
     this.carBox = new BaseComponent();
+    this.paginationNode = new BaseComponent({ classNames: ['pagination-buttons'] });
     this.renderGaragePage();
   }
 
@@ -68,6 +77,7 @@ export default class GarageView extends BaseComponent {
     this.renderCarBox();
     this.setTotalNumberCarsAndRenderCars();
     this.setPageNumber();
+    this.container.append(this.paginationNode);
   }
 
   renderTitle() {
@@ -79,6 +89,8 @@ export default class GarageView extends BaseComponent {
     const titleInner = `Garage (${totalNumberCars})`;
     this.title.setTextContent(titleInner);
     carsArr.forEach((car) => this.renderCarNode(car));
+    this.totalNumberCars = Number(totalNumberCars);
+    this.pagination();
   }
 
   setPageNumber() {
@@ -177,5 +189,16 @@ export default class GarageView extends BaseComponent {
     this.carNameUpdateInput.setDisabled(true);
     this.carColorUpdateInput.setDisabled(true);
     this.carColorUpdateInput.getNode().value = defaultColor;
+  }
+
+  pagination() {
+    if (this.totalNumberCars > this.limit && !this.isPagination) {
+      this.isPagination = true;
+      this.paginationNode.appendChildren([new Button({ text: 'PREV' }), new Button({ text: 'NEXT' })]);
+    }
+    if (this.totalNumberCars <= 7 && this.isPagination) {
+      this.paginationNode.destroyChildren();
+      this.isPagination = false;
+    }
   }
 }
