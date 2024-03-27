@@ -46,9 +46,15 @@ export default class GarageView extends BaseComponent {
 
   nextButton: Button;
 
+  raceButton: Button;
+
+  resetButton: Button;
+
+  generateCarsButton: Button;
+
   constructor() {
     super({ classNames: ['garage'] });
-    this.title = new BaseComponent();
+    this.title = new BaseComponent({ classNames: ['title'] });
     this.pageNumberNode = new BaseComponent();
     this.container = new BaseComponent({ classNames: ['container'] });
     this.pageNumber = 1;
@@ -73,6 +79,9 @@ export default class GarageView extends BaseComponent {
     this.paginationNode = new BaseComponent({ classNames: ['pagination-buttons'] });
     this.prevButton = new Button({ text: 'PREV', onClick: () => this.changePage('prev') });
     this.nextButton = new Button({ text: 'NEXT', onClick: () => this.changePage('next') });
+    this.raceButton = new Button({ classNames: ['button', 'race-button'], text: 'RACE' });
+    this.resetButton = new Button({ classNames: ['button', 'race-button'], text: 'RESET' });
+    this.generateCarsButton = new Button({ classNames: ['button', 'generate-button'], text: 'GENERATE CARS' });
     this.renderGaragePage();
   }
 
@@ -138,6 +147,12 @@ export default class GarageView extends BaseComponent {
         this.carNameUpdateInput,
         this.carColorUpdateInput,
         this.updateButton,
+      ),
+      new BaseComponent(
+        { classNames: ['garage-control__row'] },
+        this.raceButton,
+        this.resetButton,
+        this.generateCarsButton,
       ),
     ]);
     this.container.append(this.garageControl);

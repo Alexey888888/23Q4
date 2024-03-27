@@ -6,6 +6,15 @@
   display: flex;
   column-gap: 5px;
   margin-bottom: 10px;
+
+  .race-button {
+    width: 70px;
+    border-bottom-color: #8aacfa;
+  }
+
+  .generate-button {
+    width: 215px;
+  }
 }
 
 .car__node {
