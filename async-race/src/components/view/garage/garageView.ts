@@ -262,7 +262,7 @@ export default class GarageView extends BaseComponent {
   generateHundredCars() {
     const carsNum = 100;
     for (let i = 0; i < carsNum; i += 1) {
-      Api.createCar('car100', Utils.getRandomColor());
+      Api.createCar(Utils.getRandomCarName(), Utils.getRandomColor());
     }
     this.carBox.destroyChildren();
     this.setTotalNumberCarsAndRenderCars();
