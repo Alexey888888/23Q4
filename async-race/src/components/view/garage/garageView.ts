@@ -128,6 +128,11 @@ export default class GarageView extends BaseComponent {
     const carName = new BaseComponent({ classNames: ['car-name'], text: car.name });
     carName.getNode().style.color = color;
     if (name) carName.addClass(['car-name-background']);
+    const carRow = new BaseComponent(
+      { classNames: ['car-row'] },
+      new Button({ text: 'START' }),
+      new Button({ text: 'STOP' }),
+    );
     const carNode: BaseComponent = new BaseComponent(
       { classNames: ['car__node'] },
       new BaseComponent(
@@ -136,8 +141,9 @@ export default class GarageView extends BaseComponent {
         new Button({ text: 'REMOVE', onClick: () => this.removeCar(id) }),
         carName,
       ),
+      carRow,
     );
-    carNode.getNode().insertAdjacentHTML('beforeend', getCarSvg(color));
+    carRow.getNode().insertAdjacentHTML('beforeend', getCarSvg(color));
     this.carBox.append(carNode);
   }
 

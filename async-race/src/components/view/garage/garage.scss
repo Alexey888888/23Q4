@@ -37,6 +37,30 @@
   padding: 3px 5px;
 }
 
+.car-row {
+  border-bottom: dashed #ffffff;
+  display: flex;
+  margin-top: 10px;
+
+  button {
+    position: relative;
+    width: 55px;
+    background: transparent;
+    color: #fffb789d;
+    border: 1px solid #fffb789d;
+    border-bottom: 2px solid #fffb789d;
+    font-weight: 400;
+
+    &:nth-child(2) {
+      margin-left: 5px;
+    }
+  }
+
+  svg {
+    position: relative;
+  }
+}
+
 .pagination-buttons {
   margin-top: 25px;
 
