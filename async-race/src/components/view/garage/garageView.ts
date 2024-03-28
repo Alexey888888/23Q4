@@ -124,17 +124,19 @@ export default class GarageView extends BaseComponent {
   }
 
   renderCarNode(car: CarObjProps) {
-    const carId = car.id;
+    const { name, color, id } = car;
+    const carName = new BaseComponent({ classNames: ['car-name'], text: car.name });
+    carName.getNode().style.color = color;
+    if (name) carName.addClass(['car-name-background']);
     const carNode: BaseComponent = new BaseComponent(
       { classNames: ['car__node'] },
       new BaseComponent(
         { classNames: ['car-node__top'] },
-        new Button({ text: 'SELECT', onClick: () => this.selectCar(carId) }),
-        new Button({ text: 'REMOVE', onClick: () => this.removeCar(carId) }),
-        new BaseComponent({ classNames: ['car-name'], text: car.name }),
+        new Button({ text: 'SELECT', onClick: () => this.selectCar(id) }),
+        new Button({ text: 'REMOVE', onClick: () => this.removeCar(id) }),
+        carName,
       ),
     );
-    const { color } = car;
     carNode.getNode().insertAdjacentHTML('beforeend', getCarSvg(color));
     this.carBox.append(carNode);
   }
@@ -226,7 +228,7 @@ export default class GarageView extends BaseComponent {
       this.isPagination = true;
       this.paginationNode.appendChildren([this.prevButton, this.nextButton]);
     }
-    if (this.totalNumberCars <= 7 && this.isPagination) {
+    if (this.totalNumberCars <= this.limit && this.isPagination) {
       this.paginationNode.destroyChildren();
       this.isPagination = false;
     }

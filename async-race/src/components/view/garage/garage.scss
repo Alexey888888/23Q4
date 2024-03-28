@@ -27,8 +27,14 @@
 }
 
 .car-name {
+  font-weight: bolder;
   margin-left: 15px;
-  color: #ffe95b;
+}
+
+.car-name-background {
+  background: #414141;
+  border-radius: 5px;
+  padding: 3px 5px;
 }
 
 .pagination-buttons {
