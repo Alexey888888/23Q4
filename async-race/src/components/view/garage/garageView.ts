@@ -144,6 +144,7 @@ export default class GarageView extends BaseComponent {
       carRow,
     );
     carRow.getNode().insertAdjacentHTML('beforeend', getCarSvg(color));
+    carRow.append(new BaseComponent({ classNames: ['flag'], text: '🚩' }));
     this.carBox.append(carNode);
   }
 
