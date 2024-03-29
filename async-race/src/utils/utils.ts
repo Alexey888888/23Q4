@@ -22,4 +22,13 @@ export default class Utils {
     const randomCarModel = carBrands[randomCarName][randomCarModelIndex];
     return `${randomCarName} ${randomCarModel}`;
   }
+
+  static createSvg(svgInner: string, svgWidth: string, svgHeight: string): SVGElement {
+    const svg = 'http://www.w3.org/2000/svg';
+    const svgElement = document.createElementNS(svg, 'svg');
+    svgElement.setAttributeNS(null, 'width', svgWidth);
+    svgElement.setAttributeNS(null, 'height', svgHeight);
+    svgElement.innerHTML = svgInner;
+    return svgElement;
+  }
 }
