@@ -98,4 +98,31 @@ export class Api {
     }
     return carObj;
   }
+
+  static async startEngine(ID: number) {
+    let responseContent;
+    const status = 'started';
+    try {
+      const response = await fetch(`${baseUrl}${Endpoint.engine}?id=${ID}&status=${status}`, {
+        method: 'PATCH',
+      });
+      responseContent = await response.json();
+    } catch (err) {
+      this.handleFetchError(err as Error);
+    }
+    return responseContent;
+  }
+
+  static async switchEngineToDriveMode(ID: number) {
+    let response;
+    const status = 'drive';
+    try {
+      response = await fetch(`${baseUrl}${Endpoint.engine}?id=${ID}&status=${status}`, {
+        method: 'PATCH',
+      });
+    } catch (err) {
+      this.handleFetchError(err as Error);
+    }
+    return response?.status;
+  }
 }

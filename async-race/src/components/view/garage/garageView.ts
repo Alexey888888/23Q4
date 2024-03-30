@@ -126,11 +126,15 @@ export default class GarageView extends BaseComponent {
   renderCarNode(car: CarObjProps) {
     const { name, color, id } = car;
     const carName = new BaseComponent({ classNames: ['car-name'], text: car.name });
+    const ID = car.id;
     carName.getNode().style.color = color;
+    const svgCarWidth = '90';
+    const svgCarHeight = '40';
+    const svgCar = Utils.createSvg(getCarSvg(color), svgCarWidth, svgCarHeight);
     if (name) carName.addClass(['car-name-background']);
     const carRow = new BaseComponent(
       { classNames: ['car-row'] },
-      new Button({ text: 'START' }),
+      new Button({ text: 'START', onClick: () => this.driveAnimation(svgCar, ID) }),
       new Button({ text: 'STOP' }),
     );
     const carNode: BaseComponent = new BaseComponent(
@@ -143,9 +147,6 @@ export default class GarageView extends BaseComponent {
       ),
       carRow,
     );
-    const svgCarWidth = '90';
-    const svgCarHeight = '40';
-    const svgCar = Utils.createSvg(getCarSvg(color), svgCarWidth, svgCarHeight);
     carRow.getNode().append(svgCar);
     carRow.append(new BaseComponent({ classNames: ['flag'], text: '🚩' }));
     this.carBox.append(carNode);
@@ -278,5 +279,45 @@ export default class GarageView extends BaseComponent {
     }
     this.carBox.destroyChildren();
     this.setTotalNumberCarsAndRenderCars();
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  async driveAnimation(svgCar: SVGElement, ID: number) {
+    let animationFrameId: number;
+    async function driveModeStart(id: number) {
+      const driveModeStatus = await Api.switchEngineToDriveMode(id);
+      if (driveModeStatus === 500) {
+        console.log('fuck');
+        cancelAnimationFrame(animationFrameId);
+      }
+      if (driveModeStatus === 200) console.log('success');
+
+      console.log(driveModeStatus);
+    }
+    const driveData = await Api.startEngine(ID);
+    const { velocity, distance } = driveData;
+    console.log(velocity);
+    console.log(distance);
+    driveModeStart(ID);
+    const finishPlace = 255;
+    const car = svgCar;
+    const endX = window.innerWidth - finishPlace;
+    const widthButton = 125;
+    let currentX = 0;
+    console.log(currentX);
+    const duration = distance / velocity;
+    const millisecondsPerSeconds = 1000;
+    const framePerSecond = 60;
+    const framesCount = (duration / millisecondsPerSeconds) * framePerSecond;
+    const dx = (endX - svgCar.getBoundingClientRect().x + widthButton) / framesCount;
+    const tick = () => {
+      currentX += dx;
+      const transformValue = `translateX(${currentX}px)`;
+      car.style.transform = transformValue;
+      if (currentX < endX) {
+        animationFrameId = requestAnimationFrame(tick);
+      }
+    };
+    tick();
   }
 }
