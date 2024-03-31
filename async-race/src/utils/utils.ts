@@ -1,4 +1,5 @@
 import carBrands from '../components/view/garage/carBrands';
+import Button from '../components/button/button';
 
 export default class Utils {
   static getRandomValue(maxValue: number) {
@@ -30,5 +31,16 @@ export default class Utils {
     svgElement.setAttributeNS(null, 'height', svgHeight);
     svgElement.innerHTML = svgInner;
     return svgElement;
+  }
+
+  static ButtonsStateToggle(button_1: Button, button_2: Button) {
+    button_1.toggleClass('button_disabled');
+    button_2.toggleClass('button_disabled');
+    if ((button_1.getNode() as HTMLButtonElement).disabled) {
+      button_1.setDisabled(false);
+    } else button_1.setDisabled(true);
+    if ((button_2.getNode() as HTMLButtonElement).disabled) {
+      button_2.setDisabled(false);
+    } else button_2.setDisabled(true);
   }
 }

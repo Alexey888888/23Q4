@@ -133,12 +133,25 @@ export default class GarageView extends BaseComponent {
     const svgCarWidth = '90';
     const svgCarHeight = '40';
     const svgCar = Utils.createSvg(getCarSvg(color), svgCarWidth, svgCarHeight);
+    let stopButton: Button;
+    const startButton = new Button({
+      text: 'START',
+      onClick: () => {
+        Utils.ButtonsStateToggle(startButton, stopButton);
+        this.driveAnimation(svgCar, ID);
+      },
+    });
+    stopButton = new Button({
+      text: 'STOP',
+      disabled: true,
+      classNames: ['button', 'button_disabled'],
+      onClick: () => {
+        Utils.ButtonsStateToggle(startButton, stopButton);
+        this.stopCar(svgCar, ID);
+      },
+    });
     if (name) carName.addClass(['car-name-background']);
-    const carRow = new BaseComponent(
-      { classNames: ['car-row'] },
-      new Button({ text: 'START', onClick: () => this.driveAnimation(svgCar, ID) }),
-      new Button({ text: 'STOP', onClick: () => this.stopCar(svgCar, ID) }),
-    );
+    const carRow = new BaseComponent({ classNames: ['car-row'] }, startButton, stopButton);
     const carNode: BaseComponent = new BaseComponent(
       { classNames: ['car__node'] },
       new BaseComponent(

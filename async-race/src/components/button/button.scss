@@ -13,7 +13,7 @@
 
 .button_disabled {
   cursor: default;
-
+  opacity: 0.5;
   &:hover {
     scale: 1;
   }
