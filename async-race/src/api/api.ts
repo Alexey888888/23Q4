@@ -99,9 +99,9 @@ export class Api {
     return carObj;
   }
 
-  static async startEngine(ID: number) {
+  static async startEngine(ID: number, engineStatus: 'started' | 'stopped') {
     let responseContent;
-    const status = 'started';
+    const status = engineStatus;
     try {
       const response = await fetch(`${baseUrl}${Endpoint.engine}?id=${ID}&status=${status}`, {
         method: 'PATCH',

@@ -53,6 +53,8 @@ export default class GarageView extends BaseComponent {
 
   generateCarsButton: Button;
 
+  animationFrameIds: { [key: number]: number } = {};
+
   constructor() {
     super({ classNames: ['garage'] });
     this.title = new BaseComponent({ classNames: ['title'] });
@@ -135,7 +137,7 @@ export default class GarageView extends BaseComponent {
     const carRow = new BaseComponent(
       { classNames: ['car-row'] },
       new Button({ text: 'START', onClick: () => this.driveAnimation(svgCar, ID) }),
-      new Button({ text: 'STOP' }),
+      new Button({ text: 'STOP', onClick: () => this.stopCar(svgCar, ID) }),
     );
     const carNode: BaseComponent = new BaseComponent(
       { classNames: ['car__node'] },
@@ -281,30 +283,25 @@ export default class GarageView extends BaseComponent {
     this.setTotalNumberCarsAndRenderCars();
   }
 
-  // eslint-disable-next-line class-methods-use-this
   async driveAnimation(svgCar: SVGElement, ID: number) {
     let animationFrameId: number;
     async function driveModeStart(id: number) {
       const driveModeStatus = await Api.switchEngineToDriveMode(id);
       if (driveModeStatus === 500) {
-        console.log('fuck');
+        console.log('engine broke down'); // ------remove
         cancelAnimationFrame(animationFrameId);
       }
-      if (driveModeStatus === 200) console.log('success');
-
-      console.log(driveModeStatus);
+      if (driveModeStatus === 200) console.log('success'); // -----remove
     }
-    const driveData = await Api.startEngine(ID);
-    const { velocity, distance } = driveData;
-    console.log(velocity);
-    console.log(distance);
+    const engineStatus = 'started';
+    const driveData = await Api.startEngine(ID, engineStatus);
     driveModeStart(ID);
+    const { velocity, distance } = driveData;
     const finishPlace = 255;
     const car = svgCar;
     const endX = window.innerWidth - finishPlace;
     const widthButton = 125;
     let currentX = 0;
-    console.log(currentX);
     const duration = distance / velocity;
     const millisecondsPerSeconds = 1000;
     const framePerSecond = 60;
@@ -316,8 +313,19 @@ export default class GarageView extends BaseComponent {
       car.style.transform = transformValue;
       if (currentX < endX) {
         animationFrameId = requestAnimationFrame(tick);
+        this.animationFrameIds[ID] = animationFrameId;
       }
     };
     tick();
+  }
+
+  async stopCar(svgCar: SVGElement, ID: number) {
+    const engineStatus = 'stopped';
+    const car = svgCar;
+    const startPosition = 'translateX(0)';
+    await Api.startEngine(ID, engineStatus);
+    const animationFrameId = this.animationFrameIds[ID];
+    cancelAnimationFrame(animationFrameId);
+    car.style.transform = startPosition;
   }
 }
