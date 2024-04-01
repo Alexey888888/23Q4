@@ -29,6 +29,7 @@ export default class Utils {
     const svgElement = document.createElementNS(svg, 'svg');
     svgElement.setAttributeNS(null, 'width', svgWidth);
     svgElement.setAttributeNS(null, 'height', svgHeight);
+    svgElement.setAttributeNS(null, 'class', 'car-svg');
     svgElement.innerHTML = svgInner;
     return svgElement;
   }

@@ -82,8 +82,23 @@ export default class GarageView extends BaseComponent {
     this.paginationNode = new BaseComponent({ classNames: ['pagination-buttons'] });
     this.prevButton = new Button({ text: 'PREV', onClick: () => this.changePage('prev') });
     this.nextButton = new Button({ text: 'NEXT', onClick: () => this.changePage('next') });
-    this.raceButton = new Button({ classNames: ['button', 'race-button'], text: 'RACE' });
-    this.resetButton = new Button({ classNames: ['button', 'race-button'], text: 'RESET' });
+    this.raceButton = new Button({
+      classNames: ['button', 'race-button'],
+      text: 'RACE',
+      onClick: () => {
+        Utils.ButtonsStateToggle(this.raceButton, this.resetButton);
+        this.startAllCars();
+      },
+    });
+    this.resetButton = new Button({
+      classNames: ['button', 'race-button', 'button_disabled'],
+      text: 'RESET',
+      disabled: true,
+      onClick: () => {
+        Utils.ButtonsStateToggle(this.raceButton, this.resetButton);
+        this.stopAllCars();
+      },
+    });
     this.generateCarsButton = new Button({
       classNames: ['button', 'generate-button'],
       text: 'GENERATE CARS',
@@ -300,11 +315,7 @@ export default class GarageView extends BaseComponent {
     let animationFrameId: number;
     async function driveModeStart(id: number) {
       const driveModeStatus = await Api.switchEngineToDriveMode(id);
-      if (driveModeStatus === 500) {
-        console.log('engine broke down'); // ------remove
-        cancelAnimationFrame(animationFrameId);
-      }
-      if (driveModeStatus === 200) console.log('success'); // -----remove
+      if (driveModeStatus === 500) cancelAnimationFrame(animationFrameId);
     }
     const engineStatus = 'started';
     const driveData = await Api.startEngine(ID, engineStatus);
@@ -340,5 +351,15 @@ export default class GarageView extends BaseComponent {
     const animationFrameId = this.animationFrameIds[ID];
     cancelAnimationFrame(animationFrameId);
     car.style.transform = startPosition;
+  }
+
+  async startAllCars() {
+    const carNodes = this.carBox.getNode().querySelectorAll('.car-svg') as NodeListOf<SVGElement>;
+    await Promise.all(Array.from(carNodes).map((svgCar, index) => this.driveAnimation(svgCar, index + 1)));
+  }
+
+  async stopAllCars() {
+    const carNodes = this.carBox.getNode().querySelectorAll('.car-svg') as NodeListOf<SVGElement>;
+    carNodes.forEach((svgCar, index) => this.stopCar(svgCar, index + 1));
   }
 }
