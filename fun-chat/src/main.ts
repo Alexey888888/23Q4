@@ -1,4 +1,4 @@
-import './style.css';
+import './style.scss';
 
 function test() {
   const testBox = document.createElement('div');
