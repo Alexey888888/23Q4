@@ -19,6 +19,7 @@
     "browser": true,
     "node": true
   },
+  "noInlineConfig": true,
   "rules": {
     "no-console": 0
   }
