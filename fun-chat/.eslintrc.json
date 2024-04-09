@@ -19,7 +19,7 @@
     "browser": true,
     "node": true
   },
-  "noInlineConfig": true,
+  // "noInlineConfig": true, !!!---remove comment
   "rules": {
     "no-console": 0
   }
