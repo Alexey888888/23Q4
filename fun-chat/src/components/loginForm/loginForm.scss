@@ -37,16 +37,24 @@
       }
 
       input {
+        width: 210px;
         margin-left: 25px;
+        padding: 10px;
       }
 
-      span:nth-child(2) {
+      span:nth-child(2),
+      span:nth-child(3) {
         display: block;
-        height: 15px;
-        font-size: 14px;
-        color: rgb(196, 70, 70);
+        width: 235px;
+        // height: 10px;
+        font-size: 12px;
+        color: #b30707;
         padding-left: 25px;
         margin-top: 3px;
+      }
+
+      span:nth-child(3) {
+        margin-top: 5px;
       }
     }
   }

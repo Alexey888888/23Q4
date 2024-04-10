@@ -7,13 +7,15 @@ type InputProps = {
   name: string;
   type?: string;
   disabled?: boolean;
+  placeholder?: string;
 };
 
 export default class Input extends BaseComponent<HTMLInputElement> {
-  constructor({ name, type = 'text', disabled = false }: InputProps) {
+  constructor({ name, type = 'text', disabled = false, placeholder }: InputProps) {
     super({ tag: 'input', classNames: ['input'] });
     this.setAttribute('name', name);
     this.setAttribute('type', type);
+    if (placeholder) this.setAttribute('placeholder', placeholder);
     if (disabled) this.setDisabled(disabled);
   }
 
