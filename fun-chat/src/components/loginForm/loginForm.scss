@@ -1,0 +1,53 @@
+.login-window {
+  background: #a1a1a1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // width: 300px;
+  // height: 280px;
+  border-radius: 5px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    button {
+      margin-bottom: 15px;
+    }
+  }
+
+  fieldset {
+    display: flex;
+    flex-direction: column;
+    row-gap: 25px;
+    margin: 15px;
+
+    legend {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: flex;
+      justify-content: space-between;
+
+      span:first-child {
+        cursor: pointer;
+      }
+
+      input {
+        margin-left: 25px;
+      }
+
+      span:nth-child(2) {
+        display: block;
+        height: 15px;
+        font-size: 14px;
+        color: rgb(196, 70, 70);
+        padding-left: 25px;
+        margin-top: 3px;
+      }
+    }
+  }
+}
