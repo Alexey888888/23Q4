@@ -16,6 +16,7 @@ export default class Input extends BaseComponent<HTMLInputElement> {
     this.setAttribute('name', name);
     this.setAttribute('type', type);
     if (placeholder) this.setAttribute('placeholder', placeholder);
+    this.setAttribute('autocomplete', 'off');
     if (disabled) this.setDisabled(disabled);
   }
 

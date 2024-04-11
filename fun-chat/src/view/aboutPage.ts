@@ -1,6 +1,10 @@
+import BaseComponent from '../components/baseComponent';
+
 export default class AboutPage {
   // eslint-disable-next-line class-methods-use-this
-  render(): void {
-    document.body.innerHTML = '<h1>About page</h1>';
+  render(): BaseComponent {
+    const aboutPage = new BaseComponent({ tag: 'h1', text: 'About Page' });
+    document.body.append(aboutPage.getNode());
+    return aboutPage;
   }
 }
