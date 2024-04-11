@@ -1,12 +1,11 @@
 import BaseComponent from '../components/baseComponent';
 import LoginForm from '../components/loginForm/loginForm';
+import RouterInterface from '../types/types';
 
 export default class LoginPage {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  router: any;
+  router: RouterInterface;
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(router: any) {
+  constructor(router: RouterInterface) {
     this.router = router;
   }
 

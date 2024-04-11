@@ -1,10 +1,10 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import './loginForm.scss';
 
 import BaseComponent from '../baseComponent';
 import Button from '../button/button';
 import Input from '../input/input';
 import Form from '../form/form';
+import RouterInterface from '../../types/types';
 
 export default class LoginForm extends BaseComponent {
   usernameInput: Input;
@@ -23,15 +23,14 @@ export default class LoginForm extends BaseComponent {
 
   passwordCaseErrorMessage: BaseComponent;
 
-  router: any;
+  router: RouterInterface;
 
   static ValidationErrors = {
     LengthError: 'Length must be more than 4 characters',
     letterCaseError: 'Use uppercase and capital letters',
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  constructor(router: any) {
+  constructor(router: RouterInterface) {
     super({ classNames: ['login-window'] });
     this.router = router;
     this.usernameInput = new Input({ name: 'input-nickname', placeholder: 'Input username' });

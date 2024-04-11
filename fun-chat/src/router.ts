@@ -24,14 +24,9 @@ export default class Router {
     this.routes['/login'] = () => new LoginPage(this).render();
     this.routes['/main'] = new MainPage().render;
     this.routes['/about'] = new AboutPage().render;
-    // this.routes['/'] = () => {
-    //   this.routeTo('/login');
-    //   return new LoginPage(this).render();
-    // };
   }
 
   public route(): void {
-    // document.body.innerHTML = '';
     if (this.currentPage) {
       this.currentPage.destroy();
     }
