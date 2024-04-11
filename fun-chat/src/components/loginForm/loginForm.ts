@@ -4,11 +4,9 @@ import './loginForm.scss';
 import BaseComponent from '../baseComponent';
 import Button from '../button/button';
 import Input from '../input/input';
-// import Router from '../../router';
+import Form from '../form/form';
 
 export default class LoginForm extends BaseComponent {
-  // private router: Router;
-
   usernameInput: Input;
 
   passwordInput: Input;
@@ -35,18 +33,21 @@ export default class LoginForm extends BaseComponent {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   constructor(router: any) {
     super({ classNames: ['login-window'] });
-    // this.router = new Router();
     this.router = router;
     this.usernameInput = new Input({ name: 'input-nickname', placeholder: 'Input username' });
     this.passwordInput = new Input({ name: 'input-password', type: 'password', placeholder: 'Input password' });
     this.loginButton = new Button({
       text: 'LOGIN',
+      attribute: 'type',
+      value: 'submit',
       disabled: true,
       classNames: ['button', 'button_disabled'],
-      onClick: (event) => this.loginButtonHandler(event),
     });
-    this.infoButton = new Button({ text: 'Info' });
-    this.loginForm = new BaseComponent({ tag: 'form' });
+    this.infoButton = new Button({ text: 'Info', onClick: (event) => this.infoButtonHandler(event) });
+    this.loginForm = new Form({
+      classNames: ['form'],
+      onSubmit: (event) => this.formOnsubmit(event),
+    });
     this.usernameErrorMessage = new BaseComponent({ tag: 'span' });
     this.passwordLengthErrorMessage = new BaseComponent({ tag: 'span' });
     this.passwordCaseErrorMessage = new BaseComponent({ tag: 'span' });
@@ -129,8 +130,13 @@ export default class LoginForm extends BaseComponent {
     }
   }
 
-  private loginButtonHandler(event: Event) {
+  private formOnsubmit(event: Event) {
     event.preventDefault();
     this.router.routeTo('/main');
+  }
+
+  private infoButtonHandler(event: Event) {
+    event.preventDefault();
+    this.router.routeTo('/about');
   }
 }
