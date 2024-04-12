@@ -4,7 +4,9 @@ import BaseComponent from '../baseComponent';
 import Button from '../button/button';
 import Input from '../input/input';
 import Form from '../form/form';
-import RouterInterface from '../../types/types';
+import RouterInterface, { UserAuthenticationData } from '../../types/types';
+import { WebSocketUtil, webSocket } from '../../utils/webSocket';
+import ModalWindow from '../modalWindow/modalWindow';
 
 export default class LoginForm extends BaseComponent {
   usernameInput: Input;
@@ -25,6 +27,8 @@ export default class LoginForm extends BaseComponent {
 
   router: RouterInterface;
 
+  socket: WebSocketUtil;
+
   static ValidationErrors = {
     LengthError: 'Length must be more than 4 characters',
     letterCaseError: 'Use uppercase and capital letters',
@@ -32,6 +36,7 @@ export default class LoginForm extends BaseComponent {
 
   constructor(router: RouterInterface) {
     super({ classNames: ['login-window'] });
+    this.socket = webSocket;
     this.router = router;
     this.usernameInput = new Input({ name: 'input-nickname', placeholder: 'Input username' });
     this.passwordInput = new Input({ name: 'input-password', type: 'password', placeholder: 'Input password' });
@@ -130,12 +135,39 @@ export default class LoginForm extends BaseComponent {
   }
 
   private formOnsubmit(event: Event) {
+    const login = this.usernameInput.getNode().value;
+    const password = this.passwordInput.getNode().value;
     event.preventDefault();
-    this.router.routeTo('/main');
+    const request = {
+      id: crypto.randomUUID(),
+      type: 'USER_LOGIN',
+      payload: {
+        user: {
+          login,
+          password,
+        },
+      },
+    };
+    this.socket.send(request);
+    this.checkMessageFromServer();
+  }
+
+  private checkMessageFromServer() {
+    this.socket.onMessage((message: UserAuthenticationData) => {
+      if (message.type === 'USER_LOGIN') {
+        const mainPath = '/main';
+        this.router.routeTo(mainPath);
+      }
+      if (message.payload.error) {
+        const modalWindow = new ModalWindow().init(message.payload.error);
+        document.body.append(modalWindow.getNode());
+      }
+    });
   }
 
   private infoButtonHandler(event: Event) {
     event.preventDefault();
-    this.router.routeTo('/about');
+    const aboutPath = '/about';
+    this.router.routeTo(aboutPath);
   }
 }

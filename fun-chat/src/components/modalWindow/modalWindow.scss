@@ -1,0 +1,17 @@
+.modal-window {
+  width: 250px;
+  height: 150px;
+  background: #a8a8a8;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 30;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  text-align: center;
+}
