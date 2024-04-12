@@ -35,6 +35,10 @@ export default class Router {
       path = '/login';
       window.history.pushState({}, '', path);
     }
+    if (path === '/login' && sessionStorage.getItem('funChatUser')) {
+      path = '/main';
+      window.history.pushState({}, '', path);
+    }
     const handleRoute = this.routes[path];
 
     if (!handleRoute) {
