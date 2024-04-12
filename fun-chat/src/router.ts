@@ -1,4 +1,5 @@
 import BaseComponent from './components/baseComponent';
+import { Paths } from './types/types';
 import AboutPage from './view/aboutPage';
 import Error404Page from './view/error404Page';
 import LoginPage from './view/loginPage';
@@ -21,9 +22,9 @@ export default class Router {
   }
 
   private initRoutes(): void {
-    this.routes['/login'] = () => new LoginPage(this).render();
-    this.routes['/main'] = new MainPage().render;
-    this.routes['/about'] = new AboutPage().render;
+    this.routes[Paths.login] = () => new LoginPage(this).render();
+    this.routes[Paths.main] = new MainPage().render;
+    this.routes[Paths.about] = new AboutPage().render;
   }
 
   public route(): void {
@@ -31,14 +32,19 @@ export default class Router {
       this.currentPage.destroy();
     }
     let path = window.location.pathname;
-    if (path === '/') {
-      path = '/login';
+    if (path === Paths.slash) {
+      path = Paths.login;
       window.history.pushState({}, '', path);
     }
-    if (path === '/login' && sessionStorage.getItem('funChatUser')) {
-      path = '/main';
+    if (path === Paths.login && sessionStorage.getItem('funChatUser')) {
+      path = Paths.main;
       window.history.pushState({}, '', path);
     }
+    if (path === Paths.main && !sessionStorage.getItem('funChatUser')) {
+      path = Paths.login;
+      window.history.pushState({}, '', path);
+    }
+
     const handleRoute = this.routes[path];
 
     if (!handleRoute) {

@@ -4,7 +4,7 @@ import BaseComponent from '../baseComponent';
 import Button from '../button/button';
 import Input from '../input/input';
 import Form from '../form/form';
-import RouterInterface, { UserAuthenticationData } from '../../types/types';
+import RouterInterface, { Paths, UserAuthenticationData } from '../../types/types';
 import { WebSocketUtil, webSocket } from '../../utils/webSocket';
 import ModalWindow from '../modalWindow/modalWindow';
 
@@ -156,8 +156,7 @@ export default class LoginForm extends BaseComponent {
     this.socket.onMessage((message: UserAuthenticationData) => {
       if (message.type === 'USER_LOGIN') {
         sessionStorage.setItem('funChatUser', this.usernameInput.getNode().value);
-        const mainPath = '/main';
-        this.router.routeTo(mainPath);
+        this.router.routeTo(Paths.main);
       }
       if (message.payload.error) {
         const modalWindow = new ModalWindow().init(message.payload.error);
@@ -168,7 +167,6 @@ export default class LoginForm extends BaseComponent {
 
   private infoButtonHandler(event: Event) {
     event.preventDefault();
-    const aboutPath = '/about';
-    this.router.routeTo(aboutPath);
+    this.router.routeTo(Paths.about);
   }
 }

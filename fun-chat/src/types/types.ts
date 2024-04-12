@@ -13,3 +13,10 @@ export type UserAuthenticationData = {
     };
   };
 };
+
+export enum Paths {
+  login = '/login',
+  main = '/main',
+  about = '/about',
+  slash = '/',
+}
