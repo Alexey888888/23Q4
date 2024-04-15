@@ -5,14 +5,15 @@ import RouterInterface from '../types/types';
 export default class LoginPage {
   router: RouterInterface;
 
+  loginForm: BaseComponent;
+
   constructor(router: RouterInterface) {
     this.router = router;
+    this.loginForm = new LoginForm(this.router);
   }
 
-  // eslint-disable-next-line class-methods-use-this
   public render(): BaseComponent {
-    const loginPage = new LoginForm(this.router);
-    document.body.append(loginPage.getNode());
-    return loginPage;
+    document.body.append(this.loginForm.getNode());
+    return this.loginForm;
   }
 }
