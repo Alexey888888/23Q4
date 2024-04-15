@@ -1,6 +1,4 @@
 .modal-window {
-  width: 250px;
-  height: 150px;
   background: #a8a8a8;
   position: absolute;
   top: 50%;
@@ -14,4 +12,14 @@
   align-items: center;
   border-radius: 5px;
   text-align: center;
+
+  &__message {
+    width: 250px;
+    margin-bottom: 25px;
+  }
+}
+
+.hidden {
+  opacity: 0;
+  transition: all 0.5s;
 }

@@ -1,3 +1,4 @@
+import ModalWindow from '../components/modalWindow/modalWindow';
 import { UserAuthenticationData } from '../types/types';
 
 export class WebSocketUtil {
@@ -5,9 +6,12 @@ export class WebSocketUtil {
 
   socket: null | WebSocket;
 
+  modalWindow: null | ModalWindow;
+
   constructor() {
     this.baseUrl = 'ws://127.0.0.1:4000';
     this.socket = null;
+    this.modalWindow = null;
     this.connect();
   }
 
@@ -16,11 +20,19 @@ export class WebSocketUtil {
 
     this.socket.onopen = () => {
       console.log('connection');
+      if (this.modalWindow) {
+        this.modalWindow.connect();
+        this.modalWindow = null;
+      }
     };
 
     this.socket.onclose = () => {
       this.connect();
       console.log('disconnection');
+      if (!this.modalWindow) {
+        this.modalWindow = new ModalWindow().disconnect();
+        document.body.prepend(this.modalWindow.getNode());
+      }
     };
   }
 
