@@ -23,7 +23,7 @@ export default class Router {
 
   private initRoutes(): void {
     this.routes[Paths.login] = () => new LoginPage(this).render();
-    this.routes[Paths.main] = new MainPage().render;
+    this.routes[Paths.main] = () => new MainPage(this).render();
     this.routes[Paths.about] = () => new AboutPage().render();
   }
 

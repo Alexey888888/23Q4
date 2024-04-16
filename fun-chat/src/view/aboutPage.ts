@@ -17,7 +17,7 @@ export default class AboutPage {
       new BaseComponent({
         tag: 'p',
         classNames: ['app-description'],
-        text: 'The application is designed to demonstrate the Fun Chat assignment in the RSSchool JS/FE 2023Q3 course',
+        text: 'The application is designed to demonstrate the Fun Chat assignment in the RSSchool JS/FE 2023Q4 course',
       }),
       new BaseComponent({
         tag: 'a',

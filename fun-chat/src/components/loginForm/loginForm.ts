@@ -7,6 +7,7 @@ import Form from '../form/form';
 import RouterInterface, { Paths, UserAuthenticationData } from '../../types/types';
 import { WebSocketUtil, webSocket } from '../../utils/webSocket';
 import ModalWindow from '../modalWindow/modalWindow';
+import InfoButton from '../infoButton/infoButton';
 
 export default class LoginForm extends BaseComponent {
   usernameInput: Input;
@@ -15,7 +16,7 @@ export default class LoginForm extends BaseComponent {
 
   loginButton: Button;
 
-  infoButton: Button;
+  infoButton: InfoButton;
 
   loginForm: BaseComponent;
 
@@ -47,7 +48,7 @@ export default class LoginForm extends BaseComponent {
       disabled: true,
       classNames: ['button', 'button_disabled'],
     });
-    this.infoButton = new Button({ text: 'Info', onClick: (event) => this.infoButtonHandler(event) });
+    this.infoButton = new InfoButton(this.router);
     this.loginForm = new Form({
       classNames: ['form'],
       onSubmit: (event) => this.formOnsubmit(event),
@@ -163,10 +164,5 @@ export default class LoginForm extends BaseComponent {
         document.body.append(modalWindow.getNode());
       }
     });
-  }
-
-  private infoButtonHandler(event: Event) {
-    event.preventDefault();
-    this.router.routeTo(Paths.about);
   }
 }

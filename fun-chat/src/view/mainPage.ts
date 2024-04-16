@@ -1,10 +1,23 @@
 import BaseComponent from '../components/baseComponent';
+import Header from '../components/header/header';
+import RouterInterface from '../types/types';
 
 export default class MainPage {
-  // eslint-disable-next-line class-methods-use-this
-  render(): BaseComponent {
-    const mainPage = new BaseComponent({ tag: 'h1', text: 'Main Page' });
-    document.body.append(mainPage.getNode());
-    return mainPage;
+  router: RouterInterface;
+
+  header: Header;
+
+  mainPage: BaseComponent;
+
+  constructor(router: RouterInterface) {
+    this.router = router;
+    this.mainPage = new BaseComponent({ classNames: ['main-paige'] });
+    this.header = new Header(this.router);
+  }
+
+  public render(): BaseComponent {
+    this.mainPage.append(this.header);
+    document.body.append(this.mainPage.getNode());
+    return this.mainPage;
   }
 }
