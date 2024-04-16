@@ -1,9 +1,10 @@
 import './header.scss';
 
-import RouterInterface from '../../types/types';
+import RouterInterface, { Paths } from '../../types/types';
 import BaseComponent from '../baseComponent';
 import Button from '../button/button';
 import InfoButton from '../infoButton/infoButton';
+import { WebSocketUtil, webSocket } from '../../utils/webSocket';
 
 export default class Header extends BaseComponent {
   container: BaseComponent;
@@ -18,14 +19,17 @@ export default class Header extends BaseComponent {
 
   funChatUser: string | null;
 
+  socket: WebSocketUtil;
+
   constructor(router: RouterInterface) {
     super({ classNames: ['header'] });
     this.router = router;
+    this.socket = webSocket;
     this.funChatUser = null;
     if (sessionStorage.getItem('funChatUser')) this.funChatUser = sessionStorage.getItem('funChatUser');
     this.userName = new BaseComponent({ classNames: ['header__username'], text: `User: ${this.funChatUser}` });
     this.infoButton = new InfoButton(this.router);
-    this.logoutButton = new Button({ text: 'LOGOUT' });
+    this.logoutButton = new Button({ text: 'LOGOUT', onClick: () => this.logout() });
     this.container = new BaseComponent(
       { classNames: ['container'] },
       new BaseComponent(
@@ -43,5 +47,21 @@ export default class Header extends BaseComponent {
 
   private init() {
     this.append(this.container);
+  }
+
+  private logout() {
+    const request = {
+      id: crypto.randomUUID(),
+      type: 'USER_LOGOUT',
+      payload: {
+        user: {
+          login: this.funChatUser as string,
+          password: sessionStorage.getItem('funChatUserPassword') as string,
+        },
+      },
+    };
+    this.socket.send(request);
+    sessionStorage.clear();
+    this.router.routeTo(Paths.login);
   }
 }

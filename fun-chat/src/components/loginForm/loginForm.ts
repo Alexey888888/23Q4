@@ -157,6 +157,7 @@ export default class LoginForm extends BaseComponent {
     this.socket.onMessage((message: UserAuthenticationData) => {
       if (message.type === 'USER_LOGIN') {
         sessionStorage.setItem('funChatUser', this.usernameInput.getNode().value);
+        sessionStorage.setItem('funChatUserPassword', this.passwordInput.getNode().value);
         this.router.routeTo(Paths.main);
       }
       if (message.payload.error) {
