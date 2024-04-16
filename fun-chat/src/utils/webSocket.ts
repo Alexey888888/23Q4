@@ -24,6 +24,19 @@ export class WebSocketUtil {
         this.modalWindow.connect();
         this.modalWindow = null;
       }
+      if (sessionStorage.getItem('funChatUserPassword')) {
+        const request = {
+          id: crypto.randomUUID(),
+          type: 'USER_LOGIN',
+          payload: {
+            user: {
+              login: sessionStorage.getItem('funChatUser') as string,
+              password: sessionStorage.getItem('funChatUserPassword') as string,
+            },
+          },
+        };
+        if (this.socket) this.send(request);
+      }
     };
 
     this.socket.onclose = () => {
