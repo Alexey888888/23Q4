@@ -20,3 +20,8 @@ export enum Paths {
   about = '/about',
   slash = '/',
 }
+
+export enum UserAction {
+  USER_LOGOUT = 'USER_LOGOUT',
+  USER_LOGIN = 'USER_LOGIN',
+}

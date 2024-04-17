@@ -1,5 +1,5 @@
 import ModalWindow from '../components/modalWindow/modalWindow';
-import { UserAuthenticationData } from '../types/types';
+import { UserAction, UserAuthenticationData } from '../types/types';
 
 export class WebSocketUtil {
   baseUrl: string;
@@ -25,17 +25,7 @@ export class WebSocketUtil {
         this.modalWindow = null;
       }
       if (sessionStorage.getItem('funChatUserPassword')) {
-        const request = {
-          id: crypto.randomUUID(),
-          type: 'USER_LOGIN',
-          payload: {
-            user: {
-              login: sessionStorage.getItem('funChatUser') as string,
-              password: sessionStorage.getItem('funChatUserPassword') as string,
-            },
-          },
-        };
-        if (this.socket) this.send(request);
+        this.logInOutUser(UserAction.USER_LOGIN);
       }
     };
 
@@ -59,6 +49,23 @@ export class WebSocketUtil {
         const message = JSON.parse(event.data);
         callback(message);
       };
+  }
+
+  logInOutUser(action: UserAction) {
+    const login = sessionStorage.getItem('funChatUser') || '';
+    const password = sessionStorage.getItem('funChatUserPassword') || '';
+    const request = {
+      id: crypto.randomUUID(),
+      type: action,
+      payload: {
+        user: {
+          login,
+          password,
+        },
+      },
+    };
+    console.log(JSON.stringify(request));
+    if (this.socket) this.send(request);
   }
 }
 

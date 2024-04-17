@@ -1,6 +1,6 @@
 import './header.scss';
 
-import RouterInterface, { Paths } from '../../types/types';
+import RouterInterface, { Paths, UserAction } from '../../types/types';
 import BaseComponent from '../baseComponent';
 import Button from '../button/button';
 import InfoButton from '../infoButton/infoButton';
@@ -50,17 +50,7 @@ export default class Header extends BaseComponent {
   }
 
   private logout() {
-    const request = {
-      id: crypto.randomUUID(),
-      type: 'USER_LOGOUT',
-      payload: {
-        user: {
-          login: this.funChatUser as string,
-          password: sessionStorage.getItem('funChatUserPassword') as string,
-        },
-      },
-    };
-    this.socket.send(request);
+    this.socket.logInOutUser(UserAction.USER_LOGOUT);
     sessionStorage.clear();
     this.router.routeTo(Paths.login);
   }
