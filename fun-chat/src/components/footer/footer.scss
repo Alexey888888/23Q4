@@ -1,0 +1,30 @@
+.footer__wrapper {
+  border: 1px solid #000;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .rs-school {
+    width: 90px;
+    transition: all 0.1s;
+
+    &:hover {
+      scale: 1.05;
+    }
+  }
+
+  .author {
+    transition: all 0.1s;
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    &:hover {
+      scale: 1.05;
+    }
+  }
+}
