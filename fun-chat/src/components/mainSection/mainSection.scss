@@ -1,0 +1,15 @@
+.main {
+  flex-grow: 1;
+  display: flex;
+  margin-top: 5px;
+
+  .container {
+    flex-grow: 1;
+  }
+}
+
+.main__wrapper {
+  height: 100%;
+  display: flex;
+  gap: 5px;
+}
