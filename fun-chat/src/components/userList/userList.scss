@@ -17,6 +17,12 @@
 .user-item {
   margin-bottom: 5px;
   &::marker {
-    color: #16bb00;
+    color: #1eff00;
+  }
+}
+
+.inactive {
+  &::marker {
+    color: #939393;
   }
 }

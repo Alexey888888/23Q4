@@ -19,16 +19,20 @@ export default class UserList extends BaseComponent {
 
   private async waitWebSocket() {
     await this.socket.connect();
-    this.getActiveUsers();
+    this.getUsers(UserStatus.active);
+    this.getUsers(UserStatus.inactive);
   }
 
-  private getActiveUsers() {
-    this.socket.getAllUsers(UserStatus.active);
+  private getUsers(status: UserStatus) {
+    this.socket.getAllUsers(status);
     this.socket.onMessage((message: UserData) => {
       if (message.payload && message.payload.users)
         Array.from(message.payload.users).forEach((user: UserObj) => {
-          if (user.login !== sessionStorage.getItem('funChatUser'))
-            this.list.append(new BaseComponent({ tag: 'li', classNames: ['user-item'], text: user.login }));
+          if (user.login !== sessionStorage.getItem('funChatUser')) {
+            const userNode = new BaseComponent({ tag: 'li', classNames: ['user-item'], text: user.login });
+            if (!user.isLogined) userNode.addClass(['inactive']);
+            this.list.append(userNode);
+          }
         });
     });
   }
