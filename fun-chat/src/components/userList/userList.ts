@@ -14,10 +14,11 @@ export default class UserList extends BaseComponent {
     this.socket = webSocket;
     this.list = new BaseComponent({ tag: 'ul', classNames: ['list'] });
     this.append(new BaseComponent({ classNames: ['user-list__wrapper'] }, this.list));
-    this.waitWebSocket();
+    this.addMessageListener();
+    this.displayUsers();
   }
 
-  private async waitWebSocket() {
+  private async displayUsers() {
     await this.socket.connect();
     this.getUsers(UserStatus.active);
     this.getUsers(UserStatus.inactive);
@@ -25,6 +26,10 @@ export default class UserList extends BaseComponent {
 
   private getUsers(status: UserStatus) {
     this.socket.getAllUsers(status);
+    this.addMessageListener();
+  }
+
+  private addMessageListener() {
     this.socket.onMessage((message: UserData) => {
       if (message.payload && message.payload.users)
         Array.from(message.payload.users).forEach((user: UserObj) => {
@@ -34,6 +39,10 @@ export default class UserList extends BaseComponent {
             this.list.append(userNode);
           }
         });
+      if (message.type === 'USER_EXTERNAL_LOGIN' || message.type === 'USER_EXTERNAL_LOGOUT') {
+        this.list.destroyChildren();
+        this.displayUsers();
+      }
     });
   }
 }

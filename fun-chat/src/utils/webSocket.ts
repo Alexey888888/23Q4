@@ -42,7 +42,7 @@ export class WebSocketUtil {
   }
 
   send(message: UserData) {
-    if (this.socket) this.socket.send(JSON.stringify(message));
+    if (this.socket && this.socket.readyState === WebSocket.OPEN) this.socket.send(JSON.stringify(message));
   }
 
   onMessage(callback: (message: UserData) => void) {
