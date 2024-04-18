@@ -1,5 +1,5 @@
 import ModalWindow from '../components/modalWindow/modalWindow';
-import { UserAction, UserAuthenticationData } from '../types/types';
+import { UserAction, UserData, UserStatus } from '../types/types';
 
 export class WebSocketUtil {
   baseUrl: string;
@@ -15,35 +15,37 @@ export class WebSocketUtil {
     this.connect();
   }
 
-  connect() {
-    this.socket = new WebSocket(this.baseUrl);
+  connect(): Promise<void> {
+    return new Promise((resolve) => {
+      this.socket = new WebSocket(this.baseUrl);
+      this.socket.onopen = () => {
+        console.log('connection');
+        if (this.modalWindow) {
+          this.modalWindow.connect();
+          this.modalWindow = null;
+        }
+        if (sessionStorage.getItem('funChatUserPassword')) {
+          this.logInOutUser(UserAction.login);
+        }
+        resolve();
+      };
 
-    this.socket.onopen = () => {
-      console.log('connection');
-      if (this.modalWindow) {
-        this.modalWindow.connect();
-        this.modalWindow = null;
-      }
-      if (sessionStorage.getItem('funChatUserPassword')) {
-        this.logInOutUser(UserAction.USER_LOGIN);
-      }
-    };
-
-    this.socket.onclose = () => {
-      this.connect();
-      console.log('disconnection');
-      if (!this.modalWindow) {
-        this.modalWindow = new ModalWindow().disconnect();
-        document.body.prepend(this.modalWindow.getNode());
-      }
-    };
+      this.socket.onclose = () => {
+        this.connect();
+        console.log('disconnection');
+        if (!this.modalWindow) {
+          this.modalWindow = new ModalWindow().disconnect();
+          document.body.prepend(this.modalWindow.getNode());
+        }
+      };
+    });
   }
 
-  send(message: UserAuthenticationData) {
+  send(message: UserData) {
     if (this.socket) this.socket.send(JSON.stringify(message));
   }
 
-  onMessage(callback: (message: UserAuthenticationData) => void) {
+  onMessage(callback: (message: UserData) => void) {
     if (this.socket)
       this.socket.onmessage = (event) => {
         const message = JSON.parse(event.data);
@@ -64,7 +66,15 @@ export class WebSocketUtil {
         },
       },
     };
-    console.log(JSON.stringify(request));
+    if (this.socket) this.send(request);
+  }
+
+  getAllUsers(userStatus: UserStatus) {
+    const request = {
+      id: crypto.randomUUID(),
+      type: userStatus,
+      payload: null,
+    };
     if (this.socket) this.send(request);
   }
 }

@@ -50,7 +50,7 @@ export default class Header extends BaseComponent {
   }
 
   private logout() {
-    this.socket.logInOutUser(UserAction.USER_LOGOUT);
+    this.socket.logInOutUser(UserAction.logout);
     sessionStorage.clear();
     this.router.routeTo(Paths.login);
   }

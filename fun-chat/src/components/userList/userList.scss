@@ -7,4 +7,16 @@
   border-radius: 5px;
   padding: 15px;
   height: 100%;
+  overflow: hidden;
+}
+
+.list {
+  padding-left: 10px;
+}
+
+.user-item {
+  margin-bottom: 5px;
+  &::marker {
+    color: #16bb00;
+  }
 }

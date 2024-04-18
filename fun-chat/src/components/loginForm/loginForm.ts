@@ -4,7 +4,7 @@ import BaseComponent from '../baseComponent';
 import Button from '../button/button';
 import Input from '../input/input';
 import Form from '../form/form';
-import RouterInterface, { Paths, UserAuthenticationData } from '../../types/types';
+import RouterInterface, { Paths, UserData } from '../../types/types';
 import { WebSocketUtil, webSocket } from '../../utils/webSocket';
 import ModalWindow from '../modalWindow/modalWindow';
 import InfoButton from '../infoButton/infoButton';
@@ -154,13 +154,13 @@ export default class LoginForm extends BaseComponent {
   }
 
   private checkMessageFromServer() {
-    this.socket.onMessage((message: UserAuthenticationData) => {
+    this.socket.onMessage((message: UserData) => {
       if (message.type === 'USER_LOGIN') {
         sessionStorage.setItem('funChatUser', this.usernameInput.getNode().value);
         sessionStorage.setItem('funChatUserPassword', this.passwordInput.getNode().value);
         this.router.routeTo(Paths.main);
       }
-      if (message.payload.error) {
+      if (message.payload && message.payload.error) {
         const modalWindow = new ModalWindow().init(message.payload.error);
         document.body.append(modalWindow.getNode());
       }
