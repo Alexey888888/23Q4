@@ -9,10 +9,17 @@
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
+
+  .input {
+    border: 1px solid #000;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 15px;
+  }
 }
 
 .list {
-  padding-left: 10px;
+  padding-left: 20px;
 }
 
 .user-item {
@@ -26,4 +33,8 @@
   &::marker {
     color: #939393;
   }
+}
+
+.hidden {
+  display: none;
 }

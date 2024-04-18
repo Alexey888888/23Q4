@@ -3,19 +3,24 @@ import './userList.scss';
 import BaseComponent from '../baseComponent';
 import { WebSocketUtil, webSocket } from '../../utils/webSocket';
 import { UserObj, UserData, UserStatus } from '../../types/types';
+import Input from '../input/input';
 
 export default class UserList extends BaseComponent {
   socket: WebSocketUtil;
 
   list: BaseComponent;
 
+  searchForm: Input;
+
   constructor() {
     super({ classNames: ['user-list'] });
     this.socket = webSocket;
     this.list = new BaseComponent({ tag: 'ul', classNames: ['list'] });
-    this.append(new BaseComponent({ classNames: ['user-list__wrapper'] }, this.list));
+    this.searchForm = new Input({ name: 'search' });
+    this.append(new BaseComponent({ classNames: ['user-list__wrapper'] }, this.searchForm, this.list));
     this.addMessageListener();
     this.displayUsers();
+    this.addInputListener();
   }
 
   private async displayUsers() {
@@ -42,6 +47,21 @@ export default class UserList extends BaseComponent {
       if (message.type === 'USER_EXTERNAL_LOGIN' || message.type === 'USER_EXTERNAL_LOGOUT') {
         this.list.destroyChildren();
         this.displayUsers();
+      }
+    });
+  }
+
+  private addInputListener() {
+    this.searchForm.addListener('input', () => this.filterUsers());
+  }
+
+  private filterUsers() {
+    Array.from(this.list.getNode().children).forEach((user) => {
+      user.classList.remove('hidden');
+    });
+    Array.from(this.list.getNode().children).forEach((user) => {
+      if (!user.textContent?.includes(this.searchForm.getNode().value)) {
+        user.classList.add('hidden');
       }
     });
   }
