@@ -8,3 +8,24 @@
   padding: 15px;
   height: 100%;
 }
+
+.header {
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    border-bottom: 1px solid #454545;
+
+    p {
+      height: 20px;
+    }
+  }
+}
+
+.talker-status {
+  color: #01ca01;
+}
+
+.talker-status_inactive {
+  color: #ff0000;
+}

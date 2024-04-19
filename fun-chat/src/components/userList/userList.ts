@@ -41,6 +41,13 @@ export default class UserList extends BaseComponent {
           if (user.login !== sessionStorage.getItem('funChatUser')) {
             const userNode = new BaseComponent({ tag: 'li', classNames: ['user-item'], text: user.login });
             if (!user.isLogined) userNode.addClass(['inactive']);
+            const eventData = {
+              isLogined: user.isLogined,
+              login: user.login,
+            };
+            const event = new CustomEvent('talkerChangeStatus', { detail: eventData });
+            document.dispatchEvent(event);
+            UserList.addUserClickListener(userNode, user.login);
             this.list.append(userNode);
           }
         });
@@ -63,6 +70,19 @@ export default class UserList extends BaseComponent {
       if (!user.textContent?.includes(this.searchForm.getNode().value)) {
         user.classList.add('hidden');
       }
+    });
+  }
+
+  private static addUserClickListener(userNode: BaseComponent, username: string) {
+    let userStatus = true;
+    if (userNode.getNode().classList.contains('inactive')) userStatus = false;
+    const eventData = {
+      userStatus,
+      username,
+    };
+    userNode.addListener('click', () => {
+      const event = new CustomEvent('userNodeClicked', { detail: eventData });
+      document.dispatchEvent(event);
     });
   }
 }
