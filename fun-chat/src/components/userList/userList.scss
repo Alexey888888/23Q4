@@ -19,19 +19,33 @@
 }
 
 .list {
-  padding-left: 20px;
+  padding-left: 5px;
+  list-style-type: none;
 }
 
 .user-item {
   margin-bottom: 5px;
-  &::marker {
-    color: #1eff00;
+  padding: 5px;
+  border-radius: 5px;
+  position: relative;
+  padding-left: 20px;
+
+  &::before {
+    content: '\1F7E2';
+    position: absolute;
+    left: -3px;
+    border-radius: 100px;
+  }
+
+  &:hover {
+    background: #e7e7e7;
+    cursor: pointer;
   }
 }
 
 .inactive {
-  &::marker {
-    color: #939393;
+  &::before {
+    content: '\1F518';
   }
 }
 
