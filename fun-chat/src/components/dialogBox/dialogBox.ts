@@ -44,6 +44,7 @@ export default class DialogBox extends BaseComponent {
     this.setDialogFieldPlaceholder();
     this.addUserNodeClickListener();
     this.addChangeTalkerStatusListener();
+    this.isSendInputEmpty();
   }
 
   private setDialogFieldPlaceholder() {
@@ -92,5 +93,17 @@ export default class DialogBox extends BaseComponent {
       this.talkerStatus.setTextContent('offline');
       this.talkerStatus.addClass(['talker-status_inactive']);
     }
+  }
+
+  private isSendInputEmpty() {
+    this.sendInput.addListener('input', () => {
+      if (this.sendInput.getNode().value.length) {
+        this.sendButton.setDisabled(false);
+        this.sendButton.removeClass('button-disabled');
+      } else {
+        this.sendButton.setDisabled(true);
+        this.sendButton.addClass(['button-disabled']);
+      }
+    });
   }
 }
