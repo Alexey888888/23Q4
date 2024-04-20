@@ -2,6 +2,8 @@ import './dialogBox.scss';
 
 import BaseComponent from '../baseComponent';
 import { WebSocketUtil, webSocket } from '../../utils/webSocket';
+import Input from '../input/input';
+import Button from '../button/button';
 
 export default class DialogBox extends BaseComponent {
   socket: WebSocketUtil;
@@ -12,6 +14,14 @@ export default class DialogBox extends BaseComponent {
 
   talkerStatus: BaseComponent;
 
+  dialogField: BaseComponent;
+
+  sendString: BaseComponent;
+
+  sendInput: Input;
+
+  sendButton: Button;
+
   constructor() {
     super({ classNames: ['dialog-box'] });
     this.socket = webSocket;
@@ -21,7 +31,21 @@ export default class DialogBox extends BaseComponent {
       { classNames: ['header'] },
       new BaseComponent({ classNames: ['header__inner'] }, this.talker, this.talkerStatus),
     );
-    this.append(new BaseComponent({ classNames: ['dialog-box__wrapper'] }, this.header));
+    this.dialogField = new BaseComponent({ classNames: ['dialog-field'] });
+    this.sendInput = new Input({ name: 'send-input' });
+    this.sendButton = new Button({ text: 'Send' });
+    this.sendString = new BaseComponent(
+      { classNames: ['send-string'] },
+      new BaseComponent({ classNames: ['send-string__wrapper'] }, this.sendInput, this.sendButton),
+    );
+    this.append(
+      new BaseComponent({ classNames: ['dialog-box__wrapper'] }, this.header, this.dialogField, this.sendString),
+    );
+    this.addUserNodeClickListener();
+    this.addChangeTalkerStatusListener();
+  }
+
+  private addUserNodeClickListener() {
     document.addEventListener('userNodeClicked', (event) => {
       if (event instanceof CustomEvent) {
         const { username } = event.detail;
@@ -30,6 +54,9 @@ export default class DialogBox extends BaseComponent {
         this.updateTalkerStatus(userStatus);
       }
     });
+  }
+
+  private addChangeTalkerStatusListener() {
     document.addEventListener('talkerChangeStatus', (event) => {
       if (event instanceof CustomEvent) {
         if (event.detail.login === this.talker.getNode().textContent) {
