@@ -32,8 +32,8 @@ export default class DialogBox extends BaseComponent {
       new BaseComponent({ classNames: ['header__inner'] }, this.talker, this.talkerStatus),
     );
     this.dialogField = new BaseComponent({ classNames: ['dialog-field'] });
-    this.sendInput = new Input({ name: 'send-input' });
-    this.sendButton = new Button({ text: 'Send' });
+    this.sendInput = new Input({ name: 'send-input', placeholder: 'Message...', disabled: true });
+    this.sendButton = new Button({ text: 'Send', classNames: ['button', 'button_disabled'], disabled: true });
     this.sendString = new BaseComponent(
       { classNames: ['send-string'] },
       new BaseComponent({ classNames: ['send-string__wrapper'] }, this.sendInput, this.sendButton),
@@ -41,8 +41,19 @@ export default class DialogBox extends BaseComponent {
     this.append(
       new BaseComponent({ classNames: ['dialog-box__wrapper'] }, this.header, this.dialogField, this.sendString),
     );
+    this.setDialogFieldPlaceholder();
     this.addUserNodeClickListener();
     this.addChangeTalkerStatusListener();
+  }
+
+  private setDialogFieldPlaceholder() {
+    this.dialogField.destroyChildren();
+    this.dialogField.append(
+      new BaseComponent({
+        classNames: ['dialog-field__placeholder'],
+        text: 'Select the user to send the message to...',
+      }),
+    );
   }
 
   private addUserNodeClickListener() {
@@ -53,6 +64,8 @@ export default class DialogBox extends BaseComponent {
         const { userStatus } = event.detail;
         this.updateTalkerStatus(userStatus);
       }
+      this.dialogField.destroyChildren();
+      this.sendInput.setDisabled(false);
     });
   }
 
@@ -67,11 +80,11 @@ export default class DialogBox extends BaseComponent {
     });
   }
 
-  updateTalker(username: string) {
+  private updateTalker(username: string) {
     this.talker.setTextContent(username);
   }
 
-  updateTalkerStatus(userStatus: boolean) {
+  private updateTalkerStatus(userStatus: boolean) {
     if (this.talker.getNode().textContent?.length && userStatus) {
       this.talkerStatus.setTextContent('online');
       this.talkerStatus.removeClass('talker-status_inactive');

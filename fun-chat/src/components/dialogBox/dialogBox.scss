@@ -33,11 +33,17 @@
   color: #ff0000;
 }
 
+.dialog-field {
+  .dialog-field__placeholder {
+    text-align: center;
+  }
+}
+
 .send-string__wrapper {
   display: flex;
   justify-content: space-around;
   align-items: end;
-  padding: 5px;
+  padding: 5px 0;
   border-top: 1px solid #454545;
 
   .input {
@@ -52,9 +58,5 @@
     background: #eeeeee;
     margin-left: 5px;
     height: 30px;
-
-    &:hover {
-      background: #d4d4d4;
-    }
   }
 }

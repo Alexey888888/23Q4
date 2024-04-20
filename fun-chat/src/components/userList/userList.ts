@@ -16,7 +16,7 @@ export default class UserList extends BaseComponent {
     super({ classNames: ['user-list'] });
     this.socket = webSocket;
     this.list = new BaseComponent({ tag: 'ul', classNames: ['list'] });
-    this.searchForm = new Input({ name: 'search' });
+    this.searchForm = new Input({ name: 'search', placeholder: 'Search...' });
     this.append(new BaseComponent({ classNames: ['user-list__wrapper'] }, this.searchForm, this.list));
     this.addMessageListener();
     this.displayUsers();
