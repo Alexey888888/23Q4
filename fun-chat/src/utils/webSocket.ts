@@ -19,7 +19,7 @@ export class WebSocketUtil {
     return new Promise((resolve) => {
       this.socket = new WebSocket(this.baseUrl);
       this.socket.onopen = () => {
-        console.log('connection');
+        // console.log('connection');
         if (this.modalWindow) {
           this.modalWindow.connect();
           this.modalWindow = null;
@@ -32,7 +32,7 @@ export class WebSocketUtil {
 
       this.socket.onclose = () => {
         this.connect();
-        console.log('disconnection');
+        //  console.log('disconnection');
         if (!this.modalWindow) {
           this.modalWindow = new ModalWindow().disconnect();
           document.body.prepend(this.modalWindow.getNode());
