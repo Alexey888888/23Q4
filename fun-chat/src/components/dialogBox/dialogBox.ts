@@ -18,7 +18,7 @@ export default class DialogBox extends BaseComponent {
 
   sendString: BaseComponent;
 
-  sendInput: Input;
+  messageInput: Input;
 
   sendButton: Button;
 
@@ -32,11 +32,11 @@ export default class DialogBox extends BaseComponent {
       new BaseComponent({ classNames: ['header__inner'] }, this.talker, this.talkerStatus),
     );
     this.dialogField = new BaseComponent({ classNames: ['dialog-field'] });
-    this.sendInput = new Input({ name: 'send-input', placeholder: 'Message...', disabled: true });
+    this.messageInput = new Input({ name: 'send-input', placeholder: 'Message...', disabled: true });
     this.sendButton = new Button({ text: 'Send', classNames: ['button', 'button_disabled'], disabled: true });
     this.sendString = new BaseComponent(
       { classNames: ['send-string'] },
-      new BaseComponent({ classNames: ['send-string__wrapper'] }, this.sendInput, this.sendButton),
+      new BaseComponent({ classNames: ['send-string__wrapper'] }, this.messageInput, this.sendButton),
     );
     this.append(
       new BaseComponent({ classNames: ['dialog-box__wrapper'] }, this.header, this.dialogField, this.sendString),
@@ -44,7 +44,7 @@ export default class DialogBox extends BaseComponent {
     this.setDialogFieldPlaceholder();
     this.addUserNodeClickListener();
     this.addChangeTalkerStatusListener();
-    this.isSendInputEmpty();
+    this.isMessageInputEmpty();
   }
 
   private setDialogFieldPlaceholder() {
@@ -66,7 +66,7 @@ export default class DialogBox extends BaseComponent {
         this.updateTalkerStatus(userStatus);
       }
       this.dialogField.destroyChildren();
-      this.sendInput.setDisabled(false);
+      this.messageInput.setDisabled(false);
     });
   }
 
@@ -95,14 +95,14 @@ export default class DialogBox extends BaseComponent {
     }
   }
 
-  private isSendInputEmpty() {
-    this.sendInput.addListener('input', () => {
-      if (this.sendInput.getNode().value.length) {
+  private isMessageInputEmpty() {
+    this.messageInput.addListener('input', () => {
+      if (this.messageInput.getNode().value.length) {
         this.sendButton.setDisabled(false);
-        this.sendButton.removeClass('button-disabled');
+        this.sendButton.removeClass('button_disabled');
       } else {
         this.sendButton.setDisabled(true);
-        this.sendButton.addClass(['button-disabled']);
+        this.sendButton.addClass(['button_disabled']);
       }
     });
   }
