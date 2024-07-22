@@ -1,5 +1,5 @@
 import Node from './classNode.js';
-import imageTemplates from './imageTemplates.json' assert { type: 'json' };
+import { imageTemplates } from './imageTemplates.js';
 
 const { body } = document;
 
